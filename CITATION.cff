@@ -1,0 +1,36 @@
+cff-version: 1.2.0
+message: "If you use this code or data, please cite the paper below."
+title: "OrganFusion-Seq: reproducibility package"
+authors:
+  - family-names: Zhang
+    given-names: Wei
+  - family-names: Lai
+    given-names: Mingrui
+  - family-names: Jiang
+    given-names: Wenhao
+  - family-names: Wang
+    given-names: Jianfeng
+  - family-names: Wei
+    given-names: Mingqiang
+  - family-names: Zhang
+    given-names: Xiaoping
+license: MIT
+repository-code: "https://github.com/<your-account>/organfusion-seq"
+preferred-citation:
+  type: article
+  title: "Reliable Early Drug-Response Screening as Feedback Control of Observation: A Calibration-Robust Optimal-Stopping Controller for Tumour Organoids"
+  authors:
+    - family-names: Zhang
+      given-names: Wei
+    - family-names: Lai
+      given-names: Mingrui
+    - family-names: Jiang
+      given-names: Wenhao
+    - family-names: Wang
+      given-names: Jianfeng
+    - family-names: Wei
+      given-names: Mingqiang
+    - family-names: Zhang
+      given-names: Xiaoping
+  journal: "IEEE Transactions on Cybernetics (under review)"
+  year: 2026

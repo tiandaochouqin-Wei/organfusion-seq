@@ -1,0 +1,4 @@
+drug,D_end,D_full,I_W,bound_sqrtIW_2sqrtpi,measured_dAUC,satisfied
+Stauro,1.8951,2.1233,0.2282,0.1348,0.0049,Yes
+Ner,1.3328,1.5125,0.1796,0.1196,-0.0084,Yes
+Lap,0.0654,0.0761,0.0107,0.0292,-0.1332,Yes

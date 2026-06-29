@@ -1,0 +1,84 @@
+% ===== TABLE I : dataset & task summary =====
+\begin{table}[t]\centering\small\caption{Dataset and task summary (real cohorts).}\label{tab:data}
+\begin{tabular}{@{}lll@{}}\toprule
+Attribute & Primary cohort & Independent cohort\\\midrule
+Cohort & breast-organoid HSLCI & pancreatic (NOGR)\\
+Cancer & breast & pancreatic\\
+Sample unit & single organoid & single organoid\\
+$n$ & $1{,}888$ & $1{,}934$\\
+Lines & MCF-7, BT-474 & patient-derived\\
+Drugs & Stauro., Nerat., Lapat. & Oxal., 5-FU, Pacli., Gemcit., SN38\\
+Conc. & $0.1/1/10\,\mu$M & per protocol\\
+Window & $6$--$72$\,h & early growth window\\
+Input & $x(\tau),z{=}(d,c)$ & early growth indicator\\
+Endpoint & $\mathbf 1[x(72)/x(6){<}0.9]$ & NOGR viability\\
+Role & main evaluation & external transfer\\\bottomrule
+\end{tabular}\end{table}
+
+% ===== TABLE II : fixed-time baselines =====
+\begin{table}[t]\centering\small\caption{Fixed-time discrimination baselines (real, 5-fold cross-fit). Diverse models cluster at the same level and the dense trajectory encoder does not exceed them: fixed-time early discrimination is saturated.}\label{tab:baselines}
+\begin{tabular}{@{}lcccccc@{}}\toprule
+& \multicolumn{3}{c}{$24$\,h} & \multicolumn{3}{c}{$48$\,h}\\ \cmidrule(lr){2-4}\cmidrule(lr){5-7}
+Model & AUC & ECE & Brier & AUC & ECE & Brier\\\midrule
+LR & 0.835 & 0.027 & 0.166 & 0.906 & 0.043 & 0.125\\
+RF & 0.875 & 0.019 & 0.143 & 0.945 & 0.021 & 0.090\\
+HGB & 0.867 & 0.072 & 0.154 & 0.939 & 0.064 & 0.101\\
+SVM-RBF & 0.835 & 0.026 & 0.165 & 0.907 & 0.026 & 0.121\\
+kNN & 0.833 & 0.036 & 0.167 & 0.904 & 0.031 & 0.124\\
+trajectory encoder & 0.772 & 0.048 & 0.197 & 0.814 & 0.077 & 0.183\\
+near-Bayes (LDA) & 0.826 & 0.033 & 0.171 & 0.900 & 0.051 & 0.133\\
+\bottomrule\end{tabular}\end{table}
+
+% ===== TABLE III : window-information bound =====
+\begin{table}[t]\centering\small\caption{Window-information bound verification (real). Measured trajectory-over-endpoint AUC gain stays below $\sqrt{\mathcal I_W}/(2\sqrt\pi)$ and is ${\le}0$ for Neratinib/Lapatinib.}\label{tab:bound}
+\begin{tabular}{@{}lccccc@{}}\toprule
+Drug & $\mathcal D_{\rm end}$ & $\mathcal D_{\rm full}$ & $\mathcal I_W$ & bound & $\Delta$AUC\\\midrule
+Staurosporine & 1.895 & 2.123 & 0.228 & 0.135 & +0.005\\
+Neratinib & 1.333 & 1.512 & 0.180 & 0.120 & -0.008\\
+Lapatinib & 0.065 & 0.076 & 0.011 & 0.029 & -0.133\\
+\bottomrule\end{tabular}\end{table}
+
+% ===== TABLE IV : posterior-producer / calibration ablation =====
+\begin{table}[t]\centering\small\caption{Posterior-producer and calibration ablation (real). Component rows use a common logistic posterior + the same controller; simplex/unconstrained rows are the GRU fusion variants. Regret stays within $2L\varepsilon$.}\label{tab:ablation}
+\begin{tabular}{@{}lcccccc@{}}\toprule
+Producer & AUC & ECE & MCE & Brier & $\bar t$ & error\\\midrule
+Full (traj+cond) & 0.906 & 0.043 & 0.121 & 0.125 & 33.8 & 0.147\\
+Trajectory only & 0.894 & 0.055 & 0.124 & 0.133 & 39.6 & 0.151\\
+Condition only & 0.706 & 0.072 & 0.111 & 0.216 & 64.4 & 0.322\\
+No temporal encoder & 0.769 & 0.052 & 0.695 & 0.201 & 42.6 & 0.264\\
+Simplex fusion (GRU) & 0.941 & 0.022 & 0.088 & 0.096 & -- & --\\
+Unconstrained (GRU) & 0.943 & 0.025 & 0.117 & 0.091 & -- & --\\
+\bottomrule\end{tabular}\end{table}
+
+% ===== TABLE V : matched operating points =====
+\begin{table}[t]\centering\small\caption{Matched operating points (real). At every point the controller saves observation time at matched decision error; PPV/NPV rise as the band tightens.}\label{tab:matched}
+\begin{tabular}{@{}lcccccc@{}}\toprule
+OP & ctrl err & $\bar t_{\rm ctrl}$ & $t_{\rm fix}$ & saved & PPV & NPV\\\midrule
+OP1 & 0.251 & 14.6 & 20.0 & 5.4 & 0.785 & 0.719\\
+OP2 & 0.234 & 16.9 & 26.6 & 9.6 & 0.801 & 0.739\\
+OP3 & 0.216 & 20.1 & 33.7 & 13.6 & 0.814 & 0.768\\
+OP4 & 0.193 & 23.7 & 42.5 & 18.8 & 0.831 & 0.806\\
+OP5 & 0.168 & 28.2 & 49.8 & 21.5 & 0.856 & 0.839\\
+OP6 & 0.147 & 33.8 & 56.3 & 22.5 & 0.879 & 0.873\\
+OP7 & 0.130 & 40.0 & 62.8 & 22.8 & 0.904 & 0.905\\
+OP8 & 0.119 & 46.4 & 66.6 & 20.2 & 0.913 & 0.943\\
+OP9 & 0.111 & 52.8 & 68.9 & 16.1 & 0.928 & 0.970\\
+\bottomrule\end{tabular}\end{table}
+
+% ===== TABLE VI : robustness & transfer =====
+\begin{table}[t]\centering\small\caption{Robustness and transfer (real). Dominated matched operating points under each shift; the single exception is the extreme $10\,\mu$M dose. Sparse-imaging cost stays flat; the framework transfers to an external pancreatic cohort.}\label{tab:robust}
+\begin{tabular}{@{}llc@{}}\toprule
+Setting & Dominated & Time saving\\\midrule
+cross-cell MCF-7$\to$BT-474 & 4/4 & 18.7\,h\\
+cross-cell BT-474$\to$MCF-7 & 4/4 & 12.3\,h\\
+leave-drug Stauro & 4/4 & 18.6\,h\\
+leave-drug Ner & 4/4 & 17.1\,h\\
+leave-drug Lap & 4/4 & 4.8\,h\\
+leave-conc 0.1~$\mu$M & 4/4 & 12.9\,h\\
+leave-conc 1.0~$\mu$M & 4/4 & 14.1\,h\\
+leave-conc 10.0~$\mu$M & 1/4 & 1.2\,h\\
+sparse full & cost 0.282 & --\\
+sparse every~3 & cost 0.288 & --\\
+sparse every~6 & cost 0.297 & --\\
+sparse every~12 & cost 0.307 & --\\
+\bottomrule\end{tabular}\end{table}

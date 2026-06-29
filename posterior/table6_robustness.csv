@@ -1,0 +1,13 @@
+setting,dominated_points,mean_time_saving_h
+cross-cell MCF-7->BT-474,4/4,18.67
+cross-cell BT-474->MCF-7,4/4,12.35
+leave-drug Stauro,4/4,18.62
+leave-drug Ner,4/4,17.14
+leave-drug Lap,4/4,4.84
+leave-conc 0.1uM,4/4,12.87
+leave-conc 1.0uM,4/4,14.11
+leave-conc 10.0uM,1/4,1.22
+sparse full,cost 0.282,
+sparse every~3,cost 0.288,
+sparse every~6,cost 0.297,
+sparse every~12,cost 0.307,
