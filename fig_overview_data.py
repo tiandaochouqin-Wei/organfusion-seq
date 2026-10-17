@@ -141,7 +141,7 @@ lo = min(Xa[i].min() for _, i in picks); hi = max(Xa[i].max() for _, i in picks)
 pad = 0.04 * (hi - lo); lo -= pad; hi += pad
 cmds = []
 for cls, i in picks:
-    cmds.append(f"\\draw[{BLUE if cls == 1 else PURP}] {poly(lin(Ta, 6, 72, XL, XR), lin(Xa[i], lo, hi, YB, YT))};")
+    cmds.append(f"\\draw[{BLUE if cls == 1 else PURP}] {poly(lin(Ta, 6, 72, -0.74, 0.74), lin(Xa[i], lo, hi, YB, YT))};")
 out.append("\\newcommand{\\panelA}{" + "\n".join(cmds) + "}")
 out.append(f"\\newcommand{{\\panelAthr}}{{{f2(lin(0.9, lo, hi, YB, YT))}}}")
 
