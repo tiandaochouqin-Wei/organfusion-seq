@@ -54,8 +54,8 @@ S = [r"\begin{table*}[t]\centering\small",
      r"Table~\ref{tab:anytrigger_main_ref}).} Each trigger is swept over $24$ delay weights",
      r"($2\cdot10^{-4}$--$6\cdot10^{-2}$/h; consecutive weights that give identical decisions are merged), fitted",
      r"out-of-fold by condition (5-fold GroupKFold over the $18$ conditions) on the same leave-condition-out posterior,",
-     r"and certified with the endpoint assay appended, exactly as the margin family of Table~6; same fifty $9/9$",
-     r"condition splits. Columns as in Table~6; ``random halves'': the same selection when organoids are split at",
+     r"and certified with the endpoint assay appended, exactly as the margin family of Table~7; same fifty $9/9$",
+     r"condition splits. Columns as in Table~7; ``random halves'': the same selection when organoids are split at",
      r"random, so that calibration and test units are exchangeable. At $\alpha{=}0.10$ the condition-level rule",
      r"returns the endpoint assay for every family ($m{=}9$). Our margin family needs no fitting; the triggers' losses",
      r"carry the same cross-fitting caveat as the posterior.}\label{tab:anytrigger_org}",
@@ -94,7 +94,7 @@ for al in (0.05, 0.10, 0.20):
     if al != 0.20: S.append(r"\midrule")
 S += [r"\bottomrule\end{tabular}\end{table}"]
 open("_anytrigger_supp.tex", "w", encoding="utf-8").write("\n".join(S).replace(
-    r"Table~\ref{tab:anytrigger_main_ref}", "Table~8 of the main text") + "\n")
+    r"Table~\ref{tab:anytrigger_main_ref}", "Table~9 of the main text") + "\n")
 
 # ---------------- numbers quoted in the text
 for al in (0.15, 0.20):

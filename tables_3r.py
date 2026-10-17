@@ -39,7 +39,7 @@ L += [r"\bottomrule\end{tabular}\end{table}", ""]
 # ---------------- S21
 B = rd("table_paired_bootstrap.csv")
 L += [r"\begin{table}[t]\centering\small",
-      r"\caption{\textbf{Paired condition-level bootstrap of Table~3 (supports Sec.~4.2).} All rules on the same organoids and",
+      r"\caption{\textbf{Paired condition-level bootstrap of Table~4 (supports Sec.~4.2).} All rules on the same organoids and",
       r"the same leave-condition-out posterior; the $18$ conditions are resampled with replacement ($B{=}2000$), each rule's",
       r"error--time frontier is recomputed on every replicate, and the difference in hours to reach the target error is",
       r"recorded (negative: the first rule is faster). Intervals that cover $0$ mean no stable difference.}\label{tab:pairedboot}",
