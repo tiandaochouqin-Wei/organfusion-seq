@@ -192,7 +192,7 @@ xb = {r["policy"]: r for r in rows("table_extra_baselines.csv")}
 
 # =============================================================== FIG 2 (RQ1): frontier | raster | survival
 fig = plt.figure(figsize=(W2, 2.95))
-gs = GridSpec(1, 3, figure=fig, width_ratios=[1.38, 1.0, 1.02], left=0.068, right=0.992, top=0.865,
+gs = GridSpec(1, 3, figure=fig, width_ratios=[1.38, 1.0, 1.02], left=0.068, right=0.992, top=0.840,
               bottom=0.155, wspace=0.42)
 # ---- a: error-time frontier
 ax = fig.add_subplot(gs[0, 0])
@@ -235,21 +235,22 @@ ax.set_xticks([10, 20, 30, 40, 50, 60, 70]); ax.set_yticks([0, 0.1, 0.2, 0.3])
 ax.set_xlabel("mean observation time (h)"); ax.set_ylabel("decision error")
 plabel(ax, "a", dx=-0.215, dy=1.03)
 
-# ---- b: posterior raster until the OP6 rule (margin 0.30) stops
+# ---- b: posterior raster until the OP6 rule (margin 0.30) stops; wrong calls marked in a strip at the right
 ax = fig.add_subplot(gs[0, 1])
 MOP6 = 0.30
 t6s, d6s, p6s = margin_rule(P, G, MOP6)
 js = np.searchsorted(G, t6s)
 edges = np.r_[G[0] - 1.5, (G[:-1] + G[1:]) / 2, G[-1] + 3.0]
 GAP = 40
-row0 = 0; Z = []; stair = []; ticks = []; nsens = 0
+row0 = 0; Z = []; stair = []; ticks = []; nsens = 0; wrong_rows = []
 for cls, nm in ((1, "sensitive"), (0, "resistant")):
     idx = np.where(y == cls)[0]
     idx = idx[np.lexsort((-np.abs(P[idx, js[idx]] - 0.5), js[idx]))]
-    for i in idx:
+    for r_, i in enumerate(idx):
         z = P[i].copy(); z[js[i] + 1:] = np.nan; Z.append(z)
+        if d6s[i] != y[i]: wrong_rows.append(row0 + r_)
     stair.append((np.arange(row0, row0 + len(idx)), edges[js[idx] + 1]))
-    ticks.append((row0 + len(idx) / 2, nm))
+    ticks.append((row0 + len(idx) / 2, f"{nm} ({len(idx)})"))
     row0 += len(idx)
     if cls == 1:
         nsens = len(idx); Z += [np.full(T, np.nan)] * GAP; row0 += GAP
@@ -264,40 +265,54 @@ ax.set_yticks([t[0] for t in ticks]); ax.set_yticklabels([t[1] for t in ticks], 
 ax.tick_params(axis="y", length=0, pad=1.5)
 for sp in ("left", "top", "right"): ax.spines[sp].set_visible(False)
 ax.set_xticks([12, 24, 36, 48, 60, 72]); ax.set_xlabel("time (h)")
-ax.text(73.5, 0.36 * nsens, "not observed", fontsize=F, ha="right", va="center", color="#6A6A6A",
-        style="italic", zorder=4)
+ax.text(73.5, 0.36 * nsens, "not observed", fontsize=F, ha="right", va="center", color="#6A6A6A", zorder=4)
+# strip of wrong calls, aligned row by row with the raster
+sax = ax.inset_axes([1.02, 0.0, 0.045, 1.0])
+sax.set_ylim(Z.shape[0], 0); sax.set_xlim(0, 1)
+sax.add_patch(Rectangle((0, 0), 1, nsens, color="#F4F4F4", lw=0))
+sax.add_patch(Rectangle((0, nsens + GAP), 1, Z.shape[0] - nsens - GAP, color="#F4F4F4", lw=0))
+sax.hlines(wrong_rows, 0, 1, color=RED, lw=0.45)
+sax.axis("off")
+sax.text(1.35, nsens + GAP + 0.5 * (Z.shape[0] - nsens - GAP), "wrong calls", fontsize=F, ha="left", va="center",
+         rotation=90, color=RED)
 cax = ax.inset_axes([0.36, 1.115, 0.60, 0.05])
-cb = fig.colorbar(mpl.cm.ScalarMappable(Normalize(0, 1), CM_POST), cax=cax, orientation="horizontal", ticks=[0, 0.5, 1])
+cb = fig.colorbar(mpl.cm.ScalarMappable(Normalize(0, 1), CM_POST), cax=cax, orientation="horizontal",
+                  ticks=[0, 0.2, 0.5, 0.8, 1])
 cb.ax.tick_params(length=1.6, width=0.5, pad=1.2); cb.outline.set_linewidth(0.5)
-cb.ax.set_xticklabels(["0", "0.5", "1"])
+cb.ax.set_xticklabels(["0", "0.2", "0.5", "0.8", "1"])
+for v_ in (0.2, 0.8):
+    cb.ax.axvline(v_, color=INK, lw=0.7)
+cb.ax.text(0.1, 1.25, "stop", transform=cb.ax.transAxes, ha="center", va="bottom", fontsize=F)
+cb.ax.text(0.9, 1.25, "stop", transform=cb.ax.transAxes, ha="center", va="bottom", fontsize=F)
 ax.text(0.33, 1.14, r"$\hat p_t$", transform=ax.transAxes, ha="right", va="center", fontsize=F)
 plabel(ax, "b", dx=-0.16, dy=1.03)
 
-# ---- c: survival of the observation, by drug
+# ---- c: what has been decided by each time, and how well (stacked shares), against the fixed horizon
 ax = fig.add_subplot(gs[0, 2])
 xs = np.linspace(6, 74, 1361)
-Sp = np.array([(t6s > x).mean() for x in xs]); Sf = (xs < f6).astype(float)
-ax.fill_between(xs, Sp, Sf, where=Sf >= Sp, color=OURS, alpha=0.16, lw=0)
-ax.fill_between(xs, Sp, Sf, where=Sf < Sp, facecolor="white", edgecolor=LOSS, hatch="/////", lw=0, alpha=0.7)
-ax.plot(xs, Sf, "--", color=FIX, lw=1.0)
-ax.plot(xs, Sp, "-", color=OURS, lw=2.0, label="all")
-names = {"Lap": "Lap.", "Stauro": "Stau.", "Ner": "Ner."}
-for dg, ls in (("Lap", (0, (1, 1.2))), ("Stauro", (0, (3.2, 1.3))), ("Ner", "-")):
-    tt = t6s[drug == dg]
-    ax.plot(xs, [(tt > x).mean() for x in xs], ls=ls, color=OURS_D if dg == "Ner" else INK, lw=0.9, label=names[dg])
-ax.text(f6 + 1.4, 0.985, f"fixed\nhorizon\n{f6:.1f} h", fontsize=F, color=FIX, va="top", linespacing=1.05)
-# the only band clear on all sides: after the 12 h drop every step curve is at or below 0.70
-ax.text(30.3, 0.855, f"net area\n= {f6 - t6s.mean():.1f} h", fontsize=F, color=OURS_D, ha="center", va="center",
-        fontweight="bold", linespacing=1.05)
-ax.text(61.8, 0.30, "observed\nlonger", fontsize=F, color=LOSS, ha="center", va="bottom", linespacing=1.05)
-ax.set_xlim(6, 74); ax.set_ylim(0, 1.04); ax.set_xticks([12, 24, 36, 48, 60, 72]); ax.set_yticks([0, 0.5, 1])
-ax.set_xlabel("time (h)"); ax.set_ylabel("fraction still observed")
-lg = ax.legend(loc="lower left", bbox_to_anchor=(-0.02, -0.02), handlelength=1.5, labelspacing=0.2, handletextpad=0.45,
-               frameon=True, facecolor="white", edgecolor="none", framealpha=0.94, borderpad=0.2)
-lg.set_zorder(6)
+dec = t6s[None, :] <= xs[:, None]                                   # [x, unit] decided by time x
+ok = (d6s == y)
+s_sens = (dec & ok & (d6s == 1)).mean(1); s_res = (dec & ok & (d6s == 0)).mean(1); s_wrong = (dec & ~ok).mean(1)
+s_dec = s_sens + s_res + s_wrong
+polys = ax.stackplot(xs, s_sens, s_res, s_wrong, 1 - s_dec, colors=[OURS, "#F2B48F", RED, "#E9E9E9"], lw=0)
+polys[2].set_hatch("/////"); polys[2].set_edgecolor("white")
+late = xs >= f6                                                     # still observed beyond the fixed horizon
+ax.fill_between(xs[late], s_dec[late], 1, facecolor="none", edgecolor=LOSS, hatch="\\\\\\\\", lw=0, zorder=3)
+ax.plot(xs, s_dec, "-", color=INK, lw=0.8, zorder=4)
+ax.plot([6, f6, f6, 74], [0, 0, 1, 1], "--", color=FIX, lw=1.0, zorder=5)
+ax.text(f6 - 1.0, 0.975, f"fixed horizon\n{f6:.1f} h", fontsize=F, color=FIX, ha="right", va="top",
+        linespacing=1.05, zorder=6)
+ax.text(62, 0.20, "correct:\nsensitive", fontsize=F, color="white", ha="center", va="center", linespacing=1.05, zorder=6)
+ax.text(62, 0.585, "correct:\nresistant", fontsize=F, color=INK, ha="center", va="center", linespacing=1.05, zorder=6)
+iw = np.searchsorted(xs, 64.0)
+ax.text(64, s_sens[iw] + s_res[iw] + 0.5 * s_wrong[iw], "wrong", fontsize=F, color=INK, ha="center", va="center",
+        bbox=dict(facecolor="white", edgecolor="none", pad=0.6, alpha=0.95), zorder=6)
+ax.text(9.0, 0.84, "still\nobserved", fontsize=F, color="#555555", ha="left", va="center", linespacing=1.05, zorder=6)
+ax.set_xlim(6, 74); ax.set_ylim(0, 1.0); ax.set_xticks([12, 24, 36, 48, 60, 72]); ax.set_yticks([0, 0.5, 1])
+ax.set_xlabel("time (h)"); ax.set_ylabel("share of organoids")
 plabel(ax, "c", dx=-0.27, dy=1.03)
-print(f"  OP6: mean tau {t6s.mean():.2f} h, stop<72h {np.mean(t6s < 72):.3f}, by drug",
-      {g_: round(float(t6s[drug == g_].mean()), 1) for g_ in names})
+print(f"  OP6: mean tau {t6s.mean():.2f} h (fixed {f6} h, saving {f6 - t6s.mean():.1f} h), "
+      f"wrong {(~ok).mean():.3f}, stop<72h {np.mean(t6s < 72):.3f}; wrong-call rows {len(wrong_rows)}")
 save(fig, "Fig2_rq1")
 
 # =============================================================== FIG 3 (RQ1): time-to-error matrix
