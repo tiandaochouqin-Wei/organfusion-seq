@@ -53,10 +53,16 @@ s6, s72 = corrected(k6), corrected(k72)
 vmax = np.percentile(s6, 99.8)
 
 
-def mass(s, cx, cy, R):
+def centroid(s, cx, cy, R):
     yy, xx = np.ogrid[:s.shape[0], :s.shape[1]]
     w = np.where((yy - cy) ** 2 + (xx - cx) ** 2 <= (R + 8) ** 2, s.clip(0), 0)
     cy2, cx2 = ndi.center_of_mass(w)
+    return cx2, cy2
+
+
+def mass(s, cx, cy, R):
+    yy, xx = np.ogrid[:s.shape[0], :s.shape[1]]
+    cx2, cy2 = centroid(s, cx, cy, R)
     return s[(yy - cy2) ** 2 + (xx - cx2) ** 2 <= R ** 2].clip(0).sum()
 
 
@@ -71,6 +77,8 @@ for key, (cx, cy) in ORGANOIDS.items():
         tile(s6, cx, cy, "fig1_org_new.png"); continue
     r = mass(s72, cx, cy, 34) / mass(s6, cx, cy, 34)
     print(f"organoid {key}: centre ({cx},{cy})  x(72)/x(6) = {r:.2f}")
-    tile(s6, cx, cy, f"fig1_org_{key}06.png"); tile(s72, cx, cy, f"fig1_org_{key}72.png")
+    cx72, cy72 = (int(round(v)) for v in centroid(s72, cx, cy, 34))
+    print(f"  72 h tile centred at ({cx72},{cy72})")
+    tile(s6, cx, cy, f"fig1_org_{key}06.png"); tile(s72, cx72, cy72, f"fig1_org_{key}72.png")
 print(f"frames {k6} ({hrs[k6]:.2f} h) and {k72} ({hrs[k72]:.2f} h); tiles written to {OUT}")
 

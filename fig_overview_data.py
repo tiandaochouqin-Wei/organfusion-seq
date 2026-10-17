@@ -174,7 +174,7 @@ out.append("\\newcommand{\\panelC}{" + "\n".join(cmds) + "}")
 tmin, tmax, rmin_, rmax_ = 11.0, 56.0, 0.04, 0.32
 pts = sorted({(round(c["t"]), round(c["risk"], 2)) for c in cand if c["risk"] <= rmax_ - 0.01})
 ya = lin(ALPHA, rmin_, rmax_, YB, YT)
-cmds = [f"\\fill[warn!7] ({f2(XL - 0.08)},{f2(ya)}) rectangle ({f2(XR + 0.08)},{f2(YT + 0.07)});",
+cmds = [f"\\fill[warn!11] ({f2(XL - 0.08)},{f2(ya)}) rectangle ({f2(XR + 0.08)},{f2(YT + 0.07)});",
         f"\\draw[warn,line width=0.7pt,dash pattern=on 2.4pt off 1.4pt] ({f2(XL - 0.08)},{f2(ya)}) -- ({f2(XR + 0.08)},{f2(ya)});"]
 for tt, rr in pts:
     col = "ours" if rr <= ALPHA else "gry"
