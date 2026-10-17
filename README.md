@@ -92,6 +92,7 @@ studies when using the derived tables.
 | Table 10 and Tables S20–S22, exact check of Thm. 2, paired bootstrap, ECE binning | `semisynthetic_thm2.py`, `paired_bootstrap.py`, `ece_sensitivity.py` → `tables_3r.py` | `table_semisynthetic_thm2.csv`, `table_paired_bootstrap.csv`, `table_ece_sensitivity.csv` |
 | Cost sweep, cadence, certificate validity, adaptive sampling | `E8_cost_perdrug.py`, `E_F.py`, `E10_ABC.py`, `adaptive_sampling_pilot.py` | `E*_results.json`, `table_adaptive_sampling_pilot.csv` |
 | Reliability layer (pancreatic panel) | `E5_deben_generality.py` | printed |
+| Running time of CertStop and the published triggers (organoids) | `runtime_comparison.py` | `table_runtime.csv` |
 
 Figure checks used for submission: `check_text_line_overlap.py` (no lettering crossed by a
 line), `check_label_overlap.py` (panel labels clear of other text), `export_figures_pdf.py`
