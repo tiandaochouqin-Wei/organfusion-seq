@@ -108,7 +108,7 @@
   \node[hdr] at (0,6.78) {Certification};
   \node[tbox] at (0,6.08) {\textbf{Independent units}\\ Thm\,3: w.p.\ $\ge1-\delta$};
   \node[tbox] at (0,4.98) {\textbf{New conditions}\\ Thm\,4: in expectation,\\ family fixed in advance};
-  \node[txt] at (0,4.12) {output: band $(a_t,b_t)$};
+  \node[txt] at (0,4.12) {output: certified rule $\hat\pi$};
 \end{scope}
 % ------------------------------------------------ online lane
 \def\yf{2.62}
@@ -120,7 +120,7 @@
 \node[fbox,text width=1.38cm] (n3) at (5.705,\yf) {Posterior\\ $\hat p_{t_j}$};
 \node[draw=oursd,line width=0.6pt,fill=white,diamond,aspect=2.9,inner sep=0.6pt,text=ink] (n4) at (8.45,\yf)
      {$\hat p_{t_j}\in(a_{t_j},b_{t_j})$?};
-\node[fbox,draw=warn!75,fill=warn!5,text width=2.84cm] (n5) at (11.85,\yf) {Stop at $\tau$ and decide\\ $\delta=\mathbf 1\{\hat p_\tau\ge p^\star\}$};
+\node[fbox,draw=warn!75,fill=warn!5,text width=2.84cm] (n5) at (11.85,\yf) {\textbf{Output:} stop at $\tau$,\\ call $\delta=\mathbf 1\{\hat p_\tau\ge p^\star\}$};
 \draw[ar] (n1) -- (n2);
 \draw[ar] (n2) -- (n3);
 \draw[ar] (n3) -- (n4);
