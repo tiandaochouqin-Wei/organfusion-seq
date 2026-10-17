@@ -12,7 +12,7 @@ sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 A = list(csv.DictReader(open("posterior/table_certify_triggers_organoid.csv", encoding="utf-8")))
 U = list(csv.DictReader(open("posterior/table_certify_triggers_ucr40.csv", encoding="utf-8")))
 FAMS = ["constant margin (ours)", "CALIMERA", "EconomyGamma", "TEASER-cost"]
-LAB = {"constant margin (ours)": "margin (ours)", "CALIMERA": "CALIMERA", "EconomyGamma": "EconomyGamma",
+LAB = {"constant margin (ours)": r"\method{} (margin)", "CALIMERA": "CALIMERA", "EconomyGamma": "EconomyGamma",
        "TEASER-cost": "TEASER, cost crit."}
 ARMLAB = {"none": "none", "ltt": "LTT", "hoeffding": "Thm.~3", "crc-condition": "Thm.~4"}
 
@@ -29,14 +29,11 @@ def u(fam, alpha, sel):
 
 
 # ---------------- main-text table
-L = [r"\begin{table}[t]\centering\footnotesize\caption{The certificates are not tied to our rule. Each published",
-     r"trigger is swept over its delay weight, fitted out-of-fold by condition, and certified exactly as the margin",
-     r"family of Table~\ref{tab:crc}. Organoids: the same fifty $9/9$ condition splits (test conditions new), splits whose",
-     r"pooled test FP and FN both meet $\alpha{=}0.20$, by selection rule; ``h'': mean decision time of the",
-     r"condition-level rule. UCR: the $40$ two-class datasets with units split at random (test series halved),",
-     r"share of certifiable (dataset, split) pairs on which the Learn-then-Test selection meets $\alpha{=}0.10$, and the",
-     r"number of datasets on which any rule is certifiable (TEASER not run there). Full results: Supplementary",
-     r"Tables~S17--S18.}\label{tab:anytrigger}",
+L = [r"\begin{table}[t]\centering\footnotesize\caption{Certifying published triggers as the margin family of Table~\ref{tab:crc}.",
+     r"Organoids: splits (of fifty, test conditions new) whose pooled test FP and FN both meet $\alpha{=}0.20$, by",
+     r"selection rule; h: mean decision time of the condition-level rule. UCR: share of certifiable (dataset, split)",
+     r"pairs on which Learn-then-Test meets $\alpha{=}0.10$ (datasets with any certifiable rule). Supplementary",
+     r"Tables~S17--S18 give full results.}\label{tab:anytrigger}",
      r"\begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}lccccc c@{}}\toprule",
      r"& \multicolumn{5}{c}{organoids, new conditions} & UCR\\\cmidrule(lr){2-6}\cmidrule(lr){7-7}",
      r"Family & none & LTT & Thm.~3 & Thm.~4 & h & LTT\\\midrule"]

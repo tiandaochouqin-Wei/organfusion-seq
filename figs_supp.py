@@ -60,7 +60,7 @@ def rows(fn):
 
 
 def plabel(ax, s, dx=None, dy=None):
-    """IEEE style (Stage 3Q-4): "(a)" centred under the panel, placed by panel_labels.place() in save();
+    """IEEE style (Stage 3Q-4): "(a)" centered under the panel, placed by panel_labels.place() in save();
     dx, dy are the old top-left offsets and are no longer used."""
     panel_labels.register(ax, s)
 
@@ -132,7 +132,7 @@ ax.scatter(a[y == 0], b[y == 0], s=4, facecolors="white", edgecolors=INK, linewi
 ax.scatter(a[y == 1], b[y == 1], s=4, color=OURS, linewidths=0, alpha=0.75, label="sensitive")
 ax.axhline(0.9, color=FIX, ls=":", lw=0.8)
 ax.text(a.max() * 0.99, 1.0, r"$\theta$ = 0.9", ha="right", va="bottom", fontsize=F, color=FIX, bbox=HALO)
-ax.set_xlabel(r"$x(24)$, normalised mass at 24 h"); ax.set_ylabel(r"$x(72)$, endpoint")
+ax.set_xlabel(r"$x(24)$, normalized mass at 24 h"); ax.set_ylabel(r"$x(72)$, endpoint")
 # headroom above the highest point (3.5), so the statistics sit clear of every marker: a
 # marker beside "0.65" once read as a stray degree sign
 ax.set_ylim(-0.15, 4.95); ax.set_yticks([0, 1, 2, 3, 4])
@@ -142,7 +142,7 @@ ax.legend(loc="lower right", handlelength=1.0, markerscale=2.2, handletextpad=0.
 save(fig, "figS2_endpoint")
 print(f"  S2 pearson={r_p:.3f} spearman={r_s:.3f}")
 
-# =============================================================== S3: controller behaviour by drug
+# =============================================================== S3: controller behavior by drug
 tt, dd, ex = controller(P, 0.30)
 fig = plt.figure(figsize=(5.9, 2.25))
 gs = GridSpec(1, 2, figure=fig, width_ratios=[1.45, 0.72], left=0.070, right=0.800, top=0.905, bottom=0.205, wspace=0.34)

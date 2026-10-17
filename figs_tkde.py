@@ -9,20 +9,20 @@ Here every figure is drawn at exactly \\textwidth (517.935 pt) and saved WITHOUT
 bounding box, so it is included 1:1 and the 8 pt set below is 8 pt on the page. To afford
 that, the three composites became six figures, in-panel titles moved to the captions, and
 labels that only repeated the caption were dropped. Series are also separated by line
-style / marker / hatch, not colour alone, so the figures survive greyscale printing.
+style / marker / hatch, not color alone, so the figures survive grayscale printing.
 
 Figure contracts (claim -> evidence -> data):
 Fig 2  RQ1   a error-time frontier | b posterior raster to the stopping time | c survival by drug
              <- posterior_data_grouped.npz, table_matched_ops_grouped.csv,
                 table_seq_baselines_frontier.csv, table_etsc_baselines_lambda.csv
-Fig 3  RQ1   time-to-error matrix: rules x target errors, colour = hours behind the fastest
+Fig 3  RQ1   time-to-error matrix: rules x target errors, color = hours behind the fastest
              <- same + table_extra_baselines.csv + Bellman CV band recomputed here
 Fig 4  RQ2-3 a shift matrix (hours saved per held-out stratum x margin) with AUC strip
              <- table_shift_matrix.csv | b regime maps: share of alpha left under Thm 3 / Thm 4
 Fig 5  RQ3   a raincloud of per-split test risk | b price vs per-condition coverage
              <- table_constrained_control_crc.csv
 Fig 6  RQ4-5 a reliability at the stopping time | b gamma path vs the 2L*ECE_stop bound |
-             c |believed - realised| vs L*ECE_stop in four domains
+             c |believed - realized| vs L*ECE_stop in four domains
              <- table_stage3a_calib_regret.csv + recomputed
 Fig 7  RQ5   win/tie/loss barcode per delay weight
              <- table_crossdomain_realized.csv, table_etsc_ucr_strong.csv, organoid audit
@@ -68,7 +68,7 @@ mpl.rcParams.update({
     "xtick.color": "#2B2B2B", "ytick.color": "#2B2B2B", "hatch.linewidth": 0.5,
 })
 # MATLAB default order (what most IEEE readers see): 1 blue = ours, 4 purple / 5 green =
-# published triggers, 7 dark red = failure/violation, 2 orange = loss; greys = classical/fixed.
+# published triggers, 7 dark red = failure/violation, 2 orange = loss; grays = classical/fixed.
 OURS = "#0072BD"; OURS_D = "#00406A"; CAL = "#7E2F8E"; ECO = "#77AC30"
 FIX = "#555555"; GRY = "#A6A6A6"; LGRY = "#D9D9D9"; RED = "#A2142F"; AMB = "#EDB120"; INK = "#2B2B2B"
 LOSS = "#D95319"; TIE = "#E4E4E4"; NA = "#F3F3F3"; OURS_PALE = "#A8CEE8"
@@ -87,7 +87,7 @@ def rows(fn):
 
 
 def plabel(ax, s, dx=None, dy=None):
-    """IEEE style (Stage 3Q-4): "(a)" centred under the panel, placed by panel_labels.place() in save();
+    """IEEE style (Stage 3Q-4): "(a)" centered under the panel, placed by panel_labels.place() in save();
     dx, dy are the old top-left offsets and are no longer used."""
     panel_labels.register(ax, s)
 
@@ -667,14 +667,14 @@ for k_, v in dom_pts.items():
 print(f"  Corollary 1 holds on {nok}/{ntot} policies")
 # Stage 3Q: with ECE bins that have an edge at p* (organoids p*=0.5, sepsis p*=0.1) the sample version of
 # Corollary 1 holds by the triangle inequality; on turbofan (p*=0.25) one bin straddles p* and the check is a
-# genuine test. What the panel is for is the ratio: how much of the bound the believed-realised gap uses.
+# genuine test. What the panel is for is the ratio: how much of the bound the believed-realized gap uses.
 for k_, v in dom_pts.items():
     bnd = np.array([p_[1] for p_ in v]); gap = np.array([p_[2] for p_ in v]); r_ = gap / np.maximum(bnd, 1e-12)
     print(f"  {k_}: gap/(L*ECE_stop) median {np.median(r_):.3f}, max {r_.max():.3f}, "
           f"share above 0.5 {np.mean(r_ > 0.5):.2f}, above 0.1 {np.mean(r_ > 0.1):.2f}  (n={len(v)})")
 
-# organoid realised-cost audit (same protocol as crossdomain_realized.py, halves split by CONDITION)
-print("organoid realised-cost audit ...")
+# organoid realized-cost audit (same protocol as crossdomain_realized.py, halves split by CONDITION)
+print("organoid realized-cost audit ...")
 LAM_O = np.geomspace(5e-4, 5e-2, 20); MSO = np.linspace(0, 0.48, 49)
 mar = [margin_rule(P, G, m) for m in MSO]
 fix = [(np.full(N, G[j]), (P[:, j] >= 0.5).astype(int), P[:, j]) for j in range(T)]
@@ -691,7 +691,7 @@ with open(os.path.join(POST, "table_organoid_realized_audit.csv"), "w", newline=
 
 fig = plt.figure(figsize=(W2, 2.90))
 gs = GridSpec(1, 3, figure=fig, width_ratios=[1.0, 1.0, 1.12], left=0.075, right=0.978, top=0.925, bottom=0.165, wspace=0.43)
-# ---- a: reliability at the stopping time; line style and marker differ per gamma (greyscale-safe)
+# ---- a: reliability at the stopping time; line style and marker differ per gamma (grayscale-safe)
 sub = GridSpecFromSubplotSpec(2, 1, subplot_spec=gs[0, 0], height_ratios=[1.0, 0.24], hspace=0.07)
 ax = fig.add_subplot(sub[0]); axh = fig.add_subplot(sub[1], sharex=ax)
 ax.plot([0, 1], [0, 1], color=INK, lw=0.7, ls=(0, (1, 1.6)))
@@ -770,7 +770,7 @@ ax.set_xticks([1e-3, 1e-2, 1e-1, 1]); ax.set_yticks([1e-3, 1e-2, 1e-1, 1])
 ax.text(0.33, 0.33 * 0.1, "10%", fontsize=F, color=FIX, ha="center", va="center", rotation=49, bbox=HALO)
 ax.text(0.33, 0.33 * 0.01, "1%", fontsize=F, color=FIX, ha="center", va="center", rotation=49, bbox=HALO)
 ax.text(4.2e-4, 7.0e-3, "violated", fontsize=F, color=RED, ha="left", va="center", style="italic")
-ax.set_xlabel(r"$L\cdot\mathrm{ECE}_\mathrm{stop}$"); ax.set_ylabel(r"|believed $-$ realised cost|")
+ax.set_xlabel(r"$L\cdot\mathrm{ECE}_\mathrm{stop}$"); ax.set_ylabel(r"|believed $-$ realized cost|")
 ax.legend(loc="upper left", bbox_to_anchor=(-0.02, 1.03), handletextpad=0.1, labelspacing=0.18, borderpad=0.2,
           frameon=True, facecolor="white", edgecolor="none", framealpha=0.92)
 plabel(ax, "c", dx=-0.30, dy=1.01)
@@ -791,16 +791,16 @@ def lam_series(dom, key):
     return np.array([float(r[key]) for r in rr])
 
 
-left = [("organoids", [("believed", np.array(org_gb), "b"), ("realised", np.array(org_gh), OURS)]),
+left = [("organoids", [("believed", np.array(org_gb), "b"), ("realized", np.array(org_gh), OURS)]),
         ("turbofan FD004", [("believed", lam_series("C-MAPSS-FD004", "gain_believed_oracle"), "b"),
-                            ("realised", lam_series("C-MAPSS-FD004", "gain_heldout_mean"), OURS)]),
+                            ("realized", lam_series("C-MAPSS-FD004", "gain_heldout_mean"), OURS)]),
         ("turbofan FD001", [("believed", lam_series("C-MAPSS-FD001", "gain_believed_oracle"), "b"),
-                            ("realised", lam_series("C-MAPSS-FD001", "gain_heldout_mean"), OURS)]),
+                            ("realized", lam_series("C-MAPSS-FD001", "gain_heldout_mean"), OURS)]),
         ("sepsis", [("believed", lam_series("PhysioNet2019", "gain_believed_oracle"), "b"),
-                    ("realised", lam_series("PhysioNet2019", "gain_heldout_mean"), OURS)])]
-LABCOL = {"believed": "#7A7A7A", "realised": OURS_D}
+                    ("realized", lam_series("PhysioNet2019", "gain_heldout_mean"), OURS)])]
+LABCOL = {"believed": "#7A7A7A", "realized": OURS_D}
 
-# ---- UCR-40: mean realised cost over the eight delay weights, ranks, pairwise Wilcoxon-Holm cliques
+# ---- UCR-40: mean realized cost over the eight delay weights, ranks, pairwise Wilcoxon-Holm cliques
 ub = [r for r in rows("table_etsc_ucr_binary40.csv") if r["posterior"] == "raw"]
 M7 = ["const_margin(train-selected)", "CALIMERA", "EconomyGamma", "bayes_dp_band(train-kernel)",
       "fixed(train-selected)", "TEASER-cost", "TEASER"]
@@ -841,7 +841,7 @@ S7 = np.array([[int((gain7[d_, m_] > TOL).sum()) - int((gain7[d_, m_] < -TOL).su
 CMWL = LinearSegmentedColormap.from_list("wl", [LOSS, "#F6C9B4", "#FFFFFF", "#A8CEE8", OURS_D])
 
 fig = plt.figure(figsize=(W2, 3.05))
-# ---- a: domains, believed vs realised win/tie/loss barcode
+# ---- a: domains, believed vs realized win/tie/loss barcode
 ax = fig.add_axes([0.088, 0.035, 0.300, 0.905])
 yc = 0.0; yt, ytl = [], []
 print("  Fig7a W/T/L (TOL=1e-3):")
@@ -913,7 +913,7 @@ plabel(ax, "b", dx=-0.02, dy=0.94)
 # ---- c: every dataset, wins minus losses against the fixed horizon chosen on training data
 ax = fig.add_axes([0.637, 0.115, 0.318, 0.300])
 ax.imshow(S7, cmap=CMWL, norm=Normalize(-8, 8), aspect="auto", interpolation="nearest")
-for (r_i, c_i), v_ in np.ndenumerate(S7):                  # hatched where losses outnumber wins: reads in greyscale
+for (r_i, c_i), v_ in np.ndenumerate(S7):                  # hatched where losses outnumber wins: reads in grayscale
     if v_ < 0:
         ax.add_patch(Rectangle((c_i - 0.5, r_i - 0.5), 1, 1, fill=False, hatch="xxxx", edgecolor="white", lw=0))
 ax.set_xticks(np.arange(-0.5, len(dord7)), minor=True); ax.set_yticks(np.arange(-0.5, len(strip7)), minor=True)

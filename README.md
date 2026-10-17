@@ -1,4 +1,4 @@
-# Certified Cost-Sensitive Early Classification — reproducibility package
+# CertStop: certified cost-sensitive early classification — reproducibility package
 
 Code and derived data for the paper
 
@@ -9,7 +9,8 @@ Code and derived data for the paper
 
 Early classification commits a decision on a growing prefix of a time series. We cast
 cost-sensitive early classification as constrained optimal stopping on the posterior
-process and give (i) a regret bound that ties the realised cost of any deployed stopping
+process and propose CertStop, a controller that generates a finite family of stopping
+rules, selects one on calibration data and certifies the selection. We give (i) a regret bound that ties the realised cost of any deployed stopping
 rule to its calibration error *at the stopping time*, (ii) finite-sample certificates for a
 rule selected on data, and (iii) a condition-level conformal risk-control rule for new
 deployment conditions. The certificates apply to any family of stopping rules, including
