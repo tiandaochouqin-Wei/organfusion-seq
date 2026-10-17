@@ -56,16 +56,16 @@
 % A: calibration data
 \begin{scope}[shift={(\Xo+0.5*\Wm,0)}]
   \node[hdr] at (0,6.78) {Calibration data};
-  \node[txt] at (-1.14,6.40) {6\,h};
+  \node[txt] at (-1.15,6.40) {6\,h};
   \node[txt] at (0,6.40) {$x(t)/x(6)$};
-  \node[txt] at (1.14,6.40) {72\,h};
-  \draw[gry!70,line width=0.4pt] (-0.80,4.88) rectangle (0.80,6.13);
+  \node[txt] at (1.15,6.40) {72\,h};
+  \draw[gry!70,line width=0.4pt] (-0.76,4.88) rectangle (0.76,6.13);
   \begin{scope}[shift={(0,5.50)}]\panelA\end{scope}
-  \foreach \x/\t in {-1.14/06,1.14/72}{
-    \node[inner sep=0pt] at (\x,5.81) {\includegraphics[width=0.56cm]{figures_tkde/fig1_org_r\t.png}};
-    \draw[cal,line width=0.8pt] (\x-0.28,5.53) rectangle (\x+0.28,6.09);
-    \node[inner sep=0pt] at (\x,5.19) {\includegraphics[width=0.56cm]{figures_tkde/fig1_org_s\t.png}};
-    \draw[ours,line width=0.8pt] (\x-0.28,4.91) rectangle (\x+0.28,5.47);
+  \foreach \x/\t in {-1.15/06,1.15/72}{
+    \node[inner sep=0pt] at (\x,5.825) {\includegraphics[width=0.60cm]{figures_tkde/fig1_org_r\t.png}};
+    \draw[cal,line width=0.8pt] (\x-0.30,5.525) rectangle (\x+0.30,6.125);
+    \node[inner sep=0pt] at (\x,5.175) {\includegraphics[width=0.60cm]{figures_tkde/fig1_org_s\t.png}};
+    \draw[ours,line width=0.8pt] (\x-0.30,4.875) rectangle (\x+0.30,5.475);
   }
   \node[txt,anchor=north] at (0,4.74) {$n$ units, $m$ conditions\\ late label $y\in\{0,1\}$};
 \end{scope}
@@ -111,9 +111,10 @@
 \end{scope}
 % ------------------------------------------------ online lane
 \def\yf{2.62}
-\node[inner sep=0pt] (img) at (0.84,\yf) {\includegraphics[width=0.62cm]{figures_tkde/fig1_org_new.png}};
-\draw[gry,line width=0.8pt] (img.south west) rectangle (img.north east);
-\node[fbox,text width=1.50cm] (n1) at (2.06,\yf) {new unit\\ condition $z$};
+\draw[gry!75,line width=0.5pt,rounded corners=2pt,fill=white] (0.53,\yf-0.43) rectangle (2.86,\yf+0.43);
+\node[inner sep=0pt] (img) at (0.95,\yf) {\includegraphics[width=0.66cm]{figures_tkde/fig1_org_new.png}};
+\draw[gry,line width=0.6pt] (img.south west) rectangle (img.north east);
+\node[fbox,draw=none,fill=none,text width=1.50cm] (n1) at (2.05,\yf) {new unit\\ condition $z$};
 \node[fbox,text width=1.38cm] (n2) at (3.92,\yf) {observe\\ $x(t_j)$};
 \node[fbox,text width=1.38cm] (n3) at (5.705,\yf) {posterior\\ $\hat p_{t_j}$};
 \node[draw=oursd,line width=0.6pt,fill=white,diamond,aspect=2.9,inner sep=0.6pt,text=ink] (n4) at (8.45,\yf)

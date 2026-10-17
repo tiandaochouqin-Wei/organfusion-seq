@@ -73,3 +73,4 @@ for key, (cx, cy) in ORGANOIDS.items():
     print(f"organoid {key}: centre ({cx},{cy})  x(72)/x(6) = {r:.2f}")
     tile(s6, cx, cy, f"fig1_org_{key}06.png"); tile(s72, cx, cy, f"fig1_org_{key}72.png")
 print(f"frames {k6} ({hrs[k6]:.2f} h) and {k72} ({hrs[k72]:.2f} h); tiles written to {OUT}")
+
