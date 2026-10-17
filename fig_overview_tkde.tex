@@ -83,7 +83,7 @@
 % C: rule generation (Thm 1)
 \begin{scope}[shift={(\Xo+2*\St+0.5*\Wm,0)}]
   \node[hdr] at (0,6.78) {Rule generation};
-  \node[txt] at (0,6.40) {DP for each $\mu$ (Thm\,1)};
+  \node[txt] at (0,6.40) {DP on $\mathcal D_{\rm gen}$ (Thm\,1)};
   \draw[gry!70,line width=0.4pt] (-1.42,4.88) rectangle (1.42,6.13);
   \begin{scope}[shift={(0,5.50)}]
     \panelC
@@ -100,14 +100,14 @@
     \node[txt,text=warn,anchor=south east] at (1.38,\panelDalpha+0.02) {$\alpha$};
     \node[txt,text=warn,anchor=north] at (\panelDsx-0.05,\panelDsy-0.12) {$\hat\pi$};
   \end{scope}
-  \node[txt,anchor=north] at (0,4.74) {risk $+$ slack $\le\alpha$;\\ else the endpoint assay};
+  \node[txt,anchor=north] at (0,4.74) {risk $+$ slack $\le\alpha$ on $\mathcal D_{\rm sel}$;\\ else the endpoint assay};
 \end{scope}
 % E: certification (Thms 3-4)
 \begin{scope}[shift={(\Xo+4*\St+0.5*\Wm,0)}]
   \node[hdr] at (0,6.78) {Certification};
-  \node[tbox] at (0,6.02) {\textbf{independent units}\\ Thm\,3: w.p.\ $\ge1-\delta$};
-  \node[cbox] at (0,5.06) {\textbf{new conditions}\\ Thm\,4: in expectation};
-  \node[txt] at (0,4.24) {output: band $(a_t,b_t)$};
+  \node[tbox] at (0,6.08) {\textbf{independent units}\\ Thm\,3: w.p.\ $\ge1-\delta$};
+  \node[cbox] at (0,4.98) {\textbf{new conditions}\\ Thm\,4: in expectation,\\ family fixed in advance};
+  \node[txt] at (0,4.12) {output: band $(a_t,b_t)$};
 \end{scope}
 % ------------------------------------------------ online lane
 \def\yf{2.62}
@@ -119,7 +119,7 @@
 \node[fbox,text width=1.38cm] (n3) at (5.705,\yf) {posterior\\ $\hat p_{t_j}$};
 \node[draw=oursd,line width=0.6pt,fill=white,diamond,aspect=2.9,inner sep=0.6pt,text=ink] (n4) at (8.45,\yf)
      {$\hat p_{t_j}\in(a_{t_j},b_{t_j})$?};
-\node[fbox,draw=warn!75,fill=warn!5,text width=2.62cm] (n5) at (11.85,\yf) {stop at $\tau$ and decide\\ $\hat y=\mathbf 1\{\hat p_\tau\ge p^\star\}$};
+\node[fbox,draw=warn!75,fill=warn!5,text width=2.62cm] (n5) at (11.85,\yf) {stop at $\tau$ and decide\\ $\delta=\mathbf 1\{\hat p_\tau\ge p^\star\}$};
 \draw[ar] (n1) -- (n2);
 \draw[ar] (n2) -- (n3);
 \draw[ar] (n3) -- (n4);
@@ -140,13 +140,13 @@
   \node[txt,anchor=north east] at (18.10,1.33) {time};
   \node[txt,rotate=90,anchor=south] at (13.72,2.265) {$\hat p_t$};
 \end{scope}
-\draw[ar] (16.00,\ya) -- (16.00,3.17);
-\node[txt,anchor=east,text=oursd] at (15.90,3.37) {deploy the certified band};
+\draw[ar] (16.95,\ya) -- (16.95,3.17);
+\node[txt,anchor=east,text=oursd] at (16.85,3.37) {deploy the certified band};
 % ------------------------------------------------ Theorem 2 / Corollary 1 strip
 \fill[ours!7,rounded corners=3pt,draw=ours!60,line width=0.7pt] (0.012,0.012) rectangle (18.188,0.86);
 \node[font=\md,text=ink,anchor=west,text width=17.70cm,align=left,inner sep=0pt] at (0.22,0.436)
-  {\textbf{\textcolor{oursd}{Thm\,2}}\ \ excess realized cost $\le2L\bar\kappa+\eta$, with $\bar\kappa$ the
-   calibration error of $\hat p$ at the stopping time and $\eta$ the discretization slack\\
+  {\textbf{\textcolor{oursd}{Thm\,2}}\ \ excess realized cost over the best rule with the same information
+   $\le2L\bar\kappa+\eta$, \ with $\bar\kappa=\sup_\tau\kappa(\tau)$ and $\eta$ the surrogate slack\\
    \textbf{\textcolor{warn}{Cor\,1}}\ \ $|\text{believed}-\text{realized cost}|\le L\,\kappa(\tau)$ for every rule, so
    early-decision rules must be scored on realized cost};
 \draw[da] (n5.south) -- (11.85,0.88);
