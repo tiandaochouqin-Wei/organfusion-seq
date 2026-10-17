@@ -73,8 +73,8 @@ studies when using the derived tables.
 | Table 5, held-out selection | `protocol_3way.py` | `table_3way_protocol.csv` |
 | Table 6, constrained controller (Thm. 3c) | `constrained_control.py` | `table_constrained_control.csv` |
 | Table 7, drift certificates (Thm. 4) | `constrained_control_crc.py`, `crc_outer_split.py` | `table_constrained_control_crc.csv`, `table_crc_outer_split.csv` |
-| Table 8, cross-domain audit | `crossdomain_realized.py`, `physionet_protocol.py`, `cmapss_*.py`, `etsc_ucr_binary40.py` (40 sets; `python etsc_ucr_binary40.py 1 ECG5000` for ECG5000) | `table_crossdomain_realized.csv`, `table_etsc_ucr_*.csv` |
-| Table 9 and Tables S17–S18, certifying published triggers | `certify_any_trigger.py` → `tables_anytrigger.py` | `table_certify_triggers_*.csv` |
+| Table 10, cross-domain audit | `crossdomain_realized.py`, `physionet_protocol.py`, `cmapss_*.py`, `etsc_ucr_binary40.py` (40 sets; `python etsc_ucr_binary40.py 1 ECG5000` for ECG5000) | `table_crossdomain_realized.csv`, `table_etsc_ucr_*.csv` |
+| Table 8 and Tables S17–S18, certifying published triggers | `certify_any_trigger.py` → `tables_anytrigger.py` | `table_certify_triggers_*.csv` |
 | Fig. 1 | `fig_overview_tkde.tex` (pdflatex) | `figures_tkde/fig_overview_tkde.pdf` |
 | Figs. 2–7 | `figs_tkde.py` (with `panel_labels.py`) | `figures_tkde/` |
 | Fig. 4(a), zero-shot shift | `shift_matrix.py` | `table_shift_matrix.csv` |
@@ -89,7 +89,7 @@ studies when using the derived tables.
 | Table S13, UCR with MiniRocket | `etsc_ucr_strong.py` | `table_etsc_ucr_strong.csv` |
 | Table S16, many conditions (pancreatic panel) | `crc_many_conditions.py` | `table_crc_many_conditions.csv` |
 | Table S19, Thm. 4 with a frozen posterior | `crc_outer_split.py` → `tables_outer_split.py` | `table_crc_outer_split.csv` |
-| Table 10 and Tables S20–S22, exact check of Thm. 2, paired bootstrap, ECE binning | `semisynthetic_thm2.py`, `paired_bootstrap.py`, `ece_sensitivity.py` → `tables_3r.py` | `table_semisynthetic_thm2.csv`, `table_paired_bootstrap.csv`, `table_ece_sensitivity.csv` |
+| Table 9 and Tables S20–S22, exact check of Thm. 2, paired bootstrap, ECE binning | `semisynthetic_thm2.py`, `paired_bootstrap.py`, `ece_sensitivity.py` → `tables_3r.py` | `table_semisynthetic_thm2.csv`, `table_paired_bootstrap.csv`, `table_ece_sensitivity.csv` |
 | Cost sweep, cadence, certificate validity, adaptive sampling | `E8_cost_perdrug.py`, `E_F.py`, `E10_ABC.py`, `adaptive_sampling_pilot.py` | `E*_results.json`, `table_adaptive_sampling_pilot.csv` |
 | Reliability layer (pancreatic panel) | `E5_deben_generality.py` | printed |
 | Running time of CertStop and the published triggers (organoids) | `runtime_comparison.py` | `table_runtime.csv` |

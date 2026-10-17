@@ -205,8 +205,8 @@ ax.plot(my_t, my_e, ":", color=GRY, lw=1.4, zorder=2, label="myopic one-step")
 ax.plot(ext["EconomyGamma"][0], ext["EconomyGamma"][1], "-D", color=ECO, ms=2.8, lw=1.0, zorder=3, label="EconomyGamma")
 ax.plot(ext["CALIMERA"][0], ext["CALIMERA"][1], "-^", color=CAL, ms=3.2, lw=1.0, zorder=3, label="CALIMERA")
 bt, be = envelope(*bell[400])
-ax.plot(bt, be, "--", color=OURS_D, lw=1.2, zorder=4, label="Bellman band")
-o = np.argsort(cm_t); ax.plot(cm_t[o], cm_e[o], "-", color=OURS, lw=1.9, zorder=5, label="margin (ours)")
+ax.plot(bt, be, "--", color=OURS_D, lw=1.2, zorder=4, label="CertStop (Bellman)")
+o = np.argsort(cm_t); ax.plot(cm_t[o], cm_e[o], "-", color=OURS, lw=1.9, zorder=5, label="CertStop (margin)")
 opt = np.array([float(r["t_ctrl"]) for r in ops]); ope = np.array([float(r["err"]) for r in ops])
 ax.errorbar(opt, ope,
             xerr=[opt - np.array([float(r["t_ctrl_lo95_condCB"]) for r in ops]),
@@ -339,8 +339,8 @@ mrows = [("fixed horizon", FIX, [t_reach(G, fx_e, tg) for tg in TG]),
          ("EconomyGamma", ECO, [t_reach(*ext["EconomyGamma"], tg) for tg in TG]),
          ("CALIMERA", CAL, [t_reach(*ext["CALIMERA"], tg) for tg in TG])]
 for nb in (25, 50, 400):                    # the three that show the floor falling with the bins
-    mrows.append((f"Bellman, {nb} bins", OURS_D, [t_reach(*bell[nb], tg) for tg in TG]))
-mrows.append(("constant margin (ours)", OURS, [t_reach(cm_t, cm_e, tg) for tg in TG]))
+    mrows.append((f"CertStop (Bellman, {nb} bins)", OURS_D, [t_reach(*bell[nb], tg) for tg in TG]))
+mrows.append(("CertStop (margin)", OURS, [t_reach(cm_t, cm_e, tg) for tg in TG]))
 M = np.array([r[2] for r in mrows], float)
 fin = np.where(np.isfinite(M), M, np.nan)
 behind = fin - np.nanmin(fin, 0)
@@ -740,7 +740,7 @@ ax = fig.add_subplot(gs[0, 1])
 xx = np.linspace(0, 0.26, 10)
 ax.fill_between(xx, 2 * xx, 0.5, color=RED, alpha=0.07, lw=0)
 ax.plot(xx, 2 * xx, "-", color=INK, lw=1.0)
-ax.text(0.0765, 0.106, "bound", fontsize=F, va="center", ha="left")
+ax.text(0.047, 0.080, "bound", fontsize=F, va="center", ha="left")
 for rule in ("margin_0.30", "dp_band"):
     rr = sorted([r for r in cr if r["rule"] == rule], key=lambda r: float(r["gamma"]))
     xs_ = np.array([float(r["ece_stop_strat"]) for r in rr]); ys_ = np.array([float(r["excess"]) for r in rr])
@@ -758,9 +758,9 @@ for rule in ("margin_0.30", "dp_band"):
         ax.scatter(xs_, ys_, marker="s", s=11, facecolor="white", edgecolor=FIX, lw=0.6, zorder=3)
 ax.set_xlim(0, 0.26); ax.set_ylim(-0.003, 0.14); ax.set_xticks([0, 0.1, 0.2]); ax.set_yticks([0, 0.05, 0.10])
 ax.set_xlabel(r"$\mathrm{ECE}_\mathrm{stop}$"); ax.set_ylabel("excess cost")
-ax.scatter([], [], s=17, color=OURS, label="Bellman band")
-ax.scatter([], [], s=11, marker="s", facecolor="white", edgecolor=FIX, lw=0.6, label="fixed margin")
-ax.legend(loc="upper right", bbox_to_anchor=(1.03, 1.03), handletextpad=0.2, borderpad=0.2, labelspacing=0.18,
+ax.scatter([], [], s=17, color=OURS, label="CertStop (Bellman)")
+ax.scatter([], [], s=11, marker="s", facecolor="white", edgecolor=FIX, lw=0.6, label="CertStop (margin)")
+ax.legend(loc="upper right", bbox_to_anchor=(1.03, 0.90), handletextpad=0.2, borderpad=0.2, labelspacing=0.18,
           frameon=True, facecolor="white", edgecolor="none", framealpha=0.92)
 plabel(ax, "b", dx=-0.33, dy=1.01)
 
@@ -819,7 +819,7 @@ LABCOL = {"believed": "#7A7A7A", "realized": OURS_D}
 ub = [r for r in rows("table_etsc_ucr_binary40.csv") if r["posterior"] == "raw"]
 M7 = ["const_margin(train-selected)", "CALIMERA", "EconomyGamma", "bayes_dp_band(train-kernel)",
       "fixed(train-selected)", "TEASER-cost", "TEASER"]
-NM7 = {"const_margin(train-selected)": "margin (ours)", "bayes_dp_band(train-kernel)": "Bellman (ours)",
+NM7 = {"const_margin(train-selected)": "CertStop (margin)", "bayes_dp_band(train-kernel)": "CertStop (Bellman)",
        "CALIMERA": "CALIMERA", "EconomyGamma": "EconomyGamma", "fixed(train-selected)": "fixed horizon",
        "TEASER-cost": "TEASER (cost)", "TEASER": "TEASER"}
 COL7 = {"const_margin(train-selected)": OURS, "bayes_dp_band(train-kernel)": OURS_D, "CALIMERA": CAL,

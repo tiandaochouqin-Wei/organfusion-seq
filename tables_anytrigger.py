@@ -94,7 +94,7 @@ for al in (0.05, 0.10, 0.20):
     if al != 0.20: S.append(r"\midrule")
 S += [r"\bottomrule\end{tabular}\end{table}"]
 open("_anytrigger_supp.tex", "w", encoding="utf-8").write("\n".join(S).replace(
-    r"Table~\ref{tab:anytrigger_main_ref}", "Table~9 of the main text") + "\n")
+    r"Table~\ref{tab:anytrigger_main_ref}", "Table~8 of the main text") + "\n")
 
 # ---------------- numbers quoted in the text
 for al in (0.15, 0.20):
