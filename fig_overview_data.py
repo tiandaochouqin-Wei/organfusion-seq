@@ -138,7 +138,7 @@ ex = max(cands_e, key=lambda i: np.ptp(P[i, :sel["j"][i]]))
 print("online example (test condition):", ex, d["drug"][ex], d["conc"][ex], d["cell"][ex], "tau =", GRID[sel["j"][ex]], "h")
 
 # ---------------------------------------------------------------- TikZ emission
-BLUE = "ours,line width=0.7pt"; PURP = "cal,line width=0.7pt,dash pattern=on 2.6pt off 1.2pt"
+BLUE = "ours,line width=0.7pt"; ORNG = "loss,line width=0.7pt,dash pattern=on 2.6pt off 1.2pt"   # as Fig. 2
 f2 = lambda v: f"{v:.3f}"
 
 
@@ -159,14 +159,14 @@ lo = min(Xa[i].min() for _, i in picks); hi = max(Xa[i].max() for _, i in picks)
 pad = 0.04 * (hi - lo); lo -= pad; hi += pad
 cmds = []
 for cls, i in picks:
-    cmds.append(f"\\draw[{BLUE if cls == 1 else PURP}] {poly(lin(Ta, 6, 72, -0.70, 0.70), lin(Xa[i], lo, hi, YB, YT))};")
+    cmds.append(f"\\draw[{BLUE if cls == 1 else ORNG}] {poly(lin(Ta, 6, 72, -0.70, 0.70), lin(Xa[i], lo, hi, YB, YT))};")
 out.append("\\newcommand{\\panelA}{" + "\n".join(cmds) + "}")
 out.append(f"\\newcommand{{\\panelAthr}}{{{f2(lin(0.9, lo, hi, YB, YT))}}}")
 
 # B: posterior paths of the same organoids
 cmds = [f"\\draw[gry,line width=0.5pt,dash pattern=on 0.6pt off 1.6pt] ({f2(XL)},0) -- ({f2(XR)},0);"]
 for cls, i in picks:
-    cmds.append(f"\\draw[{BLUE if cls == 1 else PURP}] {poly(lin(GRID, 12, 72, XL, XR), lin(P[i], 0, 1, YB, YT))};")
+    cmds.append(f"\\draw[{BLUE if cls == 1 else ORNG}] {poly(lin(GRID, 12, 72, XL, XR), lin(P[i], 0, 1, YB, YT))};")
 out.append("\\newcommand{\\panelB}{" + "\n".join(cmds) + "}")
 
 # C: three members of the family at the selected p* -- a narrower one, the selected one and a wider one

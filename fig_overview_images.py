@@ -68,7 +68,7 @@ def mass(s, cx, cy, R):
 
 def tile(s, cx, cy, name):
     c = s[cy - HALF:cy + HALF, cx - HALF:cx + HALF].clip(0, vmax) / vmax
-    rgb = (cm.magma(c)[:, :, :3] * 255).astype(np.uint8)
+    rgb = (cm.gray(c)[:, :, :3] * 255).astype(np.uint8)        # greyscale; class shown by the frame
     Image.fromarray(rgb).resize((2 * HALF * UP, 2 * HALF * UP), Image.BICUBIC).save(os.path.join(OUT, name))
 
 

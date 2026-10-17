@@ -12,6 +12,7 @@
 \definecolor{ours}{HTML}{0072BD}
 \definecolor{oursd}{HTML}{00406A}
 \definecolor{cal}{HTML}{7E2F8E}
+\definecolor{loss}{HTML}{D95319}
 \definecolor{warn}{HTML}{A2142F}
 \definecolor{gry}{HTML}{8C8C8C}
 \definecolor{ink}{HTML}{2B2B2B}
@@ -63,7 +64,7 @@
   \begin{scope}[shift={(0,5.50)}]\panelA\end{scope}
   \foreach \x/\t in {-1.15/06,1.15/72}{
     \node[inner sep=0pt] at (\x,5.825) {\includegraphics[width=0.56cm]{figures_tkde/fig1_org_r\t.png}};
-    \draw[cal,line width=0.8pt,dash pattern=on 2.2pt off 1.1pt] (\x-0.31,5.515) rectangle (\x+0.31,6.135);
+    \draw[loss,line width=0.8pt,dash pattern=on 2.2pt off 1.1pt] (\x-0.31,5.515) rectangle (\x+0.31,6.135);
     \node[inner sep=0pt] at (\x,5.175) {\includegraphics[width=0.56cm]{figures_tkde/fig1_org_s\t.png}};
     \draw[ours,line width=0.8pt] (\x-0.31,4.865) rectangle (\x+0.31,5.485);
   }
@@ -78,7 +79,7 @@
     \panelB
     \node[txt,anchor=north east,text=gry,fill=white,inner sep=0.6pt] at (1.38,-0.04) {$p^\star$};
   \end{scope}
-  \node[tbox,anchor=north] at (0,4.76) {calibration at the\\ stopping time: $\kappa(\tau)$};
+  \node[tbox,anchor=north] at (0,4.76) {Calibration at the\\ stopping time: $\kappa(\tau)$};
 \end{scope}
 % C: rule generation (Thm 1)
 \begin{scope}[shift={(\Xo+2*\St+0.5*\Wm,0)}]
@@ -105,8 +106,8 @@
 % E: certification (Thms 3-4)
 \begin{scope}[shift={(\Xo+4*\St+0.5*\Wm,0)}]
   \node[hdr] at (0,6.78) {Certification};
-  \node[tbox] at (0,6.08) {\textbf{independent units}\\ Thm\,3: w.p.\ $\ge1-\delta$};
-  \node[cbox] at (0,4.98) {\textbf{new conditions}\\ Thm\,4: in expectation,\\ family fixed in advance};
+  \node[tbox] at (0,6.08) {\textbf{Independent units}\\ Thm\,3: w.p.\ $\ge1-\delta$};
+  \node[tbox] at (0,4.98) {\textbf{New conditions}\\ Thm\,4: in expectation,\\ family fixed in advance};
   \node[txt] at (0,4.12) {output: band $(a_t,b_t)$};
 \end{scope}
 % ------------------------------------------------ online lane
@@ -114,12 +115,12 @@
 \draw[gry!75,line width=0.5pt,rounded corners=2pt,fill=white] (0.53,\yf-0.43) rectangle (2.86,\yf+0.43);
 \node[inner sep=0pt] (img) at (0.95,\yf) {\includegraphics[width=0.66cm]{figures_tkde/fig1_org_new.png}};
 \draw[gry,line width=0.6pt] (img.south west) rectangle (img.north east);
-\node[fbox,draw=none,fill=none,text width=1.50cm] (n1) at (2.05,\yf) {new unit\\ condition $z$};
-\node[fbox,text width=1.38cm] (n2) at (3.92,\yf) {observe\\ $x(t_j)$};
-\node[fbox,text width=1.38cm] (n3) at (5.705,\yf) {posterior\\ $\hat p_{t_j}$};
+\node[fbox,draw=none,fill=none,text width=1.50cm] (n1) at (2.05,\yf) {New unit\\ condition $z$};
+\node[fbox,text width=1.38cm] (n2) at (3.92,\yf) {Observe\\ $x(t_j)$};
+\node[fbox,text width=1.38cm] (n3) at (5.705,\yf) {Posterior\\ $\hat p_{t_j}$};
 \node[draw=oursd,line width=0.6pt,fill=white,diamond,aspect=2.9,inner sep=0.6pt,text=ink] (n4) at (8.45,\yf)
      {$\hat p_{t_j}\in(a_{t_j},b_{t_j})$?};
-\node[fbox,draw=warn!75,fill=warn!5,text width=2.62cm] (n5) at (11.85,\yf) {stop at $\tau$ and decide\\ $\delta=\mathbf 1\{\hat p_\tau\ge p^\star\}$};
+\node[fbox,draw=warn!75,fill=warn!5,text width=2.84cm] (n5) at (11.85,\yf) {Stop at $\tau$ and decide\\ $\delta=\mathbf 1\{\hat p_\tau\ge p^\star\}$};
 \draw[ar] (n1) -- (n2);
 \draw[ar] (n2) -- (n3);
 \draw[ar] (n3) -- (n4);
@@ -143,12 +144,17 @@
 \draw[ar] (16.95,\ya) -- (16.95,3.17);
 \node[txt,anchor=east,text=oursd] at (16.85,3.37) {deploy the certified band};
 % ------------------------------------------------ Theorem 2 / Corollary 1 strip
-\fill[ours!7,rounded corners=3pt,draw=ours!60,line width=0.7pt] (0.012,0.012) rectangle (18.188,0.86);
-\node[font=\md,text=ink,anchor=west,text width=17.70cm,align=left,inner sep=0pt] at (0.22,0.436)
-  {\textbf{\textcolor{oursd}{Thm\,2}}\ \ excess realized cost over the best rule with the same information
-   $\le2L\bar\kappa+\eta$, \ with $\bar\kappa=\sup_\tau\kappa(\tau)$ and $\eta$ the surrogate slack\\
-   \textbf{\textcolor{warn}{Cor\,1}}\ \ $|\text{believed}-\text{realized cost}|\le L\,\kappa(\tau)$ for every rule, so
-   early-decision rules must be scored on realized cost};
+\fill[ours!7,rounded corners=3pt,draw=ours!60,line width=0.7pt] (0.012,0.012) rectangle (10.70,0.86);
+\fill[ours!7,rounded corners=3pt,draw=ours!60,line width=0.7pt] (10.86,0.012) rectangle (18.188,0.86);
+\node[txt,anchor=west,align=left] at (0.22,0.62)
+  {\textbf{\textcolor{oursd}{Regret (Thm\,2)}}\quad $J_{\rm dep}(\hat\tau)-V_q\le2L\bar\kappa+\eta$};
+\node[txt,anchor=west,align=left] at (0.22,0.25)
+  {$V_q$: least cost with the same information;\ \ $\bar\kappa=\sup_\tau\kappa(\tau)$;\ \ $\eta$: surrogate slack};
+\node[txt,anchor=west,align=left] at (11.06,0.62)
+  {\textbf{\textcolor{warn}{Evaluation bias (Cor\,1)}}\quad $|\hat J(\tau)-J_{\rm dep}(\tau)|\le L\kappa(\tau)$};
+\node[txt,anchor=west,align=left] at (11.06,0.25)
+  {$\hat J$: believed, $J_{\rm dep}$: realized cost; score rules on $J_{\rm dep}$};
 \draw[da] (n5.south) -- (11.85,0.88);
+\node[txt,anchor=west,text=oursd] at (11.95,1.50) {realized cost};
 \end{tikzpicture}
 \end{document}
