@@ -1,71 +1,113 @@
-# OrganFusion-Seq — Reproducibility Package
+# Certified Cost-Sensitive Early Classification — reproducibility package
 
-Code and derived data for the paper:
+Code and derived data for the paper
 
-> **Reliable Early Drug-Response Screening as Feedback Control of Observation:
-> A Calibration-Robust Optimal-Stopping Controller for Tumour Organoids**
+> **Certified Cost-Sensitive Early Classification: Calibration-Robust Optimal Stopping
+> with Risk Control under Condition Drift**
 > Wei Zhang, Mingrui Lai, Wenhao Jiang, Jianfeng Wang, Mingqiang Wei, Xiaoping Zhang.
-> *IEEE Transactions on Cybernetics* (under review), 2026.
+> Manuscript under review at *IEEE Transactions on Knowledge and Data Engineering*, 2026.
 
-We recast early drug-response screening as **feedback control of the observation
-process**: a controller decides, per organoid, *when to stop observing and commit a
-decision*, with provable links from learned-model calibration to closed-loop control
-loss. This repository reproduces every results figure and table in the paper **from the
-released calibrated posteriors** — no raw imaging data or model training required.
+Early classification commits a decision on a growing prefix of a time series. We cast
+cost-sensitive early classification as constrained optimal stopping on the posterior
+process and give (i) a regret bound that ties the realised cost of any deployed stopping
+rule to its calibration error *at the stopping time*, (ii) finite-sample certificates for a
+rule selected on data, and (iii) a condition-level conformal risk-control rule for new
+deployment conditions. The certificates apply to any family of stopping rules, including
+published triggers (CALIMERA, EconomyGamma, TEASER). Evidence: tumour-organoid drug
+screening (1,850 organoids, 18 conditions, leave-condition-out), all 40 two-class UCR
+datasets, PhysioNet/CinC 2019 sepsis, NASA C-MAPSS, and an independent pancreatic panel.
 
-## What is in here
+The tag [`tcyb-2026-06`](../../tree/tcyb-2026-06) keeps the June 2026 version of this
+repository (an earlier manuscript, desk-rejected by IEEE TCYB on 2026-07-13 and not
+submitted elsewhere); everything below refers to the current version.
+
+## Layout
 
 ```
-posterior/
-  posterior_data.npz              calibrated posteriors p̂_t for 1,888 breast-cancer
-                                  organoids: P (N×T), GRID (time points, h), xgrid,
-                                  y (labels), drug, conc, cell-line
-  unified_posterior.csv           long-form posterior table
-  auc_by_horizon.csv              honest trajectory-up-to-T AUC vs horizon
-  table2..table6_*.csv            derived result tables (baselines, window info,
-                                  ablation, matched operating points, robustness)
-figures_cs/data/cost.csv          per-decision cost inputs (supplementary cost figure)
-E10_results.json                  anytime-valid bound U_n samples
-tcyb_final_figure_data/
-  shift_results.csv               distribution-shift / early-indicator results
-build_fig3_motivation.py          Fig. 3  — window-information / saturation motivation
-build_fig4_controller.py          Fig. 4  — optimal-stopping controller theory & bands
-build_controller.py               Fig. 5  + Table V (matched operating points)
-build_robustness.py               robustness / anytime-bound contraction figure
-build_supp.py                     supplementary cost / endpoint / by-drug figures
-gen_tables_tex.py                 assembles all main result tables as LaTeX
-figures_regen/  figures_supp/     output directories (populated by the scripts)
+*.py                      every script behind the manuscript's tables and figures (see the map below)
+paths.py                  where the raw public data live: $ORGANFUSION_DATA, or ./datasets
+posterior/                derived posteriors (*.npz) and every result table (*.csv) cited in the paper
+posterior/ucr40/          frozen MiniRocket posteriors of the 40 UCR datasets (raw and Platt-scaled)
+E*_results.json           results of the cost sweep, cadence and certificate-validity experiments
+figures_tkde/             main-text figures (vector PDF, final size); fig_overview_tkde.tex is Fig. 1
+figures_supp/             supplementary figures
+datasets/                 raw data go here (not distributed, except the derived 4,066-organoid table)
 ```
 
-## Data provenance
-
-The calibrated posteriors are derived from the **public** high-throughput
-holographic interferometry (HSLCI) breast-cancer organoid cohort. We release the
-**derived posteriors** that the paper's analyses consume; the raw imaging data should
-be obtained from its original public source. The training/posterior-estimation step
-that produced `posterior_data.npz` from the raw cohort is **not** included here because
-it depends on the raw dataset; the released posteriors are sufficient to reproduce all
-reported figures and tables.
-
-## Reproduce the figures and tables
+## Setup
 
 ```bash
-pip install -r requirements.txt          # numpy, matplotlib
-python build_fig3_motivation.py          # -> figures_regen/
-python build_fig4_controller.py          # -> figures_regen/
-python build_controller.py               # -> figures_regen/ + posterior/table5_matched_ops.csv
-python build_robustness.py               # -> figures_regen/
-python build_supp.py                     # -> figures_supp/
-python gen_tables_tex.py                 # prints LaTeX for the main tables
+python -m pip install -r requirements.txt          # tested with Python 3.13
+git clone https://github.com/ML-EDM/ml_edm.git _external/ml_edm
+git -C _external/ml_edm checkout 93ffd9380dc80b30f258e833ad847aa2bdb0559b
 ```
 
-Run from the repository root (the scripts use relative paths into `posterior/`).
-All scripts are deterministic.
+`ml_edm` provides the reference implementations of TEASER, EconomyGamma and CALIMERA;
+the scripts that use it add `_external/ml_edm/src` to the import path themselves.
 
-## Citation
+### Raw data
 
-See [`CITATION.cff`](CITATION.cff). Please cite the paper if you use this code or data.
+Most results can be regenerated from the derived files in `posterior/` alone. Scripts that
+start from raw data read them from `$ORGANFUSION_DATA` (default `./datasets`):
 
-## License
+| File or folder under the data directory | Source |
+|---|---|
+| `Tebon_SupplementaryData_MOESM6.xlsx` | Supplementary Data of Tebon *et al.*, *Nat. Commun.* 14, 3168 (2023) |
+| `main_development_cohort_4066.csv` | included here; four-timepoint table derived from the workbook above |
+| `Deben_NOGR_SupplementaryData1.xlsx` | Supplementary Data 1 of Deben *et al.*, *Commun. Biol.* 7, 1612 (2024) |
+| `physionet_challenge2019/training_setA`, `training_setB` | PhysioNet/CinC Challenge 2019 |
+| `cmapss/train_FD001.txt`, `train_FD004.txt` | NASA C-MAPSS turbofan degradation data |
+| `ucr/<Name>/<Name>_TRAIN.txt`, `_TEST.txt` | UCR archive: `python download_ucr_binary.py` fetches the 40 two-class sets |
 
-[MIT](LICENSE) © 2026 the OrganFusion-Seq authors.
+The two journal datasets come from open-access (CC BY) articles; please cite the original
+studies when using the derived tables.
+
+## Map: manuscript item → script → output (`posterior/` unless noted)
+
+| Item | Script(s) | Output |
+|---|---|---|
+| Posteriors (leave-condition-out, shared encoder) | `build_posterior_grouped.py`, `build_posterior_shared.py`, `rebuild_chain_shared.py`, `producers.py` | `posterior_data_*.npz` |
+| Table 2, operating points | `build_posterior_grouped.py` | `table_matched_ops_grouped.csv` |
+| Table 3, rules on one posterior | `seq_baselines.py`, `extra_baselines.py`, `stage3a_dp_bins.py`, `etsc_baseline_comparison.py` | `table_seq_baselines_*.csv`, `table_extra_baselines.csv`, `table_etsc_baselines_*.csv` |
+| Table 4, held-out selection | `protocol_3way.py` | `table_3way_protocol.csv` |
+| Table 5, constrained controller (Thm. 3c) | `constrained_control.py` | `table_constrained_control.csv` |
+| Table 6, drift certificates (Thm. 4) | `constrained_control_crc.py`, `crc_outer_split.py` | `table_constrained_control_crc.csv`, `table_crc_outer_split.csv` |
+| Table 7, cross-domain audit | `crossdomain_realized.py`, `physionet_protocol.py`, `cmapss_*.py`, `etsc_ucr_binary40.py` (40 sets; `python etsc_ucr_binary40.py 1 ECG5000` for ECG5000) | `table_crossdomain_realized.csv`, `table_etsc_ucr_*.csv` |
+| Table 8 and Tables S17–S18, certifying published triggers | `certify_any_trigger.py` → `tables_anytrigger.py` | `table_certify_triggers_*.csv` |
+| Fig. 1 | `fig_overview_tkde.tex` (pdflatex) | `figures_tkde/fig_overview_tkde.pdf` |
+| Figs. 2–7 | `figs_tkde.py` (with `panel_labels.py`) | `figures_tkde/` |
+| Fig. 4(a), zero-shot shift | `shift_matrix.py` | `table_shift_matrix.csv` |
+| Fig. 7(b)–(c), Tables S14–S15, UCR benchmark | `download_ucr_binary.py`, `etsc_ucr_binary40.py`, `ucr40_analysis.py` | `table_etsc_ucr_binary40.csv`, `table_ucr40_*.csv` |
+| Figs. S1–S8 | `figs_supp.py` | `figures_supp/` |
+| Table S1, pairwise DeLong | `auc_significance.py` | `table_auc_pairwise_delong.csv` |
+| Table S2, UCR with a weak posterior | `etsc_baseline_comparison_ucr.py`, `etsc_ucr_fair.py`, `etsc_generality.py` | `table_etsc_baselines_ucr.csv`, `table_etsc_ucr_fair.csv` |
+| Tables S4–S7, ablations, coherence, window bound | `ablation_fusion.py`, `build_ablation.py`, `build_posterior_shared.py`, `build_window_info.py` | `table_fusion_ablation.csv`, `table4_ablation.csv`, `table_martingale_coherence.csv`, `table3_window_info.csv` |
+| Table S8, 4,066-organoid source | `expand_cohort_4066.py`, `cohort4066_feature_ablation.py` | `table_4066_*.csv` |
+| Fig. 6, Tables S9–S10, calibration and regret | `stage3a_calib_regret.py`, `stage3a_dp_bins.py` | `table_stage3a_*.csv` |
+| Tables S11–S12, fixed-time baselines, protocols | `build_table2_baselines.py`, `build_posterior_grouped.py`, `seq_baselines.py` | `table2_fixed_time_baselines.csv`, `table_cv_auc_comparison.csv`, `table_estimator_swap.csv` |
+| Table S13, UCR with MiniRocket | `etsc_ucr_strong.py` | `table_etsc_ucr_strong.csv` |
+| Table S16, many conditions (pancreatic panel) | `crc_many_conditions.py` | `table_crc_many_conditions.csv` |
+| Table S19, Thm. 4 with a frozen posterior | `crc_outer_split.py` → `tables_outer_split.py` | `table_crc_outer_split.csv` |
+| Tables S20–S22, exact check of Thm. 2, paired bootstrap, ECE binning | `semisynthetic_thm2.py`, `paired_bootstrap.py`, `ece_sensitivity.py` → `tables_3r.py` | `table_semisynthetic_thm2.csv`, `table_paired_bootstrap.csv`, `table_ece_sensitivity.csv` |
+| Cost sweep, cadence, certificate validity, adaptive sampling | `E8_cost_perdrug.py`, `E_F.py`, `E10_ABC.py`, `adaptive_sampling_pilot.py` | `E*_results.json`, `table_adaptive_sampling_pilot.csv` |
+| Reliability layer (pancreatic panel) | `E5_deben_generality.py` | printed |
+
+Figure checks used for submission: `check_text_line_overlap.py` (no lettering crossed by a
+line), `check_label_overlap.py` (panel labels clear of other text), `export_figures_pdf.py`
+(no lettering under 8 pt).
+
+## Notes on reproducibility
+
+* All organoid results use leave-condition-out cross-fitting over the 18 (cell line × drug ×
+  dose) conditions; the producer's condition input is the drug (one-hot) and log dose, and a
+  drug held out entirely is encoded as unknown (all-zero indicator).
+* Scripts that fit MiniRocket and logistic models pin BLAS/numba threads to 2. Changing the
+  thread count changes some posteriors at the 1e-3 level and can move individual
+  win/tie/loss cells; summary statistics are stable.
+* Seeds are fixed in every script; runtimes range from seconds to about 15 minutes per
+  script on a desktop CPU.
+
+## Licence and citation
+
+Code: MIT (see `LICENSE`). If you use this code or data, please cite the paper (see
+`CITATION.cff`) and the original data sources listed above.

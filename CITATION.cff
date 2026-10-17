@@ -1,6 +1,8 @@
 cff-version: 1.2.0
 message: "If you use this code or data, please cite the paper below."
-title: "OrganFusion-Seq: reproducibility package"
+title: "Certified Cost-Sensitive Early Classification: reproducibility package"
+version: "tkde-submission-2026-10"
+date-released: "2026-10-17"
 authors:
   - family-names: Zhang
     given-names: Wei
@@ -15,10 +17,10 @@ authors:
   - family-names: Zhang
     given-names: Xiaoping
 license: MIT
-repository-code: "https://github.com/<your-account>/organfusion-seq"
+repository-code: "https://github.com/tiandaochouqin-Wei/organfusion-seq"
 preferred-citation:
   type: article
-  title: "Reliable Early Drug-Response Screening as Feedback Control of Observation: A Calibration-Robust Optimal-Stopping Controller for Tumour Organoids"
+  title: "Certified Cost-Sensitive Early Classification: Calibration-Robust Optimal Stopping with Risk Control under Condition Drift"
   authors:
     - family-names: Zhang
       given-names: Wei
@@ -32,5 +34,5 @@ preferred-citation:
       given-names: Mingqiang
     - family-names: Zhang
       given-names: Xiaoping
-  journal: "IEEE Transactions on Cybernetics (under review)"
+  journal: "IEEE Transactions on Knowledge and Data Engineering (under review)"
   year: 2026

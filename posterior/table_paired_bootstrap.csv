@@ -1,0 +1,13 @@
+comparison,target_error,diff_h,ci_lo,ci_hi,n_valid
+margin - CALIMERA,0.12,0.91,-0.86,2.14,2000
+margin - CALIMERA,0.16,-0.25,-0.88,0.7,2000
+margin - CALIMERA,0.2,-0.44,-1.38,0.45,2000
+margin - CALIMERA,0.24,-0.38,-1.18,0.08,1969
+margin - fixed,0.12,-19.78,-25.47,-15.54,2000
+margin - fixed,0.16,-18.14,-21.07,-13.7,2000
+margin - fixed,0.2,-11.99,-15.18,-8.61,2000
+margin - fixed,0.24,-5.33,-10.51,-1.75,1969
+CALIMERA - fixed,0.12,-20.69,-25.74,-16.08,2000
+CALIMERA - fixed,0.16,-17.89,-21.22,-13.41,2000
+CALIMERA - fixed,0.2,-11.56,-14.59,-8.2,2000
+CALIMERA - fixed,0.24,-4.95,-9.83,-1.49,1969

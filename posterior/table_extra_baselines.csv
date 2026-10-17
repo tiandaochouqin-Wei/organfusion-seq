@@ -1,0 +1,3 @@
+policy,min_achievable_err,time_at_err_0.12,time_at_err_0.16,time_at_err_0.20,time_at_err_0.24,single_op_err,single_op_time_h
+static_selective_wait,0.0173,36.5,31.72,25.79,20.14,,
+rl_qlearning_stopping,0.0892,34.19,27.76,22.43,17.6,0.1686,26.48

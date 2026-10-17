@@ -1,0 +1,15 @@
+horizon_h,model_or_test,N,value1,value2,ref_1850_leaveCondOut,delta_vs_1850
+24,LR,4066,0.863,0.8684,0.851,0.012
+24,RF,4066,0.8039,0.8237,0.856,-0.0521
+24,HGB,4066,0.8395,0.8613,0.845,-0.0055
+48,LR,4066,0.948,0.9493,0.941,0.007
+48,RF,4066,0.9145,0.924,0.939,-0.0245
+48,HGB,4066,0.9376,0.9451,0.935,0.0026
+24,RF_vs_LR_DeLong_leaveCondOut,4066,-0.0591,0.0,,
+24,RF_vs_HGB_DeLong_leaveCondOut,4066,-0.0356,0.0,,
+24,LR_vs_HGB_DeLong_leaveCondOut,4066,0.0235,0.0,,
+24,RF_vs_HGB_DeLong_stratified,4066,-0.0376,0.0,,
+48,RF_vs_LR_DeLong_leaveCondOut,4066,-0.0334,0.0,,
+48,RF_vs_HGB_DeLong_leaveCondOut,4066,-0.0231,0.0,,
+48,LR_vs_HGB_DeLong_leaveCondOut,4066,0.0103,0.0,,
+48,RF_vs_HGB_DeLong_stratified,4066,-0.0211,0.0,,

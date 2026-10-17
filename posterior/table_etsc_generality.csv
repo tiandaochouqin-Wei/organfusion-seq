@@ -1,0 +1,5 @@
+dataset,description,n_test,series_len,auc_min,auc_max,controller_wins,best_gain
+ECG5000,ECG heartbeat typing (medical early warning),4500,140,0.973,0.99,12/16,0.029
+FordA,automotive fault detection (industrial),1320,500,0.511,0.577,2/16,0.0006
+Wafer,semiconductor wafer pass/fail (manufacturing),6164,152,0.767,0.845,11/16,0.0773
+Earthquakes,earthquake precursor early warning (seismic),139,512,0.662,0.714,9/16,0.0155

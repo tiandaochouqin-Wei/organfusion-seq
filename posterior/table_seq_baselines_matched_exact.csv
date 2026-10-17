@@ -1,0 +1,6 @@
+policy,min_achievable_err,time_at_err_0.12,time_at_err_0.16,time_at_err_0.20,time_at_err_0.24
+fixed_time,0.0173,50.29,42.34,31.27,21.0
+const_margin,0.0346,30.5,24.2,19.28,15.67
+sprt_posterior_odds,0.0346,30.51,24.21,19.31,15.7
+myopic_voi,0.1886,,,21.07,15.5
+bayes_dp_band,0.0368,31.41,24.7,20.09,15.44

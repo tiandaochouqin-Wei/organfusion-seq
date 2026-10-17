@@ -1,0 +1,7 @@
+posterior_producer,decision_procedure,n_dominated,n_targets_reached_of_9,mean_hours_saved
+LR,const_margin,9,9,14.08
+LR,bayes_dp_band,9,9,13.47
+RF,const_margin,9,9,12.43
+RF,bayes_dp_band,9,9,12.79
+HGB,const_margin,9,9,11.99
+HGB,bayes_dp_band,9,9,12.25

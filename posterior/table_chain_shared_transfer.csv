@@ -1,0 +1,9 @@
+setting,n_test,auc_24h,dominance
+cross-cell MCF-7->BT-474,969,0.879,4/4
+cross-cell BT-474->MCF-7,881,0.824,4/4
+leave-drug Lap,562,0.857,4/4
+leave-drug Ner,600,0.85,4/4
+leave-drug Stauro,688,0.881,4/4
+leave-conc 0.1uM,688,0.807,4/4
+leave-conc 1.0uM,600,0.842,4/4
+leave-conc 10.0uM,562,0.818,3/3

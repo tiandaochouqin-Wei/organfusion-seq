@@ -1,0 +1,2 @@
+dataset,length,n_train,n_test,n_horizons,auc_min,auc_max,seconds
+ECG5000,140,500,4500,8,0.99,0.998,121.5

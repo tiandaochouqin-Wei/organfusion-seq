@@ -1,0 +1,11 @@
+block,gamma,excess,bound_i,bound_2Lkbar,kappa_hat,kappa_star,kappa_bar,eta,delta_info,ece_stop_mc,kappa_mc
+A miscalibration,0.4,0.049542,0.691497,1.113887,0.086076,0.144423,0.185648,0.0,0.0,0.084968,0.086209
+A miscalibration,0.6,0.018728,0.323092,0.637298,0.040902,0.066796,0.106216,0.0,0.0,0.040741,0.040958
+A miscalibration,0.8,0.005148,0.123794,0.278515,0.017518,0.023747,0.046419,0.0,0.0,0.017914,0.017582
+A miscalibration,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.005433,0.0
+A miscalibration,1.25,0.00496,0.109095,0.269859,0.020479,0.015886,0.044976,0.0,0.0,0.021324,0.020495
+A miscalibration,1.6,0.021686,0.213364,0.548948,0.044543,0.026579,0.091491,0.0,0.0,0.045464,0.044461
+A miscalibration,2.5,0.079304,0.381805,0.975946,0.091333,0.035935,0.162658,0.0,0.0,0.094108,0.091448
+B sign-only (information deficit),0.5,0.117156,nan,nan,nan,nan,nan,0.0,0.066832,nan,nan
+B sign-only (information deficit),1.0,0.066832,nan,nan,nan,nan,nan,0.0,0.066832,nan,nan
+B sign-only (information deficit),2.0,0.120332,nan,nan,nan,nan,nan,0.0,0.066832,nan,nan

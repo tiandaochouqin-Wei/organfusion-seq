@@ -2,12 +2,9 @@ __pycache__/
 *.pyc
 .DS_Store
 .ipynb_checkpoints/
-# generated outputs (regenerate with the build scripts)
-figures_regen/*.pdf
-figures_regen/*.png
-figures_regen/*.svg
-figures_supp/*.pdf
-figures_supp/*.png
-figures_supp/*.svg
-!figures_regen/.gitkeep
-!figures_supp/.gitkeep
+_external/
+figures_submission/
+*.aux
+*.log
+datasets/*
+!datasets/main_development_cohort_4066.csv

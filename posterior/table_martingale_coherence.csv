@@ -1,0 +1,5 @@
+metric,per_horizon_independent,shared_encoder
+max_drift,0.00665,0.01055
+mean_drift,0.00387,0.00433
+tv,0.77431,0.79956
+reversals,4.47243,4.03784

@@ -1,0 +1,1081 @@
+alpha,certificate,family,dataset,n_test,splits_certifiable,splits_holding,mean_saving_vs_certified_fixed_fraction_of_length
+0.05,none,constant margin (ours),BeetleFly,20,21,0,0.3289
+0.05,none,CALIMERA,BeetleFly,20,6,0,0.0174
+0.05,none,EconomyGamma,BeetleFly,20,2,0,0.0
+0.05,hoeffding,constant margin (ours),BeetleFly,20,0,0,
+0.05,hoeffding,CALIMERA,BeetleFly,20,0,0,
+0.05,hoeffding,EconomyGamma,BeetleFly,20,0,0,
+0.05,ltt,constant margin (ours),BeetleFly,20,0,0,
+0.05,ltt,CALIMERA,BeetleFly,20,0,0,
+0.05,ltt,EconomyGamma,BeetleFly,20,0,0,
+0.1,none,constant margin (ours),BeetleFly,20,50,29,0.091
+0.1,none,CALIMERA,BeetleFly,20,28,0,0.0427
+0.1,none,EconomyGamma,BeetleFly,20,14,0,0.0
+0.1,hoeffding,constant margin (ours),BeetleFly,20,0,0,
+0.1,hoeffding,CALIMERA,BeetleFly,20,0,0,
+0.1,hoeffding,EconomyGamma,BeetleFly,20,0,0,
+0.1,ltt,constant margin (ours),BeetleFly,20,0,0,
+0.1,ltt,CALIMERA,BeetleFly,20,0,0,
+0.1,ltt,EconomyGamma,BeetleFly,20,0,0,
+0.2,none,constant margin (ours),BeetleFly,20,50,36,-0.0008
+0.2,none,CALIMERA,BeetleFly,20,48,34,0.021
+0.2,none,EconomyGamma,BeetleFly,20,32,18,0.0
+0.2,hoeffding,constant margin (ours),BeetleFly,20,0,0,
+0.2,hoeffding,CALIMERA,BeetleFly,20,0,0,
+0.2,hoeffding,EconomyGamma,BeetleFly,20,0,0,
+0.2,ltt,constant margin (ours),BeetleFly,20,0,0,
+0.2,ltt,CALIMERA,BeetleFly,20,0,0,
+0.2,ltt,EconomyGamma,BeetleFly,20,0,0,
+0.05,none,constant margin (ours),BirdChicken,20,9,0,0.391
+0.05,none,CALIMERA,BirdChicken,20,0,0,
+0.05,none,EconomyGamma,BirdChicken,20,0,0,
+0.05,hoeffding,constant margin (ours),BirdChicken,20,0,0,
+0.05,hoeffding,CALIMERA,BirdChicken,20,0,0,
+0.05,hoeffding,EconomyGamma,BirdChicken,20,0,0,
+0.05,ltt,constant margin (ours),BirdChicken,20,0,0,
+0.05,ltt,CALIMERA,BirdChicken,20,0,0,
+0.05,ltt,EconomyGamma,BirdChicken,20,0,0,
+0.1,none,constant margin (ours),BirdChicken,20,37,13,0.2276
+0.1,none,CALIMERA,BirdChicken,20,13,0,0.0282
+0.1,none,EconomyGamma,BirdChicken,20,13,0,0.0281
+0.1,hoeffding,constant margin (ours),BirdChicken,20,0,0,
+0.1,hoeffding,CALIMERA,BirdChicken,20,0,0,
+0.1,hoeffding,EconomyGamma,BirdChicken,20,0,0,
+0.1,ltt,constant margin (ours),BirdChicken,20,0,0,
+0.1,ltt,CALIMERA,BirdChicken,20,0,0,
+0.1,ltt,EconomyGamma,BirdChicken,20,0,0,
+0.2,none,constant margin (ours),BirdChicken,20,50,37,0.0952
+0.2,none,CALIMERA,BirdChicken,20,36,23,0.0
+0.2,none,EconomyGamma,BirdChicken,20,36,23,0.0
+0.2,hoeffding,constant margin (ours),BirdChicken,20,0,0,
+0.2,hoeffding,CALIMERA,BirdChicken,20,0,0,
+0.2,hoeffding,EconomyGamma,BirdChicken,20,0,0,
+0.2,ltt,constant margin (ours),BirdChicken,20,0,0,
+0.2,ltt,CALIMERA,BirdChicken,20,0,0,
+0.2,ltt,EconomyGamma,BirdChicken,20,0,0,
+0.05,none,constant margin (ours),Chinatown,343,50,50,0.0
+0.05,none,CALIMERA,Chinatown,343,50,50,0.0
+0.05,none,EconomyGamma,Chinatown,343,50,50,0.0
+0.05,hoeffding,constant margin (ours),Chinatown,343,0,0,
+0.05,hoeffding,CALIMERA,Chinatown,343,0,0,
+0.05,hoeffding,EconomyGamma,Chinatown,343,0,0,
+0.05,ltt,constant margin (ours),Chinatown,343,45,45,0.4593
+0.05,ltt,CALIMERA,Chinatown,343,50,50,0.4565
+0.05,ltt,EconomyGamma,Chinatown,343,49,49,0.4566
+0.1,none,constant margin (ours),Chinatown,343,50,50,0.0
+0.1,none,CALIMERA,Chinatown,343,50,50,0.0
+0.1,none,EconomyGamma,Chinatown,343,50,50,0.0
+0.1,hoeffding,constant margin (ours),Chinatown,343,0,0,
+0.1,hoeffding,CALIMERA,Chinatown,343,0,0,
+0.1,hoeffding,EconomyGamma,Chinatown,343,11,11,
+0.1,ltt,constant margin (ours),Chinatown,343,50,50,0.2933
+0.1,ltt,CALIMERA,Chinatown,343,50,50,0.2933
+0.1,ltt,EconomyGamma,Chinatown,343,50,50,0.2933
+0.2,none,constant margin (ours),Chinatown,343,50,50,0.0
+0.2,none,CALIMERA,Chinatown,343,50,50,0.0
+0.2,none,EconomyGamma,Chinatown,343,50,50,0.0
+0.2,hoeffding,constant margin (ours),Chinatown,343,50,50,0.0
+0.2,hoeffding,CALIMERA,Chinatown,343,50,50,0.0
+0.2,hoeffding,EconomyGamma,Chinatown,343,50,50,0.0
+0.2,ltt,constant margin (ours),Chinatown,343,50,50,0.0
+0.2,ltt,CALIMERA,Chinatown,343,50,50,0.0
+0.2,ltt,EconomyGamma,Chinatown,343,50,50,0.0
+0.05,none,constant margin (ours),Coffee,28,50,50,0.0
+0.05,none,CALIMERA,Coffee,28,50,50,0.0
+0.05,none,EconomyGamma,Coffee,28,50,50,0.0
+0.05,hoeffding,constant margin (ours),Coffee,28,0,0,
+0.05,hoeffding,CALIMERA,Coffee,28,0,0,
+0.05,hoeffding,EconomyGamma,Coffee,28,0,0,
+0.05,ltt,constant margin (ours),Coffee,28,0,0,
+0.05,ltt,CALIMERA,Coffee,28,0,0,
+0.05,ltt,EconomyGamma,Coffee,28,0,0,
+0.1,none,constant margin (ours),Coffee,28,50,50,0.0
+0.1,none,CALIMERA,Coffee,28,50,50,0.0
+0.1,none,EconomyGamma,Coffee,28,50,50,0.0
+0.1,hoeffding,constant margin (ours),Coffee,28,0,0,
+0.1,hoeffding,CALIMERA,Coffee,28,0,0,
+0.1,hoeffding,EconomyGamma,Coffee,28,0,0,
+0.1,ltt,constant margin (ours),Coffee,28,0,0,
+0.1,ltt,CALIMERA,Coffee,28,0,0,
+0.1,ltt,EconomyGamma,Coffee,28,0,0,
+0.2,none,constant margin (ours),Coffee,28,50,50,0.0
+0.2,none,CALIMERA,Coffee,28,50,50,0.0
+0.2,none,EconomyGamma,Coffee,28,50,50,0.0
+0.2,hoeffding,constant margin (ours),Coffee,28,0,0,
+0.2,hoeffding,CALIMERA,Coffee,28,0,0,
+0.2,hoeffding,EconomyGamma,Coffee,28,0,0,
+0.2,ltt,constant margin (ours),Coffee,28,50,50,0.2045
+0.2,ltt,CALIMERA,Coffee,28,33,33,0.0
+0.2,ltt,EconomyGamma,Coffee,28,50,50,0.2045
+0.05,none,constant margin (ours),Computers,250,0,0,
+0.05,none,CALIMERA,Computers,250,0,0,
+0.05,none,EconomyGamma,Computers,250,0,0,
+0.05,hoeffding,constant margin (ours),Computers,250,0,0,
+0.05,hoeffding,CALIMERA,Computers,250,0,0,
+0.05,hoeffding,EconomyGamma,Computers,250,0,0,
+0.05,ltt,constant margin (ours),Computers,250,0,0,
+0.05,ltt,CALIMERA,Computers,250,0,0,
+0.05,ltt,EconomyGamma,Computers,250,0,0,
+0.1,none,constant margin (ours),Computers,250,0,0,
+0.1,none,CALIMERA,Computers,250,0,0,
+0.1,none,EconomyGamma,Computers,250,0,0,
+0.1,hoeffding,constant margin (ours),Computers,250,0,0,
+0.1,hoeffding,CALIMERA,Computers,250,0,0,
+0.1,hoeffding,EconomyGamma,Computers,250,0,0,
+0.1,ltt,constant margin (ours),Computers,250,0,0,
+0.1,ltt,CALIMERA,Computers,250,0,0,
+0.1,ltt,EconomyGamma,Computers,250,0,0,
+0.2,none,constant margin (ours),Computers,250,50,50,0.0
+0.2,none,CALIMERA,Computers,250,50,50,0.0
+0.2,none,EconomyGamma,Computers,250,50,50,0.0
+0.2,hoeffding,constant margin (ours),Computers,250,0,0,
+0.2,hoeffding,CALIMERA,Computers,250,0,0,
+0.2,hoeffding,EconomyGamma,Computers,250,0,0,
+0.2,ltt,constant margin (ours),Computers,250,31,31,0.3828
+0.2,ltt,CALIMERA,Computers,250,31,31,0.4195
+0.2,ltt,EconomyGamma,Computers,250,0,0,
+0.05,none,constant margin (ours),DistalPhalanxOutlineCorrect,276,0,0,
+0.05,none,CALIMERA,DistalPhalanxOutlineCorrect,276,0,0,
+0.05,none,EconomyGamma,DistalPhalanxOutlineCorrect,276,0,0,
+0.05,hoeffding,constant margin (ours),DistalPhalanxOutlineCorrect,276,0,0,
+0.05,hoeffding,CALIMERA,DistalPhalanxOutlineCorrect,276,0,0,
+0.05,hoeffding,EconomyGamma,DistalPhalanxOutlineCorrect,276,0,0,
+0.05,ltt,constant margin (ours),DistalPhalanxOutlineCorrect,276,0,0,
+0.05,ltt,CALIMERA,DistalPhalanxOutlineCorrect,276,0,0,
+0.05,ltt,EconomyGamma,DistalPhalanxOutlineCorrect,276,0,0,
+0.1,none,constant margin (ours),DistalPhalanxOutlineCorrect,276,0,0,
+0.1,none,CALIMERA,DistalPhalanxOutlineCorrect,276,0,0,
+0.1,none,EconomyGamma,DistalPhalanxOutlineCorrect,276,0,0,
+0.1,hoeffding,constant margin (ours),DistalPhalanxOutlineCorrect,276,0,0,
+0.1,hoeffding,CALIMERA,DistalPhalanxOutlineCorrect,276,0,0,
+0.1,hoeffding,EconomyGamma,DistalPhalanxOutlineCorrect,276,0,0,
+0.1,ltt,constant margin (ours),DistalPhalanxOutlineCorrect,276,0,0,
+0.1,ltt,CALIMERA,DistalPhalanxOutlineCorrect,276,0,0,
+0.1,ltt,EconomyGamma,DistalPhalanxOutlineCorrect,276,0,0,
+0.2,none,constant margin (ours),DistalPhalanxOutlineCorrect,276,48,17,0.0209
+0.2,none,CALIMERA,DistalPhalanxOutlineCorrect,276,45,14,0.0236
+0.2,none,EconomyGamma,DistalPhalanxOutlineCorrect,276,44,12,0.0062
+0.2,hoeffding,constant margin (ours),DistalPhalanxOutlineCorrect,276,0,0,
+0.2,hoeffding,CALIMERA,DistalPhalanxOutlineCorrect,276,0,0,
+0.2,hoeffding,EconomyGamma,DistalPhalanxOutlineCorrect,276,0,0,
+0.2,ltt,constant margin (ours),DistalPhalanxOutlineCorrect,276,15,7,0.4629
+0.2,ltt,CALIMERA,DistalPhalanxOutlineCorrect,276,12,3,0.5273
+0.2,ltt,EconomyGamma,DistalPhalanxOutlineCorrect,276,12,4,0.4881
+0.05,none,constant margin (ours),ECG200,100,11,0,0.1637
+0.05,none,CALIMERA,ECG200,100,8,0,0.167
+0.05,none,EconomyGamma,ECG200,100,19,0,0.1776
+0.05,hoeffding,constant margin (ours),ECG200,100,0,0,
+0.05,hoeffding,CALIMERA,ECG200,100,0,0,
+0.05,hoeffding,EconomyGamma,ECG200,100,0,0,
+0.05,ltt,constant margin (ours),ECG200,100,0,0,
+0.05,ltt,CALIMERA,ECG200,100,0,0,
+0.05,ltt,EconomyGamma,ECG200,100,0,0,
+0.1,none,constant margin (ours),ECG200,100,47,31,0.0131
+0.1,none,CALIMERA,ECG200,100,42,26,0.0115
+0.1,none,EconomyGamma,ECG200,100,50,34,0.0246
+0.1,hoeffding,constant margin (ours),ECG200,100,0,0,
+0.1,hoeffding,CALIMERA,ECG200,100,0,0,
+0.1,hoeffding,EconomyGamma,ECG200,100,0,0,
+0.1,ltt,constant margin (ours),ECG200,100,1,0,0.1042
+0.1,ltt,CALIMERA,ECG200,100,1,0,0.0942
+0.1,ltt,EconomyGamma,ECG200,100,1,0,0.0938
+0.2,none,constant margin (ours),ECG200,100,50,50,0.0
+0.2,none,CALIMERA,ECG200,100,50,50,0.0
+0.2,none,EconomyGamma,ECG200,100,50,50,0.0
+0.2,hoeffding,constant margin (ours),ECG200,100,0,0,
+0.2,hoeffding,CALIMERA,ECG200,100,0,0,
+0.2,hoeffding,EconomyGamma,ECG200,100,0,0,
+0.2,ltt,constant margin (ours),ECG200,100,47,47,0.0131
+0.2,ltt,CALIMERA,ECG200,100,42,42,0.0115
+0.2,ltt,EconomyGamma,ECG200,100,50,50,0.0246
+0.05,none,constant margin (ours),ECGFiveDays,861,0,0,
+0.05,none,CALIMERA,ECGFiveDays,861,0,0,
+0.05,none,EconomyGamma,ECGFiveDays,861,0,0,
+0.05,hoeffding,constant margin (ours),ECGFiveDays,861,0,0,
+0.05,hoeffding,CALIMERA,ECGFiveDays,861,0,0,
+0.05,hoeffding,EconomyGamma,ECGFiveDays,861,0,0,
+0.05,ltt,constant margin (ours),ECGFiveDays,861,0,0,
+0.05,ltt,CALIMERA,ECGFiveDays,861,0,0,
+0.05,ltt,EconomyGamma,ECGFiveDays,861,0,0,
+0.1,none,constant margin (ours),ECGFiveDays,861,48,28,0.1435
+0.1,none,CALIMERA,ECGFiveDays,861,4,0,0.191
+0.1,none,EconomyGamma,ECGFiveDays,861,47,42,0.2295
+0.1,hoeffding,constant margin (ours),ECGFiveDays,861,0,0,
+0.1,hoeffding,CALIMERA,ECGFiveDays,861,0,0,
+0.1,hoeffding,EconomyGamma,ECGFiveDays,861,0,0,
+0.1,ltt,constant margin (ours),ECGFiveDays,861,29,28,0.1186
+0.1,ltt,CALIMERA,ECGFiveDays,861,0,0,
+0.1,ltt,EconomyGamma,ECGFiveDays,861,16,11,0.2342
+0.2,none,constant margin (ours),ECGFiveDays,861,50,28,0.161
+0.2,none,CALIMERA,ECGFiveDays,861,50,29,0.1558
+0.2,none,EconomyGamma,ECGFiveDays,861,50,32,0.1256
+0.2,hoeffding,constant margin (ours),ECGFiveDays,861,50,50,0.1464
+0.2,hoeffding,CALIMERA,ECGFiveDays,861,33,33,0.2
+0.2,hoeffding,EconomyGamma,ECGFiveDays,861,50,50,0.2185
+0.2,ltt,constant margin (ours),ECGFiveDays,861,50,42,0.1953
+0.2,ltt,CALIMERA,ECGFiveDays,861,50,48,0.2016
+0.2,ltt,EconomyGamma,ECGFiveDays,861,50,49,0.1825
+0.05,none,constant margin (ours),Earthquakes,139,0,0,
+0.05,none,CALIMERA,Earthquakes,139,0,0,
+0.05,none,EconomyGamma,Earthquakes,139,0,0,
+0.05,hoeffding,constant margin (ours),Earthquakes,139,0,0,
+0.05,hoeffding,CALIMERA,Earthquakes,139,0,0,
+0.05,hoeffding,EconomyGamma,Earthquakes,139,0,0,
+0.05,ltt,constant margin (ours),Earthquakes,139,0,0,
+0.05,ltt,CALIMERA,Earthquakes,139,0,0,
+0.05,ltt,EconomyGamma,Earthquakes,139,0,0,
+0.1,none,constant margin (ours),Earthquakes,139,0,0,
+0.1,none,CALIMERA,Earthquakes,139,0,0,
+0.1,none,EconomyGamma,Earthquakes,139,0,0,
+0.1,hoeffding,constant margin (ours),Earthquakes,139,0,0,
+0.1,hoeffding,CALIMERA,Earthquakes,139,0,0,
+0.1,hoeffding,EconomyGamma,Earthquakes,139,0,0,
+0.1,ltt,constant margin (ours),Earthquakes,139,0,0,
+0.1,ltt,CALIMERA,Earthquakes,139,0,0,
+0.1,ltt,EconomyGamma,Earthquakes,139,0,0,
+0.2,none,constant margin (ours),Earthquakes,139,8,0,-0.0007
+0.2,none,CALIMERA,Earthquakes,139,8,0,0.0075
+0.2,none,EconomyGamma,Earthquakes,139,7,0,0.0
+0.2,hoeffding,constant margin (ours),Earthquakes,139,0,0,
+0.2,hoeffding,CALIMERA,Earthquakes,139,0,0,
+0.2,hoeffding,EconomyGamma,Earthquakes,139,0,0,
+0.2,ltt,constant margin (ours),Earthquakes,139,0,0,
+0.2,ltt,CALIMERA,Earthquakes,139,0,0,
+0.2,ltt,EconomyGamma,Earthquakes,139,0,0,
+0.05,none,constant margin (ours),FordA,1320,0,0,
+0.05,none,CALIMERA,FordA,1320,0,0,
+0.05,none,EconomyGamma,FordA,1320,34,9,0.3111
+0.05,hoeffding,constant margin (ours),FordA,1320,0,0,
+0.05,hoeffding,CALIMERA,FordA,1320,0,0,
+0.05,hoeffding,EconomyGamma,FordA,1320,0,0,
+0.05,ltt,constant margin (ours),FordA,1320,0,0,
+0.05,ltt,CALIMERA,FordA,1320,0,0,
+0.05,ltt,EconomyGamma,FordA,1320,2,0,0.3142
+0.1,none,constant margin (ours),FordA,1320,50,24,0.0875
+0.1,none,CALIMERA,FordA,1320,50,28,0.0851
+0.1,none,EconomyGamma,FordA,1320,50,46,0.0636
+0.1,hoeffding,constant margin (ours),FordA,1320,0,0,
+0.1,hoeffding,CALIMERA,FordA,1320,0,0,
+0.1,hoeffding,EconomyGamma,FordA,1320,4,4,0.3549
+0.1,ltt,constant margin (ours),FordA,1320,50,45,0.1254
+0.1,ltt,CALIMERA,FordA,1320,50,45,0.1229
+0.1,ltt,EconomyGamma,FordA,1320,50,50,0.0896
+0.2,none,constant margin (ours),FordA,1320,50,50,0.0
+0.2,none,CALIMERA,FordA,1320,50,50,0.0
+0.2,none,EconomyGamma,FordA,1320,50,50,0.0
+0.2,hoeffding,constant margin (ours),FordA,1320,50,50,-0.0001
+0.2,hoeffding,CALIMERA,FordA,1320,50,50,0.0
+0.2,hoeffding,EconomyGamma,FordA,1320,50,50,0.0
+0.2,ltt,constant margin (ours),FordA,1320,50,50,0.0
+0.2,ltt,CALIMERA,FordA,1320,50,50,0.0
+0.2,ltt,EconomyGamma,FordA,1320,50,50,0.0
+0.05,none,constant margin (ours),FordB,810,0,0,
+0.05,none,CALIMERA,FordB,810,0,0,
+0.05,none,EconomyGamma,FordB,810,0,0,
+0.05,hoeffding,constant margin (ours),FordB,810,0,0,
+0.05,hoeffding,CALIMERA,FordB,810,0,0,
+0.05,hoeffding,EconomyGamma,FordB,810,0,0,
+0.05,ltt,constant margin (ours),FordB,810,0,0,
+0.05,ltt,CALIMERA,FordB,810,0,0,
+0.05,ltt,EconomyGamma,FordB,810,0,0,
+0.1,none,constant margin (ours),FordB,810,0,0,
+0.1,none,CALIMERA,FordB,810,0,0,
+0.1,none,EconomyGamma,FordB,810,0,0,
+0.1,hoeffding,constant margin (ours),FordB,810,0,0,
+0.1,hoeffding,CALIMERA,FordB,810,0,0,
+0.1,hoeffding,EconomyGamma,FordB,810,0,0,
+0.1,ltt,constant margin (ours),FordB,810,0,0,
+0.1,ltt,CALIMERA,FordB,810,0,0,
+0.1,ltt,EconomyGamma,FordB,810,0,0,
+0.2,none,constant margin (ours),FordB,810,50,32,0.0494
+0.2,none,CALIMERA,FordB,810,50,32,0.0484
+0.2,none,EconomyGamma,FordB,810,50,32,0.025
+0.2,hoeffding,constant margin (ours),FordB,810,0,0,
+0.2,hoeffding,CALIMERA,FordB,810,0,0,
+0.2,hoeffding,EconomyGamma,FordB,810,26,26,0.3515
+0.2,ltt,constant margin (ours),FordB,810,45,36,0.0451
+0.2,ltt,CALIMERA,FordB,810,40,32,0.0467
+0.2,ltt,EconomyGamma,FordB,810,50,46,-0.0252
+0.05,none,constant margin (ours),FreezerRegularTrain,2850,50,50,0.0
+0.05,none,CALIMERA,FreezerRegularTrain,2850,50,50,0.0
+0.05,none,EconomyGamma,FreezerRegularTrain,2850,50,50,0.0
+0.05,hoeffding,constant margin (ours),FreezerRegularTrain,2850,0,0,
+0.05,hoeffding,CALIMERA,FreezerRegularTrain,2850,50,50,0.0
+0.05,hoeffding,EconomyGamma,FreezerRegularTrain,2850,50,50,0.0
+0.05,ltt,constant margin (ours),FreezerRegularTrain,2850,50,50,0.0
+0.05,ltt,CALIMERA,FreezerRegularTrain,2850,50,50,0.0
+0.05,ltt,EconomyGamma,FreezerRegularTrain,2850,50,50,0.0
+0.1,none,constant margin (ours),FreezerRegularTrain,2850,50,50,0.0
+0.1,none,CALIMERA,FreezerRegularTrain,2850,50,50,0.0
+0.1,none,EconomyGamma,FreezerRegularTrain,2850,50,50,0.0
+0.1,hoeffding,constant margin (ours),FreezerRegularTrain,2850,50,50,0.0
+0.1,hoeffding,CALIMERA,FreezerRegularTrain,2850,50,50,0.0
+0.1,hoeffding,EconomyGamma,FreezerRegularTrain,2850,50,50,0.0
+0.1,ltt,constant margin (ours),FreezerRegularTrain,2850,50,50,0.0
+0.1,ltt,CALIMERA,FreezerRegularTrain,2850,50,50,0.0
+0.1,ltt,EconomyGamma,FreezerRegularTrain,2850,50,50,0.0
+0.2,none,constant margin (ours),FreezerRegularTrain,2850,50,50,0.0
+0.2,none,CALIMERA,FreezerRegularTrain,2850,50,50,0.0
+0.2,none,EconomyGamma,FreezerRegularTrain,2850,50,50,0.0
+0.2,hoeffding,constant margin (ours),FreezerRegularTrain,2850,50,50,0.0
+0.2,hoeffding,CALIMERA,FreezerRegularTrain,2850,50,50,0.0
+0.2,hoeffding,EconomyGamma,FreezerRegularTrain,2850,50,50,0.0
+0.2,ltt,constant margin (ours),FreezerRegularTrain,2850,50,50,0.0
+0.2,ltt,CALIMERA,FreezerRegularTrain,2850,50,50,0.0
+0.2,ltt,EconomyGamma,FreezerRegularTrain,2850,50,50,0.0
+0.05,none,constant margin (ours),FreezerSmallTrain,2850,50,50,0.0
+0.05,none,CALIMERA,FreezerSmallTrain,2850,50,50,0.0
+0.05,none,EconomyGamma,FreezerSmallTrain,2850,50,50,0.0
+0.05,hoeffding,constant margin (ours),FreezerSmallTrain,2850,0,0,
+0.05,hoeffding,CALIMERA,FreezerSmallTrain,2850,0,0,
+0.05,hoeffding,EconomyGamma,FreezerSmallTrain,2850,4,4,
+0.05,ltt,constant margin (ours),FreezerSmallTrain,2850,50,50,0.4684
+0.05,ltt,CALIMERA,FreezerSmallTrain,2850,0,0,
+0.05,ltt,EconomyGamma,FreezerSmallTrain,2850,50,50,0.4684
+0.1,none,constant margin (ours),FreezerSmallTrain,2850,50,50,0.0
+0.1,none,CALIMERA,FreezerSmallTrain,2850,50,50,0.0
+0.1,none,EconomyGamma,FreezerSmallTrain,2850,50,50,0.0
+0.1,hoeffding,constant margin (ours),FreezerSmallTrain,2850,50,50,0.0
+0.1,hoeffding,CALIMERA,FreezerSmallTrain,2850,50,50,0.0
+0.1,hoeffding,EconomyGamma,FreezerSmallTrain,2850,50,50,0.0
+0.1,ltt,constant margin (ours),FreezerSmallTrain,2850,50,50,0.0
+0.1,ltt,CALIMERA,FreezerSmallTrain,2850,50,50,0.0
+0.1,ltt,EconomyGamma,FreezerSmallTrain,2850,50,50,0.0
+0.2,none,constant margin (ours),FreezerSmallTrain,2850,50,50,0.0
+0.2,none,CALIMERA,FreezerSmallTrain,2850,50,50,0.0
+0.2,none,EconomyGamma,FreezerSmallTrain,2850,50,50,0.0
+0.2,hoeffding,constant margin (ours),FreezerSmallTrain,2850,50,50,0.0
+0.2,hoeffding,CALIMERA,FreezerSmallTrain,2850,50,50,0.0
+0.2,hoeffding,EconomyGamma,FreezerSmallTrain,2850,50,50,0.0
+0.2,ltt,constant margin (ours),FreezerSmallTrain,2850,50,50,0.0
+0.2,ltt,CALIMERA,FreezerSmallTrain,2850,50,50,0.0
+0.2,ltt,EconomyGamma,FreezerSmallTrain,2850,50,50,0.0
+0.05,none,constant margin (ours),GunPoint,150,50,24,0.032
+0.05,none,CALIMERA,GunPoint,150,34,8,0.0358
+0.05,none,EconomyGamma,GunPoint,150,50,32,0.0422
+0.05,hoeffding,constant margin (ours),GunPoint,150,0,0,
+0.05,hoeffding,CALIMERA,GunPoint,150,0,0,
+0.05,hoeffding,EconomyGamma,GunPoint,150,0,0,
+0.05,ltt,constant margin (ours),GunPoint,150,13,12,0.1981
+0.05,ltt,CALIMERA,GunPoint,150,1,0,0.1347
+0.05,ltt,EconomyGamma,GunPoint,150,3,3,0.3164
+0.1,none,constant margin (ours),GunPoint,150,50,24,0.0654
+0.1,none,CALIMERA,GunPoint,150,50,25,0.0565
+0.1,none,EconomyGamma,GunPoint,150,50,38,0.0422
+0.1,hoeffding,constant margin (ours),GunPoint,150,0,0,
+0.1,hoeffding,CALIMERA,GunPoint,150,0,0,
+0.1,hoeffding,EconomyGamma,GunPoint,150,0,0,
+0.1,ltt,constant margin (ours),GunPoint,150,50,45,0.032
+0.1,ltt,CALIMERA,GunPoint,150,34,32,0.0358
+0.1,ltt,EconomyGamma,GunPoint,150,50,50,0.0422
+0.2,none,constant margin (ours),GunPoint,150,50,50,0.0
+0.2,none,CALIMERA,GunPoint,150,50,50,0.0
+0.2,none,EconomyGamma,GunPoint,150,50,50,0.0
+0.2,hoeffding,constant margin (ours),GunPoint,150,0,0,
+0.2,hoeffding,CALIMERA,GunPoint,150,1,1,0.1347
+0.2,hoeffding,EconomyGamma,GunPoint,150,50,50,0.0798
+0.2,ltt,constant margin (ours),GunPoint,150,50,50,0.0249
+0.2,ltt,CALIMERA,GunPoint,150,50,50,0.0226
+0.2,ltt,EconomyGamma,GunPoint,150,50,50,0.0144
+0.05,none,constant margin (ours),GunPointAgeSpan,316,50,48,0.0079
+0.05,none,CALIMERA,GunPointAgeSpan,316,50,48,0.0079
+0.05,none,EconomyGamma,GunPointAgeSpan,316,50,48,0.0065
+0.05,hoeffding,constant margin (ours),GunPointAgeSpan,316,0,0,
+0.05,hoeffding,CALIMERA,GunPointAgeSpan,316,0,0,
+0.05,hoeffding,EconomyGamma,GunPointAgeSpan,316,0,0,
+0.05,ltt,constant margin (ours),GunPointAgeSpan,316,50,48,0.146
+0.05,ltt,CALIMERA,GunPointAgeSpan,316,50,49,0.1463
+0.05,ltt,EconomyGamma,GunPointAgeSpan,316,50,49,0.1365
+0.1,none,constant margin (ours),GunPointAgeSpan,316,50,50,0.0
+0.1,none,CALIMERA,GunPointAgeSpan,316,50,50,0.0
+0.1,none,EconomyGamma,GunPointAgeSpan,316,50,50,0.0
+0.1,hoeffding,constant margin (ours),GunPointAgeSpan,316,0,0,
+0.1,hoeffding,CALIMERA,GunPointAgeSpan,316,0,0,
+0.1,hoeffding,EconomyGamma,GunPointAgeSpan,316,0,0,
+0.1,ltt,constant margin (ours),GunPointAgeSpan,316,50,50,0.0
+0.1,ltt,CALIMERA,GunPointAgeSpan,316,50,50,0.0
+0.1,ltt,EconomyGamma,GunPointAgeSpan,316,50,50,0.0
+0.2,none,constant margin (ours),GunPointAgeSpan,316,50,50,0.0
+0.2,none,CALIMERA,GunPointAgeSpan,316,50,50,0.0
+0.2,none,EconomyGamma,GunPointAgeSpan,316,50,50,0.0
+0.2,hoeffding,constant margin (ours),GunPointAgeSpan,316,50,50,0.0
+0.2,hoeffding,CALIMERA,GunPointAgeSpan,316,50,50,0.0
+0.2,hoeffding,EconomyGamma,GunPointAgeSpan,316,50,50,0.0
+0.2,ltt,constant margin (ours),GunPointAgeSpan,316,50,50,0.0
+0.2,ltt,CALIMERA,GunPointAgeSpan,316,50,50,0.0
+0.2,ltt,EconomyGamma,GunPointAgeSpan,316,50,50,0.0
+0.05,none,constant margin (ours),GunPointMaleVersusFemale,316,50,50,0.0
+0.05,none,CALIMERA,GunPointMaleVersusFemale,316,50,50,0.0
+0.05,none,EconomyGamma,GunPointMaleVersusFemale,316,50,50,0.0
+0.05,hoeffding,constant margin (ours),GunPointMaleVersusFemale,316,0,0,
+0.05,hoeffding,CALIMERA,GunPointMaleVersusFemale,316,0,0,
+0.05,hoeffding,EconomyGamma,GunPointMaleVersusFemale,316,0,0,
+0.05,ltt,constant margin (ours),GunPointMaleVersusFemale,316,50,50,0.0292
+0.05,ltt,CALIMERA,GunPointMaleVersusFemale,316,50,50,0.0288
+0.05,ltt,EconomyGamma,GunPointMaleVersusFemale,316,50,50,0.0256
+0.1,none,constant margin (ours),GunPointMaleVersusFemale,316,50,50,0.0
+0.1,none,CALIMERA,GunPointMaleVersusFemale,316,50,50,0.0
+0.1,none,EconomyGamma,GunPointMaleVersusFemale,316,50,50,0.0
+0.1,hoeffding,constant margin (ours),GunPointMaleVersusFemale,316,0,0,
+0.1,hoeffding,CALIMERA,GunPointMaleVersusFemale,316,0,0,
+0.1,hoeffding,EconomyGamma,GunPointMaleVersusFemale,316,0,0,
+0.1,ltt,constant margin (ours),GunPointMaleVersusFemale,316,50,50,0.0
+0.1,ltt,CALIMERA,GunPointMaleVersusFemale,316,50,50,0.0
+0.1,ltt,EconomyGamma,GunPointMaleVersusFemale,316,50,50,0.0
+0.2,none,constant margin (ours),GunPointMaleVersusFemale,316,50,50,0.0
+0.2,none,CALIMERA,GunPointMaleVersusFemale,316,50,50,0.0
+0.2,none,EconomyGamma,GunPointMaleVersusFemale,316,50,50,0.0
+0.2,hoeffding,constant margin (ours),GunPointMaleVersusFemale,316,50,50,0.0
+0.2,hoeffding,CALIMERA,GunPointMaleVersusFemale,316,50,50,0.0
+0.2,hoeffding,EconomyGamma,GunPointMaleVersusFemale,316,50,50,0.0
+0.2,ltt,constant margin (ours),GunPointMaleVersusFemale,316,50,50,0.0
+0.2,ltt,CALIMERA,GunPointMaleVersusFemale,316,50,50,0.0
+0.2,ltt,EconomyGamma,GunPointMaleVersusFemale,316,50,50,0.0
+0.05,none,constant margin (ours),GunPointOldVersusYoung,315,50,50,0.0
+0.05,none,CALIMERA,GunPointOldVersusYoung,315,50,50,0.0
+0.05,none,EconomyGamma,GunPointOldVersusYoung,315,50,50,0.0
+0.05,hoeffding,constant margin (ours),GunPointOldVersusYoung,315,0,0,
+0.05,hoeffding,CALIMERA,GunPointOldVersusYoung,315,0,0,
+0.05,hoeffding,EconomyGamma,GunPointOldVersusYoung,315,0,0,
+0.05,ltt,constant margin (ours),GunPointOldVersusYoung,315,50,50,0.0411
+0.05,ltt,CALIMERA,GunPointOldVersusYoung,315,37,37,0.0212
+0.05,ltt,EconomyGamma,GunPointOldVersusYoung,315,29,29,0.0
+0.1,none,constant margin (ours),GunPointOldVersusYoung,315,50,50,0.0
+0.1,none,CALIMERA,GunPointOldVersusYoung,315,50,50,0.0
+0.1,none,EconomyGamma,GunPointOldVersusYoung,315,50,50,0.0
+0.1,hoeffding,constant margin (ours),GunPointOldVersusYoung,315,0,0,
+0.1,hoeffding,CALIMERA,GunPointOldVersusYoung,315,0,0,
+0.1,hoeffding,EconomyGamma,GunPointOldVersusYoung,315,0,0,
+0.1,ltt,constant margin (ours),GunPointOldVersusYoung,315,50,50,0.0
+0.1,ltt,CALIMERA,GunPointOldVersusYoung,315,50,50,0.0
+0.1,ltt,EconomyGamma,GunPointOldVersusYoung,315,50,50,0.0
+0.2,none,constant margin (ours),GunPointOldVersusYoung,315,50,50,0.0
+0.2,none,CALIMERA,GunPointOldVersusYoung,315,50,50,0.0
+0.2,none,EconomyGamma,GunPointOldVersusYoung,315,50,50,0.0
+0.2,hoeffding,constant margin (ours),GunPointOldVersusYoung,315,50,50,0.0
+0.2,hoeffding,CALIMERA,GunPointOldVersusYoung,315,50,50,0.0
+0.2,hoeffding,EconomyGamma,GunPointOldVersusYoung,315,50,50,0.0
+0.2,ltt,constant margin (ours),GunPointOldVersusYoung,315,50,50,0.0
+0.2,ltt,CALIMERA,GunPointOldVersusYoung,315,50,50,0.0
+0.2,ltt,EconomyGamma,GunPointOldVersusYoung,315,50,50,0.0
+0.05,none,constant margin (ours),Ham,105,0,0,
+0.05,none,CALIMERA,Ham,105,0,0,
+0.05,none,EconomyGamma,Ham,105,0,0,
+0.05,hoeffding,constant margin (ours),Ham,105,0,0,
+0.05,hoeffding,CALIMERA,Ham,105,0,0,
+0.05,hoeffding,EconomyGamma,Ham,105,0,0,
+0.05,ltt,constant margin (ours),Ham,105,0,0,
+0.05,ltt,CALIMERA,Ham,105,0,0,
+0.05,ltt,EconomyGamma,Ham,105,0,0,
+0.1,none,constant margin (ours),Ham,105,0,0,
+0.1,none,CALIMERA,Ham,105,0,0,
+0.1,none,EconomyGamma,Ham,105,1,0,-0.0208
+0.1,hoeffding,constant margin (ours),Ham,105,0,0,
+0.1,hoeffding,CALIMERA,Ham,105,0,0,
+0.1,hoeffding,EconomyGamma,Ham,105,0,0,
+0.1,ltt,constant margin (ours),Ham,105,0,0,
+0.1,ltt,CALIMERA,Ham,105,0,0,
+0.1,ltt,EconomyGamma,Ham,105,0,0,
+0.2,none,constant margin (ours),Ham,105,42,21,0.0634
+0.2,none,CALIMERA,Ham,105,38,17,0.0512
+0.2,none,EconomyGamma,Ham,105,34,7,0.0335
+0.2,hoeffding,constant margin (ours),Ham,105,0,0,
+0.2,hoeffding,CALIMERA,Ham,105,0,0,
+0.2,hoeffding,EconomyGamma,Ham,105,0,0,
+0.2,ltt,constant margin (ours),Ham,105,3,0,0.5968
+0.2,ltt,CALIMERA,Ham,105,1,0,0.6479
+0.2,ltt,EconomyGamma,Ham,105,1,0,
+0.05,none,constant margin (ours),HandOutlines,370,37,9,0.1407
+0.05,none,CALIMERA,HandOutlines,370,39,11,0.1384
+0.05,none,EconomyGamma,HandOutlines,370,33,10,0.0716
+0.05,hoeffding,constant margin (ours),HandOutlines,370,0,0,
+0.05,hoeffding,CALIMERA,HandOutlines,370,0,0,
+0.05,hoeffding,EconomyGamma,HandOutlines,370,0,0,
+0.05,ltt,constant margin (ours),HandOutlines,370,1,0,
+0.05,ltt,CALIMERA,HandOutlines,370,4,0,0.595
+0.05,ltt,EconomyGamma,HandOutlines,370,0,0,
+0.1,none,constant margin (ours),HandOutlines,370,50,48,0.0052
+0.1,none,CALIMERA,HandOutlines,370,50,48,0.0051
+0.1,none,EconomyGamma,HandOutlines,370,50,48,0.0028
+0.1,hoeffding,constant margin (ours),HandOutlines,370,0,0,
+0.1,hoeffding,CALIMERA,HandOutlines,370,0,0,
+0.1,hoeffding,EconomyGamma,HandOutlines,370,0,0,
+0.1,ltt,constant margin (ours),HandOutlines,370,48,46,0.0889
+0.1,ltt,CALIMERA,HandOutlines,370,49,47,0.1003
+0.1,ltt,EconomyGamma,HandOutlines,370,47,44,0.0257
+0.2,none,constant margin (ours),HandOutlines,370,50,50,0.0
+0.2,none,CALIMERA,HandOutlines,370,50,50,0.0
+0.2,none,EconomyGamma,HandOutlines,370,50,50,0.0
+0.2,hoeffding,constant margin (ours),HandOutlines,370,47,47,-0.001
+0.2,hoeffding,CALIMERA,HandOutlines,370,50,50,0.02
+0.2,hoeffding,EconomyGamma,HandOutlines,370,50,50,0.0158
+0.2,ltt,constant margin (ours),HandOutlines,370,50,50,0.0
+0.2,ltt,CALIMERA,HandOutlines,370,50,50,0.0
+0.2,ltt,EconomyGamma,HandOutlines,370,50,50,0.0
+0.05,none,constant margin (ours),Herring,64,0,0,
+0.05,none,CALIMERA,Herring,64,0,0,
+0.05,none,EconomyGamma,Herring,64,0,0,
+0.05,hoeffding,constant margin (ours),Herring,64,0,0,
+0.05,hoeffding,CALIMERA,Herring,64,0,0,
+0.05,hoeffding,EconomyGamma,Herring,64,0,0,
+0.05,ltt,constant margin (ours),Herring,64,0,0,
+0.05,ltt,CALIMERA,Herring,64,0,0,
+0.05,ltt,EconomyGamma,Herring,64,0,0,
+0.1,none,constant margin (ours),Herring,64,2,0,0.0813
+0.1,none,CALIMERA,Herring,64,0,0,
+0.1,none,EconomyGamma,Herring,64,1,0,0.1779
+0.1,hoeffding,constant margin (ours),Herring,64,0,0,
+0.1,hoeffding,CALIMERA,Herring,64,0,0,
+0.1,hoeffding,EconomyGamma,Herring,64,0,0,
+0.1,ltt,constant margin (ours),Herring,64,0,0,
+0.1,ltt,CALIMERA,Herring,64,0,0,
+0.1,ltt,EconomyGamma,Herring,64,0,0,
+0.2,none,constant margin (ours),Herring,64,40,7,0.1437
+0.2,none,CALIMERA,Herring,64,18,0,0.1061
+0.2,none,EconomyGamma,Herring,64,36,1,0.1693
+0.2,hoeffding,constant margin (ours),Herring,64,0,0,
+0.2,hoeffding,CALIMERA,Herring,64,0,0,
+0.2,hoeffding,EconomyGamma,Herring,64,0,0,
+0.2,ltt,constant margin (ours),Herring,64,1,0,0.0188
+0.2,ltt,CALIMERA,Herring,64,0,0,
+0.2,ltt,EconomyGamma,Herring,64,1,0,0.1779
+0.05,none,constant margin (ours),HouseTwenty,119,50,50,0.0
+0.05,none,CALIMERA,HouseTwenty,119,50,50,0.0
+0.05,none,EconomyGamma,HouseTwenty,119,50,50,0.0
+0.05,hoeffding,constant margin (ours),HouseTwenty,119,0,0,
+0.05,hoeffding,CALIMERA,HouseTwenty,119,0,0,
+0.05,hoeffding,EconomyGamma,HouseTwenty,119,0,0,
+0.05,ltt,constant margin (ours),HouseTwenty,119,4,4,
+0.05,ltt,CALIMERA,HouseTwenty,119,15,15,0.3842
+0.05,ltt,EconomyGamma,HouseTwenty,119,2,2,
+0.1,none,constant margin (ours),HouseTwenty,119,50,50,0.0
+0.1,none,CALIMERA,HouseTwenty,119,50,50,0.0
+0.1,none,EconomyGamma,HouseTwenty,119,50,50,0.0
+0.1,hoeffding,constant margin (ours),HouseTwenty,119,0,0,
+0.1,hoeffding,CALIMERA,HouseTwenty,119,0,0,
+0.1,hoeffding,EconomyGamma,HouseTwenty,119,0,0,
+0.1,ltt,constant margin (ours),HouseTwenty,119,45,45,0.4242
+0.1,ltt,CALIMERA,HouseTwenty,119,50,50,0.4364
+0.1,ltt,EconomyGamma,HouseTwenty,119,45,45,0.4242
+0.2,none,constant margin (ours),HouseTwenty,119,50,50,0.0
+0.2,none,CALIMERA,HouseTwenty,119,50,50,0.0
+0.2,none,EconomyGamma,HouseTwenty,119,50,50,0.0
+0.2,hoeffding,constant margin (ours),HouseTwenty,119,0,0,
+0.2,hoeffding,CALIMERA,HouseTwenty,119,0,0,
+0.2,hoeffding,EconomyGamma,HouseTwenty,119,40,40,
+0.2,ltt,constant margin (ours),HouseTwenty,119,50,50,0.0
+0.2,ltt,CALIMERA,HouseTwenty,119,50,50,0.0
+0.2,ltt,EconomyGamma,HouseTwenty,119,50,50,0.0
+0.05,none,constant margin (ours),ItalyPowerDemand,1029,50,27,0.2718
+0.05,none,CALIMERA,ItalyPowerDemand,1029,50,33,0.2668
+0.05,none,EconomyGamma,ItalyPowerDemand,1029,1,0,0.2127
+0.05,hoeffding,constant margin (ours),ItalyPowerDemand,1029,0,0,
+0.05,hoeffding,CALIMERA,ItalyPowerDemand,1029,0,0,
+0.05,hoeffding,EconomyGamma,ItalyPowerDemand,1029,0,0,
+0.05,ltt,constant margin (ours),ItalyPowerDemand,1029,27,26,0.3653
+0.05,ltt,CALIMERA,ItalyPowerDemand,1029,35,35,0.3746
+0.05,ltt,EconomyGamma,ItalyPowerDemand,1029,0,0,
+0.1,none,constant margin (ours),ItalyPowerDemand,1029,50,22,0.0826
+0.1,none,CALIMERA,ItalyPowerDemand,1029,50,31,0.0759
+0.1,none,EconomyGamma,ItalyPowerDemand,1029,50,35,0.0051
+0.1,hoeffding,constant margin (ours),ItalyPowerDemand,1029,0,0,
+0.1,hoeffding,CALIMERA,ItalyPowerDemand,1029,1,1,0.364
+0.1,hoeffding,EconomyGamma,ItalyPowerDemand,1029,0,0,
+0.1,ltt,constant margin (ours),ItalyPowerDemand,1029,50,39,0.1302
+0.1,ltt,CALIMERA,ItalyPowerDemand,1029,50,45,0.129
+0.1,ltt,EconomyGamma,ItalyPowerDemand,1029,50,50,0.0532
+0.2,none,constant margin (ours),ItalyPowerDemand,1029,50,50,0.0
+0.2,none,CALIMERA,ItalyPowerDemand,1029,50,50,0.0
+0.2,none,EconomyGamma,ItalyPowerDemand,1029,50,50,0.0
+0.2,hoeffding,constant margin (ours),ItalyPowerDemand,1029,50,50,0.0125
+0.2,hoeffding,CALIMERA,ItalyPowerDemand,1029,50,50,0.0148
+0.2,hoeffding,EconomyGamma,ItalyPowerDemand,1029,50,50,0.0025
+0.2,ltt,constant margin (ours),ItalyPowerDemand,1029,50,50,0.0
+0.2,ltt,CALIMERA,ItalyPowerDemand,1029,50,50,0.0
+0.2,ltt,EconomyGamma,ItalyPowerDemand,1029,50,50,0.0
+0.05,none,constant margin (ours),Lightning2,61,1,0,0.3683
+0.05,none,CALIMERA,Lightning2,61,1,0,0.3553
+0.05,none,EconomyGamma,Lightning2,61,0,0,
+0.05,hoeffding,constant margin (ours),Lightning2,61,0,0,
+0.05,hoeffding,CALIMERA,Lightning2,61,0,0,
+0.05,hoeffding,EconomyGamma,Lightning2,61,0,0,
+0.05,ltt,constant margin (ours),Lightning2,61,0,0,
+0.05,ltt,CALIMERA,Lightning2,61,0,0,
+0.05,ltt,EconomyGamma,Lightning2,61,0,0,
+0.1,none,constant margin (ours),Lightning2,61,11,0,0.1078
+0.1,none,CALIMERA,Lightning2,61,7,0,0.08
+0.1,none,EconomyGamma,Lightning2,61,6,0,0.0576
+0.1,hoeffding,constant margin (ours),Lightning2,61,0,0,
+0.1,hoeffding,CALIMERA,Lightning2,61,0,0,
+0.1,hoeffding,EconomyGamma,Lightning2,61,0,0,
+0.1,ltt,constant margin (ours),Lightning2,61,0,0,
+0.1,ltt,CALIMERA,Lightning2,61,0,0,
+0.1,ltt,EconomyGamma,Lightning2,61,0,0,
+0.2,none,constant margin (ours),Lightning2,61,50,28,0.0702
+0.2,none,CALIMERA,Lightning2,61,43,21,0.0567
+0.2,none,EconomyGamma,Lightning2,61,39,17,0.0231
+0.2,hoeffding,constant margin (ours),Lightning2,61,0,0,
+0.2,hoeffding,CALIMERA,Lightning2,61,0,0,
+0.2,hoeffding,EconomyGamma,Lightning2,61,0,0,
+0.2,ltt,constant margin (ours),Lightning2,61,3,0,0.3582
+0.2,ltt,CALIMERA,Lightning2,61,3,0,0.3259
+0.2,ltt,EconomyGamma,Lightning2,61,0,0,
+0.05,none,constant margin (ours),MiddlePhalanxOutlineCorrect,291,0,0,
+0.05,none,CALIMERA,MiddlePhalanxOutlineCorrect,291,0,0,
+0.05,none,EconomyGamma,MiddlePhalanxOutlineCorrect,291,0,0,
+0.05,hoeffding,constant margin (ours),MiddlePhalanxOutlineCorrect,291,0,0,
+0.05,hoeffding,CALIMERA,MiddlePhalanxOutlineCorrect,291,0,0,
+0.05,hoeffding,EconomyGamma,MiddlePhalanxOutlineCorrect,291,0,0,
+0.05,ltt,constant margin (ours),MiddlePhalanxOutlineCorrect,291,0,0,
+0.05,ltt,CALIMERA,MiddlePhalanxOutlineCorrect,291,0,0,
+0.05,ltt,EconomyGamma,MiddlePhalanxOutlineCorrect,291,0,0,
+0.1,none,constant margin (ours),MiddlePhalanxOutlineCorrect,291,0,0,
+0.1,none,CALIMERA,MiddlePhalanxOutlineCorrect,291,0,0,
+0.1,none,EconomyGamma,MiddlePhalanxOutlineCorrect,291,0,0,
+0.1,hoeffding,constant margin (ours),MiddlePhalanxOutlineCorrect,291,0,0,
+0.1,hoeffding,CALIMERA,MiddlePhalanxOutlineCorrect,291,0,0,
+0.1,hoeffding,EconomyGamma,MiddlePhalanxOutlineCorrect,291,0,0,
+0.1,ltt,constant margin (ours),MiddlePhalanxOutlineCorrect,291,0,0,
+0.1,ltt,CALIMERA,MiddlePhalanxOutlineCorrect,291,0,0,
+0.1,ltt,EconomyGamma,MiddlePhalanxOutlineCorrect,291,0,0,
+0.2,none,constant margin (ours),MiddlePhalanxOutlineCorrect,291,50,41,0.0275
+0.2,none,CALIMERA,MiddlePhalanxOutlineCorrect,291,48,39,0.0226
+0.2,none,EconomyGamma,MiddlePhalanxOutlineCorrect,291,46,38,0.0129
+0.2,hoeffding,constant margin (ours),MiddlePhalanxOutlineCorrect,291,0,0,
+0.2,hoeffding,CALIMERA,MiddlePhalanxOutlineCorrect,291,0,0,
+0.2,hoeffding,EconomyGamma,MiddlePhalanxOutlineCorrect,291,0,0,
+0.2,ltt,constant margin (ours),MiddlePhalanxOutlineCorrect,291,38,35,0.3222
+0.2,ltt,CALIMERA,MiddlePhalanxOutlineCorrect,291,7,1,0.3914
+0.2,ltt,EconomyGamma,MiddlePhalanxOutlineCorrect,291,4,0,0.2418
+0.05,none,constant margin (ours),MoteStrain,1252,49,19,0.162
+0.05,none,CALIMERA,MoteStrain,1252,48,25,0.1526
+0.05,none,EconomyGamma,MoteStrain,1252,0,0,
+0.05,hoeffding,constant margin (ours),MoteStrain,1252,0,0,
+0.05,hoeffding,CALIMERA,MoteStrain,1252,0,0,
+0.05,hoeffding,EconomyGamma,MoteStrain,1252,0,0,
+0.05,ltt,constant margin (ours),MoteStrain,1252,9,6,0.6176
+0.05,ltt,CALIMERA,MoteStrain,1252,1,0,0.6067
+0.05,ltt,EconomyGamma,MoteStrain,1252,0,0,
+0.1,none,constant margin (ours),MoteStrain,1252,50,48,0.0
+0.1,none,CALIMERA,MoteStrain,1252,50,48,0.0
+0.1,none,EconomyGamma,MoteStrain,1252,50,46,-0.014
+0.1,hoeffding,constant margin (ours),MoteStrain,1252,1,1,0.5423
+0.1,hoeffding,CALIMERA,MoteStrain,1252,5,5,0.6067
+0.1,hoeffding,EconomyGamma,MoteStrain,1252,0,0,
+0.1,ltt,constant margin (ours),MoteStrain,1252,50,48,0.3641
+0.1,ltt,CALIMERA,MoteStrain,1252,50,48,0.363
+0.1,ltt,EconomyGamma,MoteStrain,1252,46,42,0.3218
+0.2,none,constant margin (ours),MoteStrain,1252,50,50,0.0
+0.2,none,CALIMERA,MoteStrain,1252,50,50,0.0
+0.2,none,EconomyGamma,MoteStrain,1252,50,50,-0.014
+0.2,hoeffding,constant margin (ours),MoteStrain,1252,50,50,0.0
+0.2,hoeffding,CALIMERA,MoteStrain,1252,50,50,0.0
+0.2,hoeffding,EconomyGamma,MoteStrain,1252,50,50,-0.014
+0.2,ltt,constant margin (ours),MoteStrain,1252,50,50,0.0
+0.2,ltt,CALIMERA,MoteStrain,1252,50,50,0.0
+0.2,ltt,EconomyGamma,MoteStrain,1252,50,50,-0.014
+0.05,none,constant margin (ours),PhalangesOutlinesCorrect,858,0,0,
+0.05,none,CALIMERA,PhalangesOutlinesCorrect,858,0,0,
+0.05,none,EconomyGamma,PhalangesOutlinesCorrect,858,0,0,
+0.05,hoeffding,constant margin (ours),PhalangesOutlinesCorrect,858,0,0,
+0.05,hoeffding,CALIMERA,PhalangesOutlinesCorrect,858,0,0,
+0.05,hoeffding,EconomyGamma,PhalangesOutlinesCorrect,858,0,0,
+0.05,ltt,constant margin (ours),PhalangesOutlinesCorrect,858,0,0,
+0.05,ltt,CALIMERA,PhalangesOutlinesCorrect,858,0,0,
+0.05,ltt,EconomyGamma,PhalangesOutlinesCorrect,858,0,0,
+0.1,none,constant margin (ours),PhalangesOutlinesCorrect,858,0,0,
+0.1,none,CALIMERA,PhalangesOutlinesCorrect,858,0,0,
+0.1,none,EconomyGamma,PhalangesOutlinesCorrect,858,0,0,
+0.1,hoeffding,constant margin (ours),PhalangesOutlinesCorrect,858,0,0,
+0.1,hoeffding,CALIMERA,PhalangesOutlinesCorrect,858,0,0,
+0.1,hoeffding,EconomyGamma,PhalangesOutlinesCorrect,858,0,0,
+0.1,ltt,constant margin (ours),PhalangesOutlinesCorrect,858,0,0,
+0.1,ltt,CALIMERA,PhalangesOutlinesCorrect,858,0,0,
+0.1,ltt,EconomyGamma,PhalangesOutlinesCorrect,858,0,0,
+0.2,none,constant margin (ours),PhalangesOutlinesCorrect,858,50,43,0.0172
+0.2,none,CALIMERA,PhalangesOutlinesCorrect,858,50,43,0.0169
+0.2,none,EconomyGamma,PhalangesOutlinesCorrect,858,41,34,0.0
+0.2,hoeffding,constant margin (ours),PhalangesOutlinesCorrect,858,0,0,
+0.2,hoeffding,CALIMERA,PhalangesOutlinesCorrect,858,0,0,
+0.2,hoeffding,EconomyGamma,PhalangesOutlinesCorrect,858,0,0,
+0.2,ltt,constant margin (ours),PhalangesOutlinesCorrect,858,49,45,0.3294
+0.2,ltt,CALIMERA,PhalangesOutlinesCorrect,858,45,42,0.335
+0.2,ltt,EconomyGamma,PhalangesOutlinesCorrect,858,0,0,
+0.05,none,constant margin (ours),PowerCons,180,35,19,0.2934
+0.05,none,CALIMERA,PowerCons,180,2,0,0.3924
+0.05,none,EconomyGamma,PowerCons,180,50,30,0.1931
+0.05,hoeffding,constant margin (ours),PowerCons,180,0,0,
+0.05,hoeffding,CALIMERA,PowerCons,180,0,0,
+0.05,hoeffding,EconomyGamma,PowerCons,180,0,0,
+0.05,ltt,constant margin (ours),PowerCons,180,0,0,
+0.05,ltt,CALIMERA,PowerCons,180,0,0,
+0.05,ltt,EconomyGamma,PowerCons,180,50,50,0.0438
+0.1,none,constant margin (ours),PowerCons,180,50,22,0.2998
+0.1,none,CALIMERA,PowerCons,180,47,20,0.2982
+0.1,none,EconomyGamma,PowerCons,180,50,24,0.2755
+0.1,hoeffding,constant margin (ours),PowerCons,180,0,0,
+0.1,hoeffding,CALIMERA,PowerCons,180,0,0,
+0.1,hoeffding,EconomyGamma,PowerCons,180,0,0,
+0.1,ltt,constant margin (ours),PowerCons,180,35,34,0.2934
+0.1,ltt,CALIMERA,PowerCons,180,2,2,0.3924
+0.1,ltt,EconomyGamma,PowerCons,180,50,50,0.1931
+0.2,none,constant margin (ours),PowerCons,180,50,47,0.0019
+0.2,none,CALIMERA,PowerCons,180,50,47,0.0019
+0.2,none,EconomyGamma,PowerCons,180,50,47,0.0013
+0.2,hoeffding,constant margin (ours),PowerCons,180,0,0,
+0.2,hoeffding,CALIMERA,PowerCons,180,0,0,
+0.2,hoeffding,EconomyGamma,PowerCons,180,50,50,0.0723
+0.2,ltt,constant margin (ours),PowerCons,180,50,49,0.2604
+0.2,ltt,CALIMERA,PowerCons,180,50,49,0.2512
+0.2,ltt,EconomyGamma,PowerCons,180,50,48,0.2454
+0.05,none,constant margin (ours),ProximalPhalanxOutlineCorrect,291,0,0,
+0.05,none,CALIMERA,ProximalPhalanxOutlineCorrect,291,0,0,
+0.05,none,EconomyGamma,ProximalPhalanxOutlineCorrect,291,0,0,
+0.05,hoeffding,constant margin (ours),ProximalPhalanxOutlineCorrect,291,0,0,
+0.05,hoeffding,CALIMERA,ProximalPhalanxOutlineCorrect,291,0,0,
+0.05,hoeffding,EconomyGamma,ProximalPhalanxOutlineCorrect,291,0,0,
+0.05,ltt,constant margin (ours),ProximalPhalanxOutlineCorrect,291,0,0,
+0.05,ltt,CALIMERA,ProximalPhalanxOutlineCorrect,291,0,0,
+0.05,ltt,EconomyGamma,ProximalPhalanxOutlineCorrect,291,0,0,
+0.1,none,constant margin (ours),ProximalPhalanxOutlineCorrect,291,21,0,0.3042
+0.1,none,CALIMERA,ProximalPhalanxOutlineCorrect,291,7,0,0.3029
+0.1,none,EconomyGamma,ProximalPhalanxOutlineCorrect,291,22,0,0.2887
+0.1,hoeffding,constant margin (ours),ProximalPhalanxOutlineCorrect,291,0,0,
+0.1,hoeffding,CALIMERA,ProximalPhalanxOutlineCorrect,291,0,0,
+0.1,hoeffding,EconomyGamma,ProximalPhalanxOutlineCorrect,291,0,0,
+0.1,ltt,constant margin (ours),ProximalPhalanxOutlineCorrect,291,0,0,
+0.1,ltt,CALIMERA,ProximalPhalanxOutlineCorrect,291,0,0,
+0.1,ltt,EconomyGamma,ProximalPhalanxOutlineCorrect,291,0,0,
+0.2,none,constant margin (ours),ProximalPhalanxOutlineCorrect,291,50,50,0.0
+0.2,none,CALIMERA,ProximalPhalanxOutlineCorrect,291,50,50,0.0
+0.2,none,EconomyGamma,ProximalPhalanxOutlineCorrect,291,50,50,0.0
+0.2,hoeffding,constant margin (ours),ProximalPhalanxOutlineCorrect,291,0,0,
+0.2,hoeffding,CALIMERA,ProximalPhalanxOutlineCorrect,291,0,0,
+0.2,hoeffding,EconomyGamma,ProximalPhalanxOutlineCorrect,291,0,0,
+0.2,ltt,constant margin (ours),ProximalPhalanxOutlineCorrect,291,50,50,0.1013
+0.2,ltt,CALIMERA,ProximalPhalanxOutlineCorrect,291,46,46,0.1027
+0.2,ltt,EconomyGamma,ProximalPhalanxOutlineCorrect,291,48,48,0.05
+0.05,none,constant margin (ours),SemgHandGenderCh2,600,36,7,0.3621
+0.05,none,CALIMERA,SemgHandGenderCh2,600,23,0,0.3848
+0.05,none,EconomyGamma,SemgHandGenderCh2,600,48,23,0.3771
+0.05,hoeffding,constant margin (ours),SemgHandGenderCh2,600,0,0,
+0.05,hoeffding,CALIMERA,SemgHandGenderCh2,600,0,0,
+0.05,hoeffding,EconomyGamma,SemgHandGenderCh2,600,0,0,
+0.05,ltt,constant margin (ours),SemgHandGenderCh2,600,1,0,
+0.05,ltt,CALIMERA,SemgHandGenderCh2,600,0,0,
+0.05,ltt,EconomyGamma,SemgHandGenderCh2,600,2,0,
+0.1,none,constant margin (ours),SemgHandGenderCh2,600,50,43,0.0349
+0.1,none,CALIMERA,SemgHandGenderCh2,600,50,43,0.0337
+0.1,none,EconomyGamma,SemgHandGenderCh2,600,50,43,0.0289
+0.1,hoeffding,constant margin (ours),SemgHandGenderCh2,600,0,0,
+0.1,hoeffding,CALIMERA,SemgHandGenderCh2,600,0,0,
+0.1,hoeffding,EconomyGamma,SemgHandGenderCh2,600,0,0,
+0.1,ltt,constant margin (ours),SemgHandGenderCh2,600,49,45,0.4859
+0.1,ltt,CALIMERA,SemgHandGenderCh2,600,49,46,0.4778
+0.1,ltt,EconomyGamma,SemgHandGenderCh2,600,50,46,0.4802
+0.2,none,constant margin (ours),SemgHandGenderCh2,600,50,50,0.0
+0.2,none,CALIMERA,SemgHandGenderCh2,600,50,50,0.0
+0.2,none,EconomyGamma,SemgHandGenderCh2,600,50,50,0.0
+0.2,hoeffding,constant margin (ours),SemgHandGenderCh2,600,50,50,0.0141
+0.2,hoeffding,CALIMERA,SemgHandGenderCh2,600,50,50,0.0164
+0.2,hoeffding,EconomyGamma,SemgHandGenderCh2,600,50,50,0.0144
+0.2,ltt,constant margin (ours),SemgHandGenderCh2,600,50,50,0.008
+0.2,ltt,CALIMERA,SemgHandGenderCh2,600,50,50,0.008
+0.2,ltt,EconomyGamma,SemgHandGenderCh2,600,50,50,0.008
+0.05,none,constant margin (ours),ShapeletSim,180,47,32,0.1525
+0.05,none,CALIMERA,ShapeletSim,180,0,0,
+0.05,none,EconomyGamma,ShapeletSim,180,0,0,
+0.05,hoeffding,constant margin (ours),ShapeletSim,180,0,0,
+0.05,hoeffding,CALIMERA,ShapeletSim,180,0,0,
+0.05,hoeffding,EconomyGamma,ShapeletSim,180,0,0,
+0.05,ltt,constant margin (ours),ShapeletSim,180,8,0,0.1747
+0.05,ltt,CALIMERA,ShapeletSim,180,0,0,
+0.05,ltt,EconomyGamma,ShapeletSim,180,0,0,
+0.1,none,constant margin (ours),ShapeletSim,180,50,23,0.1296
+0.1,none,CALIMERA,ShapeletSim,180,3,0,0.083
+0.1,none,EconomyGamma,ShapeletSim,180,6,0,0.1154
+0.1,hoeffding,constant margin (ours),ShapeletSim,180,0,0,
+0.1,hoeffding,CALIMERA,ShapeletSim,180,0,0,
+0.1,hoeffding,EconomyGamma,ShapeletSim,180,0,0,
+0.1,ltt,constant margin (ours),ShapeletSim,180,47,45,0.1525
+0.1,ltt,CALIMERA,ShapeletSim,180,0,0,
+0.1,ltt,EconomyGamma,ShapeletSim,180,0,0,
+0.2,none,constant margin (ours),ShapeletSim,180,50,18,0.049
+0.2,none,CALIMERA,ShapeletSim,180,49,21,0.0285
+0.2,none,EconomyGamma,ShapeletSim,180,50,29,0.0776
+0.2,hoeffding,constant margin (ours),ShapeletSim,180,0,0,
+0.2,hoeffding,CALIMERA,ShapeletSim,180,0,0,
+0.2,hoeffding,EconomyGamma,ShapeletSim,180,0,0,
+0.2,ltt,constant margin (ours),ShapeletSim,180,50,42,0.1069
+0.2,ltt,CALIMERA,ShapeletSim,180,23,16,0.0619
+0.2,ltt,EconomyGamma,ShapeletSim,180,21,20,0.0607
+0.05,none,constant margin (ours),SonyAIBORobotSurface1,601,0,0,
+0.05,none,CALIMERA,SonyAIBORobotSurface1,601,0,0,
+0.05,none,EconomyGamma,SonyAIBORobotSurface1,601,11,0,
+0.05,hoeffding,constant margin (ours),SonyAIBORobotSurface1,601,0,0,
+0.05,hoeffding,CALIMERA,SonyAIBORobotSurface1,601,0,0,
+0.05,hoeffding,EconomyGamma,SonyAIBORobotSurface1,601,0,0,
+0.05,ltt,constant margin (ours),SonyAIBORobotSurface1,601,0,0,
+0.05,ltt,CALIMERA,SonyAIBORobotSurface1,601,0,0,
+0.05,ltt,EconomyGamma,SonyAIBORobotSurface1,601,0,0,
+0.1,none,constant margin (ours),SonyAIBORobotSurface1,601,30,0,0.0583
+0.1,none,CALIMERA,SonyAIBORobotSurface1,601,23,0,0.0362
+0.1,none,EconomyGamma,SonyAIBORobotSurface1,601,50,30,0.1263
+0.1,hoeffding,constant margin (ours),SonyAIBORobotSurface1,601,0,0,
+0.1,hoeffding,CALIMERA,SonyAIBORobotSurface1,601,0,0,
+0.1,hoeffding,EconomyGamma,SonyAIBORobotSurface1,601,0,0,
+0.1,ltt,constant margin (ours),SonyAIBORobotSurface1,601,0,0,
+0.1,ltt,CALIMERA,SonyAIBORobotSurface1,601,0,0,
+0.1,ltt,EconomyGamma,SonyAIBORobotSurface1,601,47,37,
+0.2,none,constant margin (ours),SonyAIBORobotSurface1,601,50,50,0.0
+0.2,none,CALIMERA,SonyAIBORobotSurface1,601,50,50,0.0
+0.2,none,EconomyGamma,SonyAIBORobotSurface1,601,50,50,0.0
+0.2,hoeffding,constant margin (ours),SonyAIBORobotSurface1,601,12,12,0.0092
+0.2,hoeffding,CALIMERA,SonyAIBORobotSurface1,601,36,36,0.0217
+0.2,hoeffding,EconomyGamma,SonyAIBORobotSurface1,601,50,50,0.0742
+0.2,ltt,constant margin (ours),SonyAIBORobotSurface1,601,50,50,0.0
+0.2,ltt,CALIMERA,SonyAIBORobotSurface1,601,50,50,0.0
+0.2,ltt,EconomyGamma,SonyAIBORobotSurface1,601,50,50,0.0
+0.05,none,constant margin (ours),SonyAIBORobotSurface2,953,0,0,
+0.05,none,CALIMERA,SonyAIBORobotSurface2,953,0,0,
+0.05,none,EconomyGamma,SonyAIBORobotSurface2,953,0,0,
+0.05,hoeffding,constant margin (ours),SonyAIBORobotSurface2,953,0,0,
+0.05,hoeffding,CALIMERA,SonyAIBORobotSurface2,953,0,0,
+0.05,hoeffding,EconomyGamma,SonyAIBORobotSurface2,953,0,0,
+0.05,ltt,constant margin (ours),SonyAIBORobotSurface2,953,0,0,
+0.05,ltt,CALIMERA,SonyAIBORobotSurface2,953,0,0,
+0.05,ltt,EconomyGamma,SonyAIBORobotSurface2,953,0,0,
+0.1,none,constant margin (ours),SonyAIBORobotSurface2,953,22,0,0.1488
+0.1,none,CALIMERA,SonyAIBORobotSurface2,953,4,0,0.0328
+0.1,none,EconomyGamma,SonyAIBORobotSurface2,953,0,0,
+0.1,hoeffding,constant margin (ours),SonyAIBORobotSurface2,953,0,0,
+0.1,hoeffding,CALIMERA,SonyAIBORobotSurface2,953,0,0,
+0.1,hoeffding,EconomyGamma,SonyAIBORobotSurface2,953,0,0,
+0.1,ltt,constant margin (ours),SonyAIBORobotSurface2,953,2,0,0.4627
+0.1,ltt,CALIMERA,SonyAIBORobotSurface2,953,1,0,0.5065
+0.1,ltt,EconomyGamma,SonyAIBORobotSurface2,953,0,0,
+0.2,none,constant margin (ours),SonyAIBORobotSurface2,953,50,50,0.0
+0.2,none,CALIMERA,SonyAIBORobotSurface2,953,50,50,0.0
+0.2,none,EconomyGamma,SonyAIBORobotSurface2,953,50,50,0.0
+0.2,hoeffding,constant margin (ours),SonyAIBORobotSurface2,953,46,46,0.0101
+0.2,hoeffding,CALIMERA,SonyAIBORobotSurface2,953,47,47,0.058
+0.2,hoeffding,EconomyGamma,SonyAIBORobotSurface2,953,14,14,0.0566
+0.2,ltt,constant margin (ours),SonyAIBORobotSurface2,953,50,50,-0.0001
+0.2,ltt,CALIMERA,SonyAIBORobotSurface2,953,50,50,-0.0001
+0.2,ltt,EconomyGamma,SonyAIBORobotSurface2,953,49,49,0.0
+0.05,none,constant margin (ours),Strawberry,370,50,40,0.0097
+0.05,none,CALIMERA,Strawberry,370,50,40,0.0096
+0.05,none,EconomyGamma,Strawberry,370,50,40,0.0081
+0.05,hoeffding,constant margin (ours),Strawberry,370,0,0,
+0.05,hoeffding,CALIMERA,Strawberry,370,0,0,
+0.05,hoeffding,EconomyGamma,Strawberry,370,0,0,
+0.05,ltt,constant margin (ours),Strawberry,370,47,39,0.1688
+0.05,ltt,CALIMERA,Strawberry,370,42,35,0.1583
+0.05,ltt,EconomyGamma,Strawberry,370,47,43,0.1781
+0.1,none,constant margin (ours),Strawberry,370,50,50,0.0
+0.1,none,CALIMERA,Strawberry,370,50,50,0.0
+0.1,none,EconomyGamma,Strawberry,370,50,50,0.0
+0.1,hoeffding,constant margin (ours),Strawberry,370,0,0,
+0.1,hoeffding,CALIMERA,Strawberry,370,0,0,
+0.1,hoeffding,EconomyGamma,Strawberry,370,0,0,
+0.1,ltt,constant margin (ours),Strawberry,370,50,50,0.0
+0.1,ltt,CALIMERA,Strawberry,370,50,50,0.0
+0.1,ltt,EconomyGamma,Strawberry,370,50,50,0.0
+0.2,none,constant margin (ours),Strawberry,370,50,50,0.0
+0.2,none,CALIMERA,Strawberry,370,50,50,0.0
+0.2,none,EconomyGamma,Strawberry,370,50,50,0.0
+0.2,hoeffding,constant margin (ours),Strawberry,370,50,50,0.0
+0.2,hoeffding,CALIMERA,Strawberry,370,50,50,0.0
+0.2,hoeffding,EconomyGamma,Strawberry,370,50,50,0.0
+0.2,ltt,constant margin (ours),Strawberry,370,50,50,0.0
+0.2,ltt,CALIMERA,Strawberry,370,50,50,0.0
+0.2,ltt,EconomyGamma,Strawberry,370,50,50,0.0
+0.05,none,constant margin (ours),ToeSegmentation1,228,47,17,0.1614
+0.05,none,CALIMERA,ToeSegmentation1,228,15,0,0.1423
+0.05,none,EconomyGamma,ToeSegmentation1,228,17,0,0.0826
+0.05,hoeffding,constant margin (ours),ToeSegmentation1,228,0,0,
+0.05,hoeffding,CALIMERA,ToeSegmentation1,228,0,0,
+0.05,hoeffding,EconomyGamma,ToeSegmentation1,228,0,0,
+0.05,ltt,constant margin (ours),ToeSegmentation1,228,11,7,0.351
+0.05,ltt,CALIMERA,ToeSegmentation1,228,0,0,
+0.05,ltt,EconomyGamma,ToeSegmentation1,228,0,0,
+0.1,none,constant margin (ours),ToeSegmentation1,228,50,20,0.1071
+0.1,none,CALIMERA,ToeSegmentation1,228,50,21,0.0986
+0.1,none,EconomyGamma,ToeSegmentation1,228,50,30,-0.0066
+0.1,hoeffding,constant margin (ours),ToeSegmentation1,228,0,0,
+0.1,hoeffding,CALIMERA,ToeSegmentation1,228,0,0,
+0.1,hoeffding,EconomyGamma,ToeSegmentation1,228,0,0,
+0.1,ltt,constant margin (ours),ToeSegmentation1,228,49,48,0.1793
+0.1,ltt,CALIMERA,ToeSegmentation1,228,29,26,0.1433
+0.1,ltt,EconomyGamma,ToeSegmentation1,228,31,31,0.0779
+0.2,none,constant margin (ours),ToeSegmentation1,228,50,50,0.0
+0.2,none,CALIMERA,ToeSegmentation1,228,50,50,0.0
+0.2,none,EconomyGamma,ToeSegmentation1,228,50,50,0.0
+0.2,hoeffding,constant margin (ours),ToeSegmentation1,228,11,11,0.0182
+0.2,hoeffding,CALIMERA,ToeSegmentation1,228,15,15,0.1423
+0.2,hoeffding,EconomyGamma,ToeSegmentation1,228,31,31,0.1135
+0.2,ltt,constant margin (ours),ToeSegmentation1,228,50,50,0.0079
+0.2,ltt,CALIMERA,ToeSegmentation1,228,50,50,0.0076
+0.2,ltt,EconomyGamma,ToeSegmentation1,228,50,50,-0.0021
+0.05,none,constant margin (ours),ToeSegmentation2,130,2,0,0.2952
+0.05,none,CALIMERA,ToeSegmentation2,130,5,0,0.3611
+0.05,none,EconomyGamma,ToeSegmentation2,130,0,0,
+0.05,hoeffding,constant margin (ours),ToeSegmentation2,130,0,0,
+0.05,hoeffding,CALIMERA,ToeSegmentation2,130,0,0,
+0.05,hoeffding,EconomyGamma,ToeSegmentation2,130,0,0,
+0.05,ltt,constant margin (ours),ToeSegmentation2,130,0,0,
+0.05,ltt,CALIMERA,ToeSegmentation2,130,0,0,
+0.05,ltt,EconomyGamma,ToeSegmentation2,130,0,0,
+0.1,none,constant margin (ours),ToeSegmentation2,130,35,9,0.1798
+0.1,none,CALIMERA,ToeSegmentation2,130,33,5,0.1384
+0.1,none,EconomyGamma,ToeSegmentation2,130,6,0,-0.0045
+0.1,hoeffding,constant margin (ours),ToeSegmentation2,130,0,0,
+0.1,hoeffding,CALIMERA,ToeSegmentation2,130,0,0,
+0.1,hoeffding,EconomyGamma,ToeSegmentation2,130,0,0,
+0.1,ltt,constant margin (ours),ToeSegmentation2,130,2,0,0.3943
+0.1,ltt,CALIMERA,ToeSegmentation2,130,5,0,0.4008
+0.1,ltt,EconomyGamma,ToeSegmentation2,130,0,0,
+0.2,none,constant margin (ours),ToeSegmentation2,130,50,38,0.0083
+0.2,none,CALIMERA,ToeSegmentation2,130,50,38,0.0071
+0.2,none,EconomyGamma,ToeSegmentation2,130,50,38,-0.0031
+0.2,hoeffding,constant margin (ours),ToeSegmentation2,130,0,0,
+0.2,hoeffding,CALIMERA,ToeSegmentation2,130,0,0,
+0.2,hoeffding,EconomyGamma,ToeSegmentation2,130,0,0,
+0.2,ltt,constant margin (ours),ToeSegmentation2,130,46,36,0.1779
+0.2,ltt,CALIMERA,ToeSegmentation2,130,46,38,0.1405
+0.2,ltt,EconomyGamma,ToeSegmentation2,130,28,26,0.0243
+0.05,none,constant margin (ours),TwoLeadECG,1139,50,18,0.0648
+0.05,none,CALIMERA,TwoLeadECG,1139,49,30,0.0465
+0.05,none,EconomyGamma,TwoLeadECG,1139,2,0,0.036
+0.05,hoeffding,constant margin (ours),TwoLeadECG,1139,0,0,
+0.05,hoeffding,CALIMERA,TwoLeadECG,1139,0,0,
+0.05,hoeffding,EconomyGamma,TwoLeadECG,1139,0,0,
+0.05,ltt,constant margin (ours),TwoLeadECG,1139,50,45,0.0521
+0.05,ltt,CALIMERA,TwoLeadECG,1139,25,21,0.0229
+0.05,ltt,EconomyGamma,TwoLeadECG,1139,0,0,
+0.1,none,constant margin (ours),TwoLeadECG,1139,50,31,0.0996
+0.1,none,CALIMERA,TwoLeadECG,1139,50,42,0.0974
+0.1,none,EconomyGamma,TwoLeadECG,1139,50,50,0.0801
+0.1,hoeffding,constant margin (ours),TwoLeadECG,1139,50,50,0.0265
+0.1,hoeffding,CALIMERA,TwoLeadECG,1139,6,6,0.0104
+0.1,hoeffding,EconomyGamma,TwoLeadECG,1139,0,0,
+0.1,ltt,constant margin (ours),TwoLeadECG,1139,50,43,0.091
+0.1,ltt,CALIMERA,TwoLeadECG,1139,50,45,0.0882
+0.1,ltt,EconomyGamma,TwoLeadECG,1139,50,50,0.0761
+0.2,none,constant margin (ours),TwoLeadECG,1139,50,50,0.0
+0.2,none,CALIMERA,TwoLeadECG,1139,50,50,0.0
+0.2,none,EconomyGamma,TwoLeadECG,1139,50,50,0.0
+0.2,hoeffding,constant margin (ours),TwoLeadECG,1139,50,50,0.0429
+0.2,hoeffding,CALIMERA,TwoLeadECG,1139,50,50,0.0433
+0.2,hoeffding,EconomyGamma,TwoLeadECG,1139,50,50,0.0379
+0.2,ltt,constant margin (ours),TwoLeadECG,1139,50,50,0.0
+0.2,ltt,CALIMERA,TwoLeadECG,1139,50,50,0.0
+0.2,ltt,EconomyGamma,TwoLeadECG,1139,50,50,0.0
+0.05,none,constant margin (ours),Wafer,6164,50,50,0.0
+0.05,none,CALIMERA,Wafer,6164,50,50,0.0
+0.05,none,EconomyGamma,Wafer,6164,50,50,0.0
+0.05,hoeffding,constant margin (ours),Wafer,6164,50,50,0.0
+0.05,hoeffding,CALIMERA,Wafer,6164,50,50,0.0
+0.05,hoeffding,EconomyGamma,Wafer,6164,50,50,0.0
+0.05,ltt,constant margin (ours),Wafer,6164,50,50,0.0
+0.05,ltt,CALIMERA,Wafer,6164,50,50,0.0
+0.05,ltt,EconomyGamma,Wafer,6164,50,50,0.0
+0.1,none,constant margin (ours),Wafer,6164,50,50,0.0
+0.1,none,CALIMERA,Wafer,6164,50,50,0.0
+0.1,none,EconomyGamma,Wafer,6164,50,50,0.0
+0.1,hoeffding,constant margin (ours),Wafer,6164,50,50,0.0
+0.1,hoeffding,CALIMERA,Wafer,6164,50,50,0.0
+0.1,hoeffding,EconomyGamma,Wafer,6164,50,50,0.0
+0.1,ltt,constant margin (ours),Wafer,6164,50,50,0.0
+0.1,ltt,CALIMERA,Wafer,6164,50,50,0.0
+0.1,ltt,EconomyGamma,Wafer,6164,50,50,0.0
+0.2,none,constant margin (ours),Wafer,6164,50,50,0.0
+0.2,none,CALIMERA,Wafer,6164,50,50,0.0
+0.2,none,EconomyGamma,Wafer,6164,50,50,0.0
+0.2,hoeffding,constant margin (ours),Wafer,6164,50,50,0.0
+0.2,hoeffding,CALIMERA,Wafer,6164,50,50,0.0
+0.2,hoeffding,EconomyGamma,Wafer,6164,50,50,0.0
+0.2,ltt,constant margin (ours),Wafer,6164,50,50,0.0
+0.2,ltt,CALIMERA,Wafer,6164,50,50,0.0
+0.2,ltt,EconomyGamma,Wafer,6164,50,50,0.0
+0.05,none,constant margin (ours),Wine,54,0,0,
+0.05,none,CALIMERA,Wine,54,0,0,
+0.05,none,EconomyGamma,Wine,54,0,0,
+0.05,hoeffding,constant margin (ours),Wine,54,0,0,
+0.05,hoeffding,CALIMERA,Wine,54,0,0,
+0.05,hoeffding,EconomyGamma,Wine,54,0,0,
+0.05,ltt,constant margin (ours),Wine,54,0,0,
+0.05,ltt,CALIMERA,Wine,54,0,0,
+0.05,ltt,EconomyGamma,Wine,54,0,0,
+0.1,none,constant margin (ours),Wine,54,0,0,
+0.1,none,CALIMERA,Wine,54,0,0,
+0.1,none,EconomyGamma,Wine,54,0,0,
+0.1,hoeffding,constant margin (ours),Wine,54,0,0,
+0.1,hoeffding,CALIMERA,Wine,54,0,0,
+0.1,hoeffding,EconomyGamma,Wine,54,0,0,
+0.1,ltt,constant margin (ours),Wine,54,0,0,
+0.1,ltt,CALIMERA,Wine,54,0,0,
+0.1,ltt,EconomyGamma,Wine,54,0,0,
+0.2,none,constant margin (ours),Wine,54,23,4,0.0774
+0.2,none,CALIMERA,Wine,54,32,6,0.1131
+0.2,none,EconomyGamma,Wine,54,0,0,
+0.2,hoeffding,constant margin (ours),Wine,54,0,0,
+0.2,hoeffding,CALIMERA,Wine,54,0,0,
+0.2,hoeffding,EconomyGamma,Wine,54,0,0,
+0.2,ltt,constant margin (ours),Wine,54,0,0,
+0.2,ltt,CALIMERA,Wine,54,0,0,
+0.2,ltt,EconomyGamma,Wine,54,0,0,
+0.05,none,constant margin (ours),WormsTwoClass,77,0,0,
+0.05,none,CALIMERA,WormsTwoClass,77,0,0,
+0.05,none,EconomyGamma,WormsTwoClass,77,0,0,
+0.05,hoeffding,constant margin (ours),WormsTwoClass,77,0,0,
+0.05,hoeffding,CALIMERA,WormsTwoClass,77,0,0,
+0.05,hoeffding,EconomyGamma,WormsTwoClass,77,0,0,
+0.05,ltt,constant margin (ours),WormsTwoClass,77,0,0,
+0.05,ltt,CALIMERA,WormsTwoClass,77,0,0,
+0.05,ltt,EconomyGamma,WormsTwoClass,77,0,0,
+0.1,none,constant margin (ours),WormsTwoClass,77,1,0,
+0.1,none,CALIMERA,WormsTwoClass,77,1,0,
+0.1,none,EconomyGamma,WormsTwoClass,77,0,0,
+0.1,hoeffding,constant margin (ours),WormsTwoClass,77,0,0,
+0.1,hoeffding,CALIMERA,WormsTwoClass,77,0,0,
+0.1,hoeffding,EconomyGamma,WormsTwoClass,77,0,0,
+0.1,ltt,constant margin (ours),WormsTwoClass,77,0,0,
+0.1,ltt,CALIMERA,WormsTwoClass,77,0,0,
+0.1,ltt,EconomyGamma,WormsTwoClass,77,0,0,
+0.2,none,constant margin (ours),WormsTwoClass,77,49,23,0.1436
+0.2,none,CALIMERA,WormsTwoClass,77,49,22,0.1421
+0.2,none,EconomyGamma,WormsTwoClass,77,49,12,0.1192
+0.2,hoeffding,constant margin (ours),WormsTwoClass,77,0,0,
+0.2,hoeffding,CALIMERA,WormsTwoClass,77,0,0,
+0.2,hoeffding,EconomyGamma,WormsTwoClass,77,0,0,
+0.2,ltt,constant margin (ours),WormsTwoClass,77,7,5,0.2167
+0.2,ltt,CALIMERA,WormsTwoClass,77,1,0,0.4872
+0.2,ltt,EconomyGamma,WormsTwoClass,77,1,0,0.4051
+0.05,none,constant margin (ours),Yoga,3000,0,0,
+0.05,none,CALIMERA,Yoga,3000,0,0,
+0.05,none,EconomyGamma,Yoga,3000,0,0,
+0.05,hoeffding,constant margin (ours),Yoga,3000,0,0,
+0.05,hoeffding,CALIMERA,Yoga,3000,0,0,
+0.05,hoeffding,EconomyGamma,Yoga,3000,0,0,
+0.05,ltt,constant margin (ours),Yoga,3000,0,0,
+0.05,ltt,CALIMERA,Yoga,3000,0,0,
+0.05,ltt,EconomyGamma,Yoga,3000,0,0,
+0.1,none,constant margin (ours),Yoga,3000,50,41,0.0198
+0.1,none,CALIMERA,Yoga,3000,50,41,0.0193
+0.1,none,EconomyGamma,Yoga,3000,50,41,0.0168
+0.1,hoeffding,constant margin (ours),Yoga,3000,0,0,
+0.1,hoeffding,CALIMERA,Yoga,3000,0,0,
+0.1,hoeffding,EconomyGamma,Yoga,3000,0,0,
+0.1,ltt,constant margin (ours),Yoga,3000,50,46,0.5541
+0.1,ltt,CALIMERA,Yoga,3000,50,46,0.5499
+0.1,ltt,EconomyGamma,Yoga,3000,6,6,0.3711
+0.2,none,constant margin (ours),Yoga,3000,50,50,0.0
+0.2,none,CALIMERA,Yoga,3000,50,50,0.0
+0.2,none,EconomyGamma,Yoga,3000,50,50,0.0
+0.2,hoeffding,constant margin (ours),Yoga,3000,50,50,0.0
+0.2,hoeffding,CALIMERA,Yoga,3000,50,50,0.0
+0.2,hoeffding,EconomyGamma,Yoga,3000,50,50,0.0
+0.2,ltt,constant margin (ours),Yoga,3000,50,50,0.0
+0.2,ltt,CALIMERA,Yoga,3000,50,50,0.0
+0.2,ltt,EconomyGamma,Yoga,3000,50,50,0.0
