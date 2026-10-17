@@ -75,7 +75,7 @@ studies when using the derived tables.
 | Table 7, drift certificates (Thm. 4) | `constrained_control_crc.py`, `crc_outer_split.py` | `table_constrained_control_crc.csv`, `table_crc_outer_split.csv` |
 | Table 10, cross-domain audit | `crossdomain_realized.py`, `physionet_protocol.py`, `cmapss_*.py`, `etsc_ucr_binary40.py` (40 sets; `python etsc_ucr_binary40.py 1 ECG5000` for ECG5000) | `table_crossdomain_realized.csv`, `table_etsc_ucr_*.csv` |
 | Table 8 and Tables S17–S18, certifying published triggers | `certify_any_trigger.py` → `tables_anytrigger.py` | `table_certify_triggers_*.csv` |
-| Fig. 1 | `fig_overview_tkde.tex` (pdflatex) | `figures_tkde/fig_overview_tkde.pdf` |
+| Fig. 1 | `fig_overview_data.py` (real-data mini-plots → `fig_overview_data.tex`), then `fig_overview_tkde.tex` (pdflatex) | `figures_tkde/fig_overview_tkde.pdf` |
 | Figs. 2–7 | `figs_tkde.py` (with `panel_labels.py`) | `figures_tkde/` |
 | Fig. 4(a), zero-shot shift | `shift_matrix.py` | `table_shift_matrix.csv` |
 | Fig. 7(b)–(c), Tables S14–S15, UCR benchmark | `download_ucr_binary.py`, `etsc_ucr_binary40.py`, `ucr40_analysis.py` | `table_etsc_ucr_binary40.csv`, `table_ucr40_*.csv` |

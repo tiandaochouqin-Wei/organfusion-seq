@@ -17,6 +17,7 @@
 \definecolor{ink}{HTML}{2B2B2B}
 \definecolor{lane}{HTML}{F4F7F7}
 \newcommand{\md}{\fontsize{8}{9.6}\selectfont}
+\input{fig_overview_data.tex}
 \newcommand{\hd}{\fontsize{9}{10.8}\selectfont\bfseries}
 \begin{document}
 \begin{tikzpicture}[
@@ -57,13 +58,7 @@
   \node[hdr] at (0,6.78) {Calibration data};
   \node[txt] at (0,6.40) {$n$ units, $m$ conditions};
   \draw[gry!70,line width=0.4pt] (-1.42,4.88) rectangle (1.42,6.13);
-  \begin{scope}[shift={(0,5.50)}]
-    \draw[ours,line width=0.8pt] (-1.30,0) .. controls (-0.6,0.05) and (0.2,0.30) .. (1.30,0.50);
-    \draw[ours,line width=0.8pt] (-1.30,0) .. controls (-0.5,0.02) and (0.3,0.16) .. (1.30,0.30);
-    \draw[cal,line width=0.8pt,dash pattern=on 3pt off 1.4pt] (-1.30,0) .. controls (-0.6,-0.04) and (0.1,-0.32) .. (1.30,-0.50);
-    \draw[cal,line width=0.8pt,dash pattern=on 3pt off 1.4pt] (-1.30,0) .. controls (-0.5,-0.02) and (0.3,-0.18) .. (1.30,-0.30);
-    \draw[gry,line width=0.8pt,dash pattern=on 0.9pt off 1.2pt] (-1.30,0) .. controls (-0.5,0.03) and (0.5,-0.06) .. (1.30,0.06);
-  \end{scope}
+  \begin{scope}[shift={(0,5.50)}]\panelA\end{scope}
   \node[txt,anchor=north] at (0,4.74) {prefixes $x(t_0{:}t)$, $z$\\ late label $y\in\{0,1\}$};
 \end{scope}
 % B: posterior producer
@@ -72,11 +67,8 @@
   \node[txt] at (0,6.40) {$\hat p_t\approx\Pr(y{=}1\mid\mathcal F_t)$};
   \draw[gry!70,line width=0.4pt] (-1.42,4.88) rectangle (1.42,6.13);
   \begin{scope}[shift={(0,5.50)}]
-    \draw[gry,line width=0.5pt,dash pattern=on 0.6pt off 1.6pt] (-1.34,0.0) -- (1.34,0.0);
-    \node[txt,anchor=north east,text=gry] at (1.36,-0.06) {$p^\star$};
-    \draw[ours,line width=0.8pt] (-1.30,0.03) .. controls (-0.6,0.08) and (-0.3,0.42) .. (0.3,0.50) -- (1.30,0.52);
-    \draw[cal,line width=0.8pt,dash pattern=on 3pt off 1.4pt] (-1.30,-0.02) .. controls (-0.5,-0.08) and (0.2,-0.30) .. (0.7,-0.48) -- (1.30,-0.50);
-    \draw[gry,line width=0.8pt,dash pattern=on 0.9pt off 1.2pt] (-1.30,0.01) .. controls (-0.4,0.22) and (0.3,-0.16) .. (1.30,0.24);
+    \panelB
+    \node[txt,anchor=north east,text=gry,fill=white,inner sep=0.6pt] at (1.38,-0.04) {$p^\star$};
   \end{scope}
   \node[tbox,anchor=north] at (0,4.76) {calibration at the\\ stopping time: $\kappa(\tau)$};
 \end{scope}
@@ -86,13 +78,7 @@
   \node[txt] at (0,6.40) {DP for each $\mu$ (Thm\,1)};
   \draw[gry!70,line width=0.4pt] (-1.42,4.88) rectangle (1.42,6.13);
   \begin{scope}[shift={(0,5.50)}]
-    \fill[ours!10] (-1.32,-0.54) -- (1.10,-0.20) -- (1.10,0.20) -- (-1.32,0.54) -- cycle;
-    \fill[ours!18] (-1.32,-0.38) -- (0.60,-0.12) -- (0.60,0.12) -- (-1.32,0.38) -- cycle;
-    \fill[ours!30] (-1.32,-0.22) -- (0.05,-0.06) -- (0.05,0.06) -- (-1.32,0.22) -- cycle;
-    \draw[oursd,line width=0.5pt] (-1.32,0.54) -- (1.10,0.20) -- (1.10,-0.20) -- (-1.32,-0.54);
-    \draw[oursd,line width=0.5pt] (-1.32,0.38) -- (0.60,0.12) -- (0.60,-0.12) -- (-1.32,-0.38);
-    \draw[oursd,line width=0.5pt] (-1.32,0.22) -- (0.05,0.06) -- (0.05,-0.06) -- (-1.32,-0.22);
-    \draw[gry,line width=0.5pt,dash pattern=on 0.6pt off 1.6pt] (-1.34,0.0) -- (1.34,0.0);
+    \panelC
   \end{scope}
   \node[txt,anchor=north] at (0,4.74) {family $\mathcal G=\{\pi_\mu\}$ of bands\\ fit-free: $|\hat p_t-p^\star|\ge m$};
 \end{scope}
@@ -102,15 +88,9 @@
   \node[txt] at (0,6.40) {fastest feasible rule $\hat\pi$};
   \draw[gry!70,line width=0.4pt] (-1.42,4.88) rectangle (1.42,6.13);
   \begin{scope}[shift={(0,5.50)}]
-    \fill[warn!7] (-1.40,0.04) rectangle (1.40,0.61);
-    \draw[warn,line width=0.7pt,dash pattern=on 2.4pt off 1.4pt] (-1.40,0.04) -- (1.40,0.04);
-    \node[txt,text=warn,anchor=south east] at (1.36,0.08) {$\alpha$};
-    \foreach \x/\y in {-1.00/0.47,-0.70/0.34,-0.40/0.19}{\fill[gry] (\x,\y) circle (0.55mm);}
-    \node[txt,rotate=90,anchor=north] at (-1.37,-0.28) {risk};
-    \node[txt,anchor=south east] at (1.38,-0.61) {time};
-    \foreach \x/\y in {-0.16/-0.08,0.18/-0.17,0.52/-0.23,0.84/-0.26,1.10/-0.28}{\fill[ours] (\x,\y) circle (0.55mm);}
-    \draw[warn,line width=0.7pt] (-0.16,-0.08) circle (1.25mm);
-    \node[txt,text=warn,anchor=east] at (-0.33,-0.30) {$\hat\pi$};
+    \panelD
+    \node[txt,text=warn,anchor=south east] at (1.38,\panelDalpha+0.02) {$\alpha$};
+    \node[txt,text=warn,anchor=north] at (\panelDsx-0.05,\panelDsy-0.12) {$\hat\pi$};
   \end{scope}
   \node[txt,anchor=north] at (0,4.74) {risk $+$ slack $\le\alpha$;\\ else the endpoint assay};
 \end{scope}
@@ -140,18 +120,12 @@
 % example path in the certified band
 \begin{scope}
   \draw[gry!70,line width=0.4pt] (13.75,1.38) rectangle (18.10,3.15);
-  \fill[ours!13] (13.88,3.00) -- (17.50,2.45) -- (17.50,2.07) -- (13.88,1.53) -- cycle;
-  \draw[oursd,line width=0.6pt] (13.88,3.00) -- (17.50,2.45);
-  \draw[oursd,line width=0.6pt] (13.88,1.53) -- (17.50,2.07);
-  \node[txt,text=oursd,anchor=west] at (17.56,2.45) {$b_t$};
-  \node[txt,text=oursd,anchor=west] at (17.56,2.07) {$a_t$};
-  \draw[gry,line width=0.5pt,dash pattern=on 0.6pt off 1.6pt] (13.85,2.265) -- (17.50,2.265);
-  \draw[ink,line width=0.8pt] (13.88,2.265) .. controls (14.5,2.02) and (15.15,2.52) .. (15.65,2.36)
-        .. controls (16.05,2.24) and (16.30,2.44) .. (16.60,2.588);
-  \fill[warn] (16.60,2.588) circle (0.65mm);
-  \node[txt,text=warn,anchor=south west] at (16.66,2.64) {stop};
-  \draw[gry,line width=0.5pt,dash pattern=on 0.6pt off 1.6pt] (16.60,2.588) -- (16.60,1.38);
-  \node[txt,anchor=north] at (16.60,1.33) {$\tau$};
+  \panelE
+  \node[txt,text=oursd,anchor=west] at (17.56,\panelEbu) {$b_t$};
+  \node[txt,text=oursd,anchor=west] at (17.56,\panelEbd) {$a_t$};
+  \node[txt,text=warn,anchor=west] at (\panelEtx+0.10,\panelEty) {stop};
+  \draw[gry,line width=0.5pt,dash pattern=on 0.6pt off 1.6pt] (\panelEtx,\panelEty) -- (\panelEtx,1.38);
+  \node[txt,anchor=north] at (\panelEtx,1.33) {$\tau$};
   \node[txt,anchor=north east] at (18.10,1.33) {time};
   \node[txt,rotate=90,anchor=south] at (13.72,2.265) {$\hat p_t$};
 \end{scope}
