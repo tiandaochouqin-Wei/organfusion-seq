@@ -12,7 +12,7 @@ L = []
 # ---------------- S20
 S = rd("table_semisynthetic_thm2.csv")
 L += [r"\begin{table}[t]\centering\small",
-      r"\caption{\textbf{Theorem~2 with every term known exactly (supports Sec.~6.5).} Semi-synthetic Bayesian model:",
+      r"\caption{\textbf{Theorem~2 with every term known exactly (supports Sec.~4.5).} Semi-synthetic Bayesian model:",
       r"$y\sim\mathrm{Bernoulli}(1/2)$, twelve observations i.i.d.\ $\mathcal N(\pm0.5,1)$ given $y$, so the true posterior is a",
       r"Markov process (Assumption~1); $c_{\rm FP}{=}1$, $c_{\rm FN}{=}3$ ($L{=}3$, $p^\star{=}1/4$), $\lambda{=}0.006$ per step.",
       r"(a)~The deployed estimate is $\hat p=\sigma(\gamma\,\mathrm{logit}\,p)$, a monotone recalibration, so",
@@ -39,7 +39,7 @@ L += [r"\bottomrule\end{tabular}\end{table}", ""]
 # ---------------- S21
 B = rd("table_paired_bootstrap.csv")
 L += [r"\begin{table}[t]\centering\small",
-      r"\caption{\textbf{Paired condition-level bootstrap of Table~3 (supports Sec.~6.2).} All rules on the same organoids and",
+      r"\caption{\textbf{Paired condition-level bootstrap of Table~3 (supports Sec.~4.2).} All rules on the same organoids and",
       r"the same leave-condition-out posterior; the $18$ conditions are resampled with replacement ($B{=}2000$), each rule's",
       r"error--time frontier is recomputed on every replicate, and the difference in hours to reach the target error is",
       r"recorded (negative: the first rule is faster). Intervals that cover $0$ mean no stable difference.}\label{tab:pairedboot}",
@@ -58,7 +58,7 @@ E = rd("table_ece_sensitivity.csv")
 SCH = [("width5", "5 equal-width"), ("width10", "10 equal-width (used)"), ("width15", "15 equal-width"),
        ("width20", "20 equal-width"), ("mass10", "10 equal-mass")]
 L += [r"\begin{table}[t]\centering\small",
-      r"\caption{\textbf{ECE at the stopping time under five binnings (supports Sec.~6.5 and Fig.~6).} Plug-in Bellman band on",
+      r"\caption{\textbf{ECE at the stopping time under five binnings (supports Sec.~4.5 and Fig.~6).} Plug-in Bellman band on",
       r"the leave-condition-out organoid posterior after scaling the logits by $\gamma$ (as in Fig.~6); ECE$_{\rm stop}$ is",
       r"stratified by stopping horizon; brackets: condition-level bootstrap $95\%$ interval ($B{=}1000$). ``argmin'': the",
       r"$\gamma$ minimizing ECE$_{\rm stop}$ (the cost is minimized at $\gamma{=}0.9$); $\rho$: Spearman correlation of",

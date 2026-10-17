@@ -7,7 +7,7 @@ LAB = {"none": "none", "ltt": "Learn-then-Test, organoids", "hoeffding": "Hoeffd
        "crc-condition": "conditions (Thm.~4)"}
 L = [r"\begin{table}[t]\centering\small",
      r"\caption{\textbf{Theorem~4 exactly as stated: a posterior frozen before the calibration conditions are seen",
-     r"(supports Sec.~6.4).} In each of $50$ random splits the shared prefix encoder is fitted on $6$ conditions and frozen,",
+     r"(supports Sec.~4.4).} In each of $50$ random splits the shared prefix encoder is fitted on $6$ conditions and frozen,",
      r"and the other $12$ are assigned at random to $8$ calibration and $4$ test conditions, so the margin family does",
      r"not depend on the calibration conditions and calibration and test conditions are exchangeable---no cross-fitting.",
      r"Training on six conditions makes the shift harder than in Table~6 (held-out $24$\,h AUC $0.84$, range",

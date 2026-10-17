@@ -50,7 +50,7 @@ open("_anytrigger_main.tex", "w", encoding="utf-8").write("\n".join(L) + "\n")
 
 # ---------------- supplementary tables
 S = [r"\begin{table*}[t]\centering\small",
-     r"\caption{\textbf{Certifying the published triggers under condition drift: organoids (supports Sec.~6.4 and",
+     r"\caption{\textbf{Certifying the published triggers under condition drift: organoids (supports Sec.~4.4 and",
      r"Table~\ref{tab:anytrigger_main_ref}).} Each trigger is swept over $24$ delay weights",
      r"($2\cdot10^{-4}$--$6\cdot10^{-2}$/h; consecutive weights that give identical decisions are merged), fitted",
      r"out-of-fold by condition (5-fold GroupKFold over the $18$ conditions) on the same leave-condition-out posterior,",
@@ -76,7 +76,7 @@ for f in FAMS:
 S += [r"\bottomrule\end{tabular*}}\end{table*}", ""]
 S += [r"\begin{table}[t]\centering\small",
       r"\caption{\textbf{Certifying the published triggers with exchangeable units: the $40$ UCR datasets (supports",
-      r"Sec.~6.4).} Each trigger is fitted on the out-of-fold training posteriors at twelve delay weights and applied to the",
+      r"Sec.~4.4).} Each trigger is fitted on the out-of-fold training posteriors at twelve delay weights and applied to the",
       r"test split; the test series are halved at random into calibration and deployment ($R{=}50$ per dataset, the",
       r"splits of Table~\ref{tab:ucrcert}). ``sets'': datasets on which some rule is certifiable; ``splits'': certifiable",
       r"(dataset, split) pairs; ``holds'': share of those on which both deployment-half rates meet $\alpha$.}",
