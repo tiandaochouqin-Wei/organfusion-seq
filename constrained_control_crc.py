@@ -25,7 +25,7 @@ alpha - (B - alpha)/m  (= 0.122 for alpha=0.20, m=9), and the guarantee is in ex
 To keep the guarantee rigorous the certified family must NOT be fitted on the calibration
 conditions (else the calibration losses are in-sample and no longer exchangeable with a new
 condition's loss). The primary certified family is therefore the deployed constant-margin band
-(|p_hat - 1/2| >= m, the "ours" of Table V; E2b showed it within 1 h of the Bayes-DP band),
+(|p_hat - 1/2| >= m, the "ours" of Table 3; E2b showed it within 1 h of the Bayes-DP band),
 which needs no fitting; fixed-time is certified the same way for the comparison. The
 Lagrangian-DP family of Algorithm 1 is also run, with its transition kernel fitted on the
 calibration conditions, and flagged as a kernel-reuse arm (mild in-sample dependence).
@@ -309,4 +309,4 @@ for eps in (0.05, 0.10):
           f"(delta={DELTA}, |G|=51): m >= {np.log(2*51/DELTA)/(2*eps**2):.0f};  single policy: m >= {np.log(2/DELTA)/(2*eps**2):.0f}")
 print("Reading: 'E[FP_new]'/'E[FN_new]' average the per-condition losses over all R x 9 = 450 held-out (split, condition) pairs;")
 print("the condition-level certificate promises these are <= alpha (in expectation), NOT that every split's pooled")
-print("rate is <= alpha. 'test-holds' (pooled rate <= alpha on that split) is reported for continuity with Table VII.")
+print("rate is <= alpha. 'test-holds' (pooled rate <= alpha on that split) is reported for continuity with Table 6.")

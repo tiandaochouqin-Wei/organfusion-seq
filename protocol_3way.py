@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """Phase 2/3 fix (3): a strict train / calibration / test protocol.
 
-Why this exists (reviewer point, Sec. 10 of the revision plan): the deployed
+Why this exists: the deployed
 evaluation cross-fits the posterior and then sweeps the band margin on the SAME
 organoids it reports. Even with leakage-free grouping, the operating point is chosen
 using the data it is scored on -- exactly the "do not tune calibration parameters on
@@ -10,7 +10,7 @@ the test set" objection. The finite-sample certificate (Thm. 3) is stated for a
 policy selected on an independent calibration sample, so the reported protocol should
 match the theory.
 
-Protocol (the reviewer's outer/inner structure, at the finest grouping the public
+Protocol (an outer/inner structure, at the finest grouping the public
 data supports -- 18 (cell x drug x conc) conditions; there are no well/plate ids):
   TRAIN  (10 conditions) : fit the shared prefix encoder (build_posterior_shared.py)
   CAL     (4 conditions) : fit probability calibration (temperature / isotonic / beta)

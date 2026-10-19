@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 """Stage 3Q: LaTeX for Supplementary Table S19 from posterior/table_crc_outer_split.csv (crc_outer_split.py)."""
 import csv
+from decimal import Decimal, ROUND_HALF_UP   # exact half-way cells (0.535, 0.945, ...) round up
 R = list(csv.DictReader(open("posterior/table_crc_outer_split.csv", encoding="utf-8")))
 LAB = {"none": "none", "ltt": "Learn-then-Test, organoids", "hoeffding": "Hoeffding, organoids (Thm.~3)",
        "crc-condition": "conditions (Thm.~4)"}
@@ -21,7 +22,7 @@ for i, a in enumerate(("0.15", "0.2", "0.25")):
         r = next(x for x in R if x["alpha"] == a and x["selection"] == sel)
         L.append(f"{'$%.2f$' % float(a) if sel == 'none' else ''} & {LAB[sel]} & {r['holds']}/{r['n_splits']} & "
                  f"{float(r['mean_time_h']):.1f} & {float(r['E_FP_new']):.3f} & {float(r['E_FN_new']):.3f} & "
-                 f"{float(r['frac_cond_within']):.2f} & {r['endpoint_returned']}/{r['n_splits']}\\\\")
+                 f"{Decimal(r['frac_cond_within']).quantize(Decimal('0.01'), rounding=ROUND_HALF_UP)} & {r['endpoint_returned']}/{r['n_splits']}\\\\")
     if i < 2: L.append(r"\midrule")
 L += [r"\bottomrule\end{tabular}\end{table}"]
 open("_outer_split_supp.tex", "w", encoding="utf-8").write("\n".join(L) + "\n")

@@ -9,7 +9,7 @@ Task construction (mirrors the organoid/PhysioNet setup so the comparison is hon
   - Each engine is a run-to-failure trajectory of 21 sensors (15 informative in FD001).
   - We observe an EARLY prefix (first T cycles) and must decide, per engine, whether it
     will enter a maintenance window (RUL <= H cycles) -- a binary early-warning label,
-    the standard binarization of the RUL regression (reviewer Sec. on C-MAPSS).
+    the standard binarization of the RUL regression.
   - The controller decides WHEN to stop observing and commit that call, under the same
     objective J = E[lambda*tau + rho(p_hat_tau)] as the other two domains.
 

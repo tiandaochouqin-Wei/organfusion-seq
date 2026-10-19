@@ -5,7 +5,7 @@
 rebuild_chain_shared.py only stored the dominance COUNT per held-out stratum ("4/4"). This script
 re-runs the identical transfer loop (same producer, same seed, same four margins, same matched
 fixed-time interpolation, never extrapolating) and stores, per stratum and margin, the controller's
-error and time, the matched fixed time and the hours saved -- the data behind the Fig. 3d matrix.
+error and time, the matched fixed time and the hours saved -- the data behind the Fig. 4(a) matrix.
 Built-in check: the AUC@24h and the dominance counts must reproduce table_chain_shared_transfer.csv.
 
 Output: posterior/table_shift_matrix.csv

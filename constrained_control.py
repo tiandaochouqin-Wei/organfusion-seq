@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """(1) Unify the three boundary constructions into ONE constrained optimal control
-problem (reviewer Sec. 7).
+problem.
 
-The objection is correct and substantive: the paper currently contains three
+Without this step the method involves three
 different objects all called "the band" --
   (i)   the Bellman-optimal band of Theorem 1,
   (ii)  the PPV/NPV thresholds of Prop. riskcov, which Algorithm 1 actually deploys,
   (iii) the fixed symmetric margin |p-0.5|>=m that the experiments sweep,
 and they cannot be written as one optimal controller.
 
-The reviewer's prescription, implemented here verbatim:
+The unified problem:
 
     min_pi  E[ lambda_t * tau + lambda_m * N_tau ]      (observation cost)
     s.t.    Pr(delta=1, Y=0) <= alpha_FP
@@ -51,7 +51,7 @@ DELTA = 0.10       # certificate level
 R = 50             # raised from 10 (Stage 3F, A3): a single-digit split count let one unlucky
                     # split move "holds" by one; 50 gives a stable read of how often the
                     # organoid-level certificate fails under condition drift (it is expected to
-                    # fail sometimes here -- that failure motivates Theorem 4/Table 8, not a bug)
+                    # fail sometimes here -- that failure motivates Theorem 4/Table 7, not a bug)
 
 d = np.load(os.path.join(OUT, "posterior_data_shared_strat.npz"), allow_pickle=True)
 P = d["P_group"]                      # leave-condition-out shared-encoder posterior

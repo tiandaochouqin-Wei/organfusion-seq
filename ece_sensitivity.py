@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """Stage 3R: how much does ECE_stop depend on the binning, and how noisy is it?
 
-ECE_stop in Fig. 6 / Table S9 is the stopped-posterior ECE with 10 equal-width bins, stratified by
+ECE_stop in Fig. 6 / Table S22 is the stopped-posterior ECE with 10 equal-width bins, stratified by
 stopping horizon. Here, for the plug-in Bellman band of stage3a_calib_regret.py (same posterior, same
 lambda, same gamma sweep), it is recomputed with 5, 10, 15 and 20 equal-width bins and with 10
 equal-mass bins, with a condition-level bootstrap 95% interval (B = 1000), and the number of stopped
@@ -80,7 +80,7 @@ for g in GAMMAS:
         pt = ece_stop(ps, tt, y, np.ones(N), s)
         bs = [ece_stop(ps, tt, y, w, s) for w in W]
         lo, hi = np.percentile(bs, [2.5, 97.5]); est[s][g] = pt
-        rows.append(dict(gamma=g, scheme=s, ece_stop=round(pt, 4), ci_lo=round(lo, 4), ci_hi=round(hi, 4),
+        rows.append(dict(gamma=g, scheme=s, ece_stop=round(pt, 6), ci_lo=round(lo, 4), ci_hi=round(hi, 4),
                          cost=round(cost[g], 4), min_stopped_per_horizon=min(counts.values()),
                          horizons_used=len(counts)))
 cmin = min(cost.values())

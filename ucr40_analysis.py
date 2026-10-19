@@ -6,7 +6,7 @@
                 each dataset; Friedman test, Nemenyi critical difference, Holm-corrected Wilcoxon
                 tests of the constant-margin rule against every other rule;
   2. W/T/L      delay weights won / tied / lost (margin 1e-3) against the fixed horizon, both the
-                TEST-oracle one of Table 7 and the like-for-like one chosen on TRAIN;
+                TEST-oracle one of Supplementary Table S14 and the like-for-like one chosen on TRAIN;
   3. certificates  with the frozen posterior, the TEST set is split at random into a calibration
                 and a deployment half (exchangeable units, R = 50): no slack / Hoeffding
                 (Theorem 3) / Learn-then-Test, alpha_FP = alpha_FN = alpha; how often a rule is

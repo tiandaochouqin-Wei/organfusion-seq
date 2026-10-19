@@ -2,19 +2,19 @@
 # -*- coding: utf-8 -*-
 """Phase 2/3 fix (1): replace the per-horizon posterior with a SHARED prefix encoder.
 
-Why this exists (reviewer point, Sec. 9 of the revision plan): the deployed pipeline
+Why this exists: the deployed pipeline
 (`build_posterior.py`) fits an INDEPENDENT LogisticRegression at each of the 13
 horizons. Nothing ties p_12, p_18, p_24 ... together, so the resulting sequence need
 not behave like a coherent posterior (the theory assumes p_t = Pr(y=1|F_t) is a
 bounded martingale), and the DP transition kernel estimated from consecutive columns
 can be unstable. This is a methodological defect, not a missing baseline.
 
-Fix, following the reviewer's prescription h_t = f_theta(x_{1:t}, z):
+Fix, following the prescription h_t = f_theta(x_{1:t}, z):
   ONE GRU encoder over the prefix, ONE condition embedding, ONE output head, shared
   across all prefix lengths. Running the GRU once over the 13-point grid yields the
   hidden state at EVERY prefix length in a single pass, so a single set of weights
   produces the whole p_t path. Trained with loss sum_j w_j BCE(y, p_j) over all
-  prefixes (the all-prefix form of the reviewer's random-truncation objective
+  prefixes (the all-prefix form of the random-truncation objective
   T_i ~ U{12..72}; using every prefix is its lower-variance version).
 
 Evaluation is leakage-free: out-of-fold posteriors via GroupKFold over the 18
@@ -22,7 +22,7 @@ Evaluation is leakage-free: out-of-fold posteriors via GroupKFold over the 18
 data exposes (there are no well/plate ids).
 
 Reports the diagnostic that actually decides whether the fix worked: martingale
-coherence of the p_t path (the reviewer's own failure example was p_12=0.8,
+coherence of the p_t path (an incoherent example is p_12=0.8,
 p_18=0.3, p_24=0.9).
 
 Outputs:
@@ -137,7 +137,7 @@ with open(os.path.join(OUT, "table_shared_auc.csv"), "w", newline="", encoding="
 #   TV      : mean total variation sum_j |p_{j+1}-p_j| of a path. A martingale path
 #             still moves, but incoherent per-horizon models add spurious churn.
 #   revers. : mean number of sign changes of the increment along a path (the
-#             reviewer's 0.8 -> 0.3 -> 0.9 pathology).
+#             0.8 -> 0.3 -> 0.9 pathology).
 # ---------------------------------------------------------------------------
 def coherence(P):
     bins = np.linspace(0, 1, 11)

@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""(c1) The fusion ablation the reviewer asked for (Sec. 6), run properly.
+"""(c1) The fusion ablation, run properly.
 
-The reviewer's request: compare last-step feature / mean pooling / max pooling /
+The design: compare last-step feature / mean pooling / max pooling /
 unconstrained temporal attention / simplex temporal attention, each also with
 temperature scaling, plus isotonic and beta calibration -- and report AUC, Brier,
 ECE, MCE, calibration slope, calibration intercept, decision error, mean stopping
-time and total control cost for each. Their decision rule, which we adopt verbatim:
+time and total control cost for each. Decision rule:
 "if Simplex only improves ECE but does not improve control cost, list it as a
 secondary module rather than a core innovation."
 
@@ -35,7 +35,7 @@ D = load_data()
 y = D["y"]; GRID = D["GRID"]; N, T = D["N"], D["T"]; groups = D["groups"]
 
 POOLS = ["last", "mean", "max", "attn_unconstrained", "attn_simplex"]
-# reviewer asked for plain-attention+temperature and simplex+temperature explicitly;
+# plain-attention+temperature and simplex+temperature are included explicitly;
 # we run every pooling x every calibrator so the claim cannot be cherry-picked.
 CALS = ["none", "temperature", "isotonic", "beta"]
 
@@ -74,8 +74,8 @@ with open(os.path.join(OUT, "table_fusion_ablation.csv"), "w", newline="", encod
     for r in rows:
         w.writerow([r[0], r[1]] + [round(float(x), 5) for x in r[2:]])
 
-# ---- the reviewer's own decision rule, applied ----
-print("\n=== reviewer's test: does simplex improve CONTROL COST, or only ECE? ===")
+# ---- the decision rule, applied ----
+print("\n=== decision rule: does simplex improve CONTROL COST, or only ECE? ===")
 def get(pool, cal, key):
     i = {"ECE": 4, "J": 10}[key]
     return [r[i] for r in rows if r[0] == pool and r[1] == cal][0]

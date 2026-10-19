@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Stage 3O: all seven Supplementary figures (S1-S7), one script, one style.
+"""Stage 3O: all eight Supplementary figures (S1-S8), one script, one style.
 
 Before this, S1-S4 came from regen_supp_figs.py and S5-S7 were assembled in LaTeX from
 single panels of figs_ieee.py, each included at its own scale factor -- so the lettering
@@ -128,7 +128,7 @@ j24 = int(np.where(GRID == 24)[0][0]); a = xg[:, j24]; b = xg[:, -1]
 r_p = pearsonr(a, b)[0]; r_s = spearmanr(a, b)[0]
 fig = plt.figure(figsize=(3.1, 2.65))
 ax = fig.add_axes([0.150, 0.165, 0.825, 0.805])
-ax.scatter(a[y == 0], b[y == 0], s=4, facecolors="white", edgecolors=INK, linewidths=0.4, label="resistant")
+ax.scatter(a[y == 0], b[y == 0], s=4, facecolors="white", edgecolors="#D95319", linewidths=0.4, label="resistant")
 ax.scatter(a[y == 1], b[y == 1], s=4, color=OURS, linewidths=0, alpha=0.75, label="sensitive")
 ax.axhline(0.9, color=FIX, ls=":", lw=0.8)
 ax.text(a.max() * 0.99, 1.0, r"$\theta$ = 0.9", ha="right", va="bottom", fontsize=F, color=FIX, bbox=HALO)
@@ -147,7 +147,7 @@ tt, dd, ex = controller(P, 0.30)
 fig = plt.figure(figsize=(5.9, 2.25))
 gs = GridSpec(1, 2, figure=fig, width_ratios=[1.45, 0.72], left=0.070, right=0.800, top=0.905, bottom=0.205, wspace=0.34)
 ax = fig.add_subplot(gs[0, 0])
-RIDGE = [("Lap", CAL), ("Stauro", OURS), ("Ner", OURS_D)]
+RIDGE = [("Lap", "#7F7F7F"), ("Stauro", OURS), ("Ner", OURS_D)]
 yt = []
 for k, (dg_, c) in enumerate(RIDGE):
     tdg = tt[drug == dg_]; frac = np.array([(tdg == g).mean() for g in GRID])
@@ -167,7 +167,7 @@ for dg_ in DRUGS:
     comp.append([(ex[mk] & (dd[mk] == 1)).mean(), (ex[mk] & (dd[mk] == 0)).mean(), (~ex[mk]).mean()])
 comp = np.array(comp) * 100
 xs = np.arange(3)
-ax.bar(xs, comp[:, 0], color=OURS, edgecolor=INK, lw=0.6, width=0.62, label="prioritise")
+ax.bar(xs, comp[:, 0], color=OURS, edgecolor=INK, lw=0.6, width=0.62, label="prioritize")
 ax.bar(xs, comp[:, 1], bottom=comp[:, 0], color="white", edgecolor=INK, lw=0.6, width=0.62, label="exclude")
 ax.bar(xs, comp[:, 2], bottom=comp[:, 0] + comp[:, 1], color=LGRY, edgecolor=INK, lw=0.6, width=0.62, hatch="/////", label="defer")
 ax.set_xticks(xs); ax.set_xticklabels([SHORT[d_] for d_ in DRUGS]); ax.set_ylabel("% of organoids")
@@ -263,7 +263,7 @@ ax.text(50, 0.16, r"$a_t$", fontsize=F, color=OURS_D, ha="center", va="center")
 ax.set_xlabel("time (h)"); ax.set_ylabel(r"band $(a_t, b_t)$"); ax.set_ylim(0, 1); ax.set_xlim(8, 84)
 ax.set_xticks([12, 36, 60]); ax.set_yticks([0, 0.5, 1])
 plabel(ax, "a", dx=-0.36)
-# (b) the EMPIRICAL band: an interval at every horizon, but not monotone
+# (b) the EMPIRICAL band: hull of {cont<rho} (raw set has gaps), not monotone
 ax = fig.add_subplot(gs[0, 1])
 bd_ = band_of(P_sh, 0.01); ts = np.array(list(bd_))
 lo = np.array([bd_[t][0] for t in ts]); hi = np.array([bd_[t][1] for t in ts])
@@ -278,7 +278,7 @@ Ks = kern(P_sh); V = rho_bc.copy()
 for j in range(T - 2, 5, -1):
     V = np.minimum(rho_bc, 0.01 * (GRID[j + 1] - GRID[j]) + Ks[j] @ V)
 ax.plot(bc, rho_bc, "-", color=INK, lw=1.1, label=r"stop cost $\rho$")
-ax.plot(bc, V, "--", color=OURS, lw=1.2, label="continue")
+ax.plot(bc, V, "--", color=OURS, lw=1.2, label=r"value $V_t$")
 ax.set_xlabel(r"posterior $p$"); ax.set_ylabel("cost / value")
 ax.set_ylim(0, 0.80); ax.set_yticks([0, 0.2, 0.4]); ax.set_xticks([0, 0.5, 1]); ax.set_xticklabels(["0", "0.5", "1"])
 ax.legend(loc="upper left", bbox_to_anchor=(-0.04, 1.05), handlelength=1.9, labelspacing=0.15, **LEG)
@@ -328,7 +328,7 @@ plabel(ax, "a", dx=-0.25)
 # (b) stopping time by drug as a raincloud
 ax = fig.add_subplot(gs[0, 1])
 rng_b = np.random.default_rng(2)
-cols3 = {"Stauro": OURS, "Ner": OURS_D, "Lap": CAL}
+cols3 = {"Stauro": OURS, "Ner": OURS_D, "Lap": "#7F7F7F"}
 for i, g_ in enumerate(["Stauro", "Ner", "Lap"], 1):
     v = tt[drug == g_]; c = cols3[g_]
     kde = gaussian_kde(v, bw_method=0.3)
@@ -348,10 +348,10 @@ ax = fig.add_subplot(gs[0, 2])
 rng = np.random.default_rng(3)
 sens = rng.choice(np.where(y == 1)[0], 2, replace=False); res = rng.choice(np.where(y == 0)[0], 2, replace=False)
 for i in sens: ax.plot(GRID, P[i], "-o", color=OURS, ms=2.6, lw=1.1)
-for i in res: ax.plot(GRID, P[i], "--s", color=INK, ms=2.6, lw=1.0, mfc="white")
+for i in res: ax.plot(GRID, P[i], "--s", color="#D95319", ms=2.6, lw=1.0, mfc="white")
 ax.axhline(0.5, color=FIX, ls=":", lw=0.8)
 ax.set_xlabel("time (h)"); ax.set_ylabel(r"posterior $\hat p_t$"); ax.set_ylim(0, 1); ax.set_xticks([12, 24, 36, 48, 60, 72]); ax.set_yticks([0, 0.5, 1])
-ax.plot([], [], "-o", color=OURS, ms=2.6, label="sensitive"); ax.plot([], [], "--s", color=INK, ms=2.6, mfc="white", label="resistant")
+ax.plot([], [], "-o", color=OURS, ms=2.6, label="sensitive"); ax.plot([], [], "--s", color="#D95319", ms=2.6, mfc="white", label="resistant")
 ax.legend(loc="lower left", bbox_to_anchor=(-0.02, -0.03), handlelength=2.0, **LEG)
 plabel(ax, "c", dx=-0.22)
 save(fig, "figS6_motivation")
@@ -396,7 +396,7 @@ from matplotlib.colors import LinearSegmentedColormap, Normalize
 LOSS = "#D95319"; TIE = "#E4E4E4"; TOL8 = 1e-3
 ub = [r for r in rows("table_etsc_ucr_binary40.csv") if r["posterior"] == "raw"]
 rk8 = rows("table_ucr40_ranks.csv")
-NAME8 = {"const_margin(train-selected)": "constant margin (ours)", "bayes_dp_band(train-kernel)": "Bellman band (ours)",
+NAME8 = {"const_margin(train-selected)": "CertStop (margin)", "bayes_dp_band(train-kernel)": "CertStop (Bellman)",
          "CALIMERA": "CALIMERA", "EconomyGamma": "EconomyGamma", "fixed(train-selected)": "fixed horizon",
          "TEASER-cost": "TEASER, cost criterion", "TEASER": "TEASER"}
 COL8 = {"const_margin(train-selected)": OURS, "bayes_dp_band(train-kernel)": OURS_D, "CALIMERA": CAL, "EconomyGamma": ECO,
@@ -448,7 +448,7 @@ strip8 = [m_ for m_ in order8 if m_ != "fixed(train-selected)"]
 dorder = sorted(dsets8, key=lambda d_: -np.mean(gain8[d_, "const_margin(train-selected)"]))
 S8 = np.array([[int((gain8[d_, m_] > TOL8).sum()) - int((gain8[d_, m_] < -TOL8).sum()) for d_ in dorder] for m_ in strip8])
 CM8 = LinearSegmentedColormap.from_list("wl", [LOSS, "#F6C9B4", "#FFFFFF", "#A8CEE8", OURS_D])
-ax = fig.add_axes([0.215, 0.385, 0.690, 0.200])
+ax = fig.add_axes([0.215, 0.355, 0.690, 0.200])
 ax.imshow(S8, cmap=CM8, norm=Normalize(-8, 8), aspect="auto", interpolation="nearest")
 for (r_i, c_i), v_ in np.ndenumerate(S8):                  # hatched where losses outnumber wins
     if v_ < 0:
@@ -460,7 +460,7 @@ ax.get_yticklabels()[strip8.index("const_margin(train-selected)")].set_fontweigh
 ax.set_xticks(range(len(dorder))); ax.set_xticklabels(dorder, rotation=90)
 ax.tick_params(length=0, pad=2.5)
 for sp in ax.spines.values(): sp.set_visible(False)
-cax = fig.add_axes([0.922, 0.385, 0.012, 0.200])
+cax = fig.add_axes([0.922, 0.355, 0.012, 0.200])
 cb = fig.colorbar(mpl.cm.ScalarMappable(Normalize(-8, 8), CM8), cax=cax, ticks=[-8, -4, 0, 4, 8])
 cb.ax.tick_params(length=1.8, width=0.5); cb.outline.set_linewidth(0.5); cb.set_label("wins $-$ losses", labelpad=2)
 plabel(ax, "c", dx=-0.301, dy=1.02)

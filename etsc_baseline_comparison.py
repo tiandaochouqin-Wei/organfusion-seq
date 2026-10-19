@@ -9,7 +9,7 @@ Achenchabe et al. 2021, MLJ), and CALIMERA (Bilski & Jastrzebska 2023, IPM) -- u
 Design (isolates the STOPPING RULE, exactly matching this paper's own E4
 methodology): all three external triggers are fed the SAME leave-condition-out
 cross-fitted posterior process (posterior_data_grouped.npz's P_group) that every
-other stopping rule in Table III is evaluated on -- they do not get to train their
+other stopping rule in Table 4 is evaluated on -- they do not get to train their
 own classifier, and neither do we get to use a posterior favourable to us; this is
 the best-case test for each external trigger given our best available probability
 estimates. Cost structure matches this paper's J = lambda*tau + rho(p_tau) exactly
@@ -45,7 +45,7 @@ d = np.load(os.path.join(OUT, "posterior_data_grouped.npz"), allow_pickle=True)
 P = d["P_group"]; y = d["y"].astype(int); GRID = d["GRID"].astype(int); groups = d["groups"]
 N, T = P.shape
 probas = np.stack([1 - P, P], axis=-1)  # (N, T, 2)
-print(f"N={N} T={T} conditions={len(set(groups.tolist()))}  (leave-condition-out posterior, same as Table III)")
+print(f"N={N} T={T} conditions={len(set(groups.tolist()))}  (leave-condition-out posterior, same as Table 4)")
 
 LAMBDAS = np.round(np.logspace(np.log10(0.0005), np.log10(0.05), 14), 6)
 folds = list(GroupKFold(5).split(P, y, groups))

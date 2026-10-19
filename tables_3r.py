@@ -17,13 +17,13 @@ L += [r"\begin{table}[t]\centering\small",
       r"Markov process (Assumption~1); $c_{\rm FP}{=}1$, $c_{\rm FN}{=}3$ ($L{=}3$, $p^\star{=}1/4$), $\lambda{=}0.006$ per step.",
       r"(a)~The deployed estimate is $\hat p=\sigma(\gamma\,\mathrm{logit}\,p)$, a monotone recalibration, so",
       r"$\Delta_{\rm info}{=}0$; the deployed rule is the exact recursion of Theorem~1 on $\hat p$ ($\eta{=}0$). All values are",
-      r"computed by dynamic programming on a fine log-odds grid, except ECE$_{\rm stop}$, the binned estimate the experiments",
+      r"computed by dynamic programming on a fine log-odds grid, except $\mathrm{ECE}_{\rm stop}$, the binned estimate the experiments",
       r"use, here from $20{,}000$ simulated units. (b)~The estimator sees only the sign of each observation, and the information",
       r"deficit $\Delta_{\rm info}=V_q-V$ is the same under every recalibration $\gamma$, and recalibration removes only the",
       r"excess over $V_q$.}\label{tab:semisyn}",
       r"\begin{tabular}{@{}lcccccc@{}}\toprule",
       r"\multicolumn{7}{@{}l}{\textit{(a) miscalibration only}}\\",
-      r"$\gamma$ & $J_{\rm dep}{-}V$ & $L[\kappa(\hat\tau){+}\kappa(\tau_q)]$ & ratio & $2L\bar\kappa$ & $\kappa(\hat\tau)$ & ECE$_{\rm stop}$\\\midrule"]
+      r"$\gamma$ & $J_{\rm dep}{-}V$ & $L[\kappa(\hat\tau){+}\kappa(\tau_q)]$ & ratio & $2L\bar\kappa$ & $\kappa(\hat\tau)$ & $\mathrm{ECE}_{\rm stop}$\\\midrule"]
 for r in S:
     if r["block"].startswith("A"):
         b = float(r["bound_i"]); ex = float(r["excess"])
@@ -40,7 +40,7 @@ L += [r"\bottomrule\end{tabular}\end{table}", ""]
 B = rd("table_paired_bootstrap.csv")
 L += [r"\begin{table}[t]\centering\small",
       r"\caption{\textbf{Paired condition-level bootstrap of Table~4 (supports Sec.~4.2).} All rules on the same organoids and",
-      r"the same leave-condition-out posterior; the $18$ conditions are resampled with replacement ($B{=}2000$), each rule's",
+      r"the same leave-condition-out posterior; the $18$ conditions are resampled with replacement ($B{=}2{,}000$), each rule's",
       r"error--time frontier is recomputed on every replicate, and the difference in hours to reach the target error is",
       r"recorded (negative: the first rule is faster). Intervals that cover $0$ mean no stable difference.}\label{tab:pairedboot}",
       r"\begin{tabular}{@{}lcccc@{}}\toprule",
@@ -58,11 +58,11 @@ E = rd("table_ece_sensitivity.csv")
 SCH = [("width5", "5 equal-width"), ("width10", "10 equal-width (used)"), ("width15", "15 equal-width"),
        ("width20", "20 equal-width"), ("mass10", "10 equal-mass")]
 L += [r"\begin{table}[t]\centering\small",
-      r"\caption{\textbf{ECE at the stopping time under five binnings (supports Sec.~4.5 and Fig.~6).} Plug-in Bellman band on",
-      r"the leave-condition-out organoid posterior after scaling the logits by $\gamma$ (as in Fig.~6); ECE$_{\rm stop}$ is",
-      r"stratified by stopping horizon; brackets: condition-level bootstrap $95\%$ interval ($B{=}1000$). ``argmin'': the",
-      r"$\gamma$ minimizing ECE$_{\rm stop}$ (the cost is minimized at $\gamma{=}0.9$); $\rho$: Spearman correlation of",
-      r"ECE$_{\rm stop}$ with excess cost over the twelve values of $\gamma$. At least $24$ organoids stop at each of the",
+      r"\caption{\textbf{ECE at the stopping time under five binnings (supports Sec.~4.5 and Fig.~6).} Plug-in Bellman band (kernel fitted in-sample, label-free) on",
+      r"the leave-condition-out organoid posterior after scaling the logits by $\gamma$ (as in Fig.~6); $\mathrm{ECE}_{\rm stop}$ is",
+      r"stratified by stopping horizon; brackets: condition-level bootstrap $95\%$ interval ($B{=}1{,}000$). ``argmin'': the",
+      r"$\gamma$ minimizing $\mathrm{ECE}_{\rm stop}$ (the cost is minimized at $\gamma{=}0.9$); $\rho$: Spearman correlation of",
+      r"$\mathrm{ECE}_{\rm stop}$ with excess cost over the twelve values of $\gamma$. At least $24$ organoids stop at each of the",
       r"$13$ horizons ($\gamma{=}0.9$).}\label{tab:ecesens}",
       r"\begin{tabular}{@{}lccccc@{}}\toprule",
       r"Binning & $\gamma{=}0.5$ & $\gamma{=}0.9$ & $\gamma{=}3$ & argmin & $\rho$\\\midrule"]
@@ -71,9 +71,12 @@ for key, lab in SCH:
     rr = {float(r["gamma"]): r for r in E if r["scheme"] == key}
     gs = sorted(rr); cmin = min(float(rr[g]["cost"]) for g in gs)
     rho = spearmanr([float(rr[g]["ece_stop"]) for g in gs], [float(rr[g]["cost"]) - cmin for g in gs]).statistic
-    arg = min(gs, key=lambda g: float(rr[g]["ece_stop"]))
+    # The CSV rounds ece_stop to 4 dp, which ties width20 at gamma 0.9 and 1.0 (both 0.0633). Unrounded
+    # (ece_sensitivity.py) the minimum is at 1.0 (0.063268 vs 0.063350), so ties go to the larger gamma;
+    # no other binning has a tie at its minimum.
+    arg = min(gs, key=lambda g: (float(rr[g]["ece_stop"]), -g))
     cell = lambda g: f"{float(rr[g]['ece_stop']):.3f} $[{float(rr[g]['ci_lo']):.3f},{float(rr[g]['ci_hi']):.3f}]$"
-    L.append(f"{lab} & {cell(0.5)} & {cell(0.9)} & {cell(3.0)} & {arg:g} & {rho:.2f}\\\\")
+    L.append(f"{lab} & {cell(0.5)} & {cell(0.9)} & {cell(3.0)} & {arg:.1f} & {rho:.2f}\\\\")
 L += [r"\bottomrule\end{tabular}\end{table}"]
 open("_supp_3r.tex", "w", encoding="utf-8").write("\n".join(L) + "\n")
 print("wrote _supp_3r.tex")

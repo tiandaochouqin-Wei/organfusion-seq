@@ -17,6 +17,32 @@ LAB = {"constant margin (ours)": r"\method{} (margin)", "CALIMERA": "CALIMERA", 
 ARMLAB = {"none": "none", "ltt": "LTT", "hoeffding": "Thm.~3", "crc-condition": "Thm.~4"}
 
 
+def _margin_crc_means():
+    """E[FP]/E[FN] of the margin family's condition-level rule as unrounded means over the fifty splits of
+    constrained_control_crc.py (the source of Table 7). table_certify_triggers_organoid.csv stores them at 4 dp,
+    and re-rounding 0.0895 prints 0.089 where Table 7 (mean 0.08953) prints 0.090."""
+    lines = []
+    for ln in open("posterior/table_constrained_control_crc.csv", encoding="utf-8"):
+        if ln.lstrip('"').startswith("#"): break  # per-split block ends at the first '# ...' section
+        lines.append(ln)
+    R = [r for r in csv.DictReader(lines) if r["family"] == "margin" and r["selection"] == "crc-condition"]
+    out = {}
+    for al in sorted({float(r["alpha"]) for r in R}):
+        rr = [r for r in R if abs(float(r["alpha"]) - al) < 1e-9]
+        out[al] = (sum(float(r["test_FP_condmean"]) for r in rr) / len(rr),
+                   sum(float(r["test_FN_condmean"]) for r in rr) / len(rr))
+    return out
+
+
+MARGIN_CRC = _margin_crc_means()
+
+
+def fpfn(f, al, row):
+    if f == "constant margin (ours)":
+        k = next(x for x in MARGIN_CRC if abs(x - al) < 1e-9); return MARGIN_CRC[k]
+    return float(row["E_FP_new"]), float(row["E_FN_new"])
+
+
 def a(part, fam, alpha, sel):
     return next(r for r in A if r["part"] == part and r["family"] == fam and abs(float(r["alpha"]) - alpha) < 1e-9
                 and r["selection"] == sel)
@@ -68,9 +94,9 @@ for f in FAMS:
     for al in (0.15, 0.20, 0.25):
         c = {s: a("A-drift", f, al, s) for s in ("none", "ltt", "hoeffding", "crc-condition")}
         k = {s: a("A-control-exchangeable", f, al, s) for s in ("ltt", "hoeffding")}
-        cr = c["crc-condition"]
+        cr = c["crc-condition"]; fp, fn = fpfn(f, al, cr)
         S.append(f"{LAB[f] if al == 0.15 else ''} & ${al:.2f}$ & " + " & ".join(f"{c[s]['holds']}/50" for s in c)
-                 + f" & {float(cr['mean_time_h']):.1f} & ${float(cr['E_FP_new']):.3f}/{float(cr['E_FN_new']):.3f}$"
+                 + f" & {float(cr['mean_time_h']):.1f} & ${fp:.3f}/{fn:.3f}$"
                  + f" & {k['ltt']['holds']}/50 & {k['hoeffding']['holds']}/50\\\\")
     if f != FAMS[-1]: S.append(r"\midrule")
 S += [r"\bottomrule\end{tabular*}}\end{table*}", ""]

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """C: systematic early-time-series-classification (eTSC) generality check.
 
-The reviewer/revision-doc warned against DUMPING a dozen mechanically-truncated UCR
+A natural concern is DUMPING a dozen mechanically-truncated UCR
 datasets. We answer that concern two ways: (1) we select only datasets where early
 classification has genuine decision-cost meaning (waiting to observe more of the
 series has a real price) -- ECG heartbeat typing, automotive fault detection,

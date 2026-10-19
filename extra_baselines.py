@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""(c2/c3) The two stopping baselines missing from seq_baselines.py, which the
-reviewer listed explicitly (Sec. 13.1): static selective classification with a
+"""(c2/c3) The two stopping baselines missing from seq_baselines.py, which are
+standard comparators: static selective classification with a
 waiting mechanism, and a reinforcement-learning stopping policy.
 
 Both are evaluated on the SAME leave-condition-out posterior process as every other

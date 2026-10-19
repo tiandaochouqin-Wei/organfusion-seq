@@ -13,7 +13,7 @@ protocol. The F-part's fig_dp_band.pdf is exploratory and not cited in the paper
 import os, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from paths import DATA_DIR  # $ORGANFUSION_DATA, or ./datasets (see README)
-import openpyxl, sys, json, numpy as np
+import os, openpyxl, sys, json, numpy as np
 sys.stdout.reconfigure(encoding="utf-8",errors="replace")
 from sklearn.model_selection import GroupKFold, cross_val_predict
 from sklearn.pipeline import make_pipeline
@@ -117,6 +117,7 @@ ax.plot(ta,aa,"-o",color="#0072B2",ms=3,lw=1.1); ax.plot(ta,bb,"-o",color="#0072
 ax.axhline(0.5,ls=":",color="k",lw=0.7); ax.text(66,0.52,"$p^\\star$",fontsize=7)
 ax.set_xlabel("observation time (h)"); ax.set_ylabel("posterior $\\hat p_t$"); ax.set_ylim(0,1)
 ax.set_title("Empirical optimal band tightens to the horizon (DP)",fontsize=7.3); ax.legend(loc="lower left",fontsize=6)
+os.makedirs("figures_regen",exist_ok=True)
 fig.savefig("figures_regen/fig_dp_band.pdf"); fig.savefig("figures_regen/fig_dp_band.png")
 print("  -> band tightens toward p* as t grows -> validates Theorem 1 structure. saved fig_dp_band.")
 json.dump({"E":Erows,"band":[(t,a,b) for (t,a),(_,b) in zip(a_t,b_t)]},open("E_F_results.json","w"))

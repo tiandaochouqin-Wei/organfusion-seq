@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""STEP 4: window-information decomposition (Fig.6 + Table III).
+"""STEP 4: window-information decomposition (Table S7; data behind Fig. S4).
 Reuses E10's separability definitions. Per-drug and per-(drug,conc):
 D_end, D_full, I_W=D_full-D_end, bound=sqrt(I_W)/(2 sqrt pi), measured dAUC.
-Fig.6: (a) D_end/I_W decomposition, (b) measured vs bound, (c) stratified I_W heatmap,
+Diagnostic figure fig6_window_info: (a) D_end/I_W decomposition, (b) measured vs bound, (c) stratified I_W heatmap,
 (d) endpoint-only vs trajectory AUC by horizon. REAL data."""
 import os, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -85,7 +85,7 @@ for T in GRID:
     Xt=np.array([win(recs[i][3],recs[i][4],6,T,Kful) for i in range(len(y))])      # full window
     endA.append(cv_auc(Xe,y,groups_all)); trajA.append(cv_auc(Xt,y,groups_all))
 
-# ---- Fig 6 ----
+# ---- diagnostic figure fig6_window_info ----
 fig=plt.figure(figsize=(7.0,4.7)); gs=GridSpec(2,2,figure=fig,hspace=0.62,wspace=0.36)
 ax=fig.add_subplot(gs[0,0]); x=np.arange(3)
 De=[DR[d][0] for d in DRUGS]; IW=[DR[d][2] for d in DRUGS]
@@ -110,9 +110,10 @@ ax.plot(GRID,endA,"-o",color=GRAY,ms=3,lw=1.4,label="endpoint-only")
 ax.plot(GRID,trajA,"-o",color=PRI,ms=3,lw=1.6,label="trajectory")
 ax.set_xlabel("horizon $T$ (h)");ax.set_ylabel("AUC");ax.legend(loc="lower right",fontsize=6.3)
 ax.text(0.5,-0.30,"(d)",transform=ax.transAxes,ha="center",va="top",fontsize=9,fontweight="bold")
+os.makedirs("figures_regen",exist_ok=True)
 for e in ("pdf","png","svg"): fig.savefig(f"figures_regen/fig6_window_info.{e}",dpi=600,bbox_inches="tight")
 plt.close(fig)
-# ---- Table III full ----
+# ---- Table S7 full ----
 with open("posterior/table3_window_info.csv","w",newline="",encoding="utf-8") as f:
     w=csv.writer(f);w.writerow(["drug","D_end","D_full","I_W","bound_sqrtIW_2sqrtpi","measured_dAUC","satisfied"])
     for d in DRUGS:

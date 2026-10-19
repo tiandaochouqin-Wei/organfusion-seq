@@ -21,7 +21,7 @@ Fig 4  RQ2-3 a shift matrix (hours saved per held-out stratum x margin) with AUC
              <- table_shift_matrix.csv | b regime maps: share of alpha left under Thm 3 / Thm 4
 Fig 5  RQ3   a raincloud of per-split test risk | b price vs per-condition coverage
              <- table_constrained_control_crc.csv
-Fig 6  RQ4-5 a reliability at the stopping time | b gamma path vs the 2L*ECE_stop bound |
+Fig 6  RQ4-5 a reliability at the stopping time | b gamma path vs the 2L*ECE_stop term |
              c |believed - realized| vs L*ECE_stop in four domains
              <- table_stage3a_calib_regret.csv + recomputed
 Fig 7  RQ5   win/tie/loss barcode per delay weight
@@ -77,7 +77,9 @@ CM_BEHIND = LinearSegmentedColormap.from_list("behind", ["#FFFFFF", "#FBDCC6", "
 CM_SAVED = LinearSegmentedColormap.from_list("saved", ["#F2F7FB", "#BBD9EC", "#5BA3D0", "#0072BD", "#00406A"])
 CM_POST = LinearSegmentedColormap.from_list("post", ["#8A3109", "#D95319", "#F6CFB2", "#FFFFFF", "#BBD9EC", "#0072BD", "#00406A"])
 CM_SHARE = LinearSegmentedColormap.from_list("share", ["#FFFFFF", "#CFE3F2", "#6FA8D4", "#0072BD", "#00406A"])
-CM_GAMMA = LinearSegmentedColormap.from_list("gamma", [CAL, "#8FB6C9", OURS, "#EDB120", "#A2142F"])
+# gamma ramp: every dot is CertStop (Bellman), so a blue ramp (gamma = 0.9 -> u = 0.5 -> OURS exactly); purple/amber/red
+# are reserved for CALIMERA / loss / violation elsewhere
+CM_GAMMA = LinearSegmentedColormap.from_list("gamma", ["#6FA8D4", OURS, OURS_D])
 HALO = dict(facecolor="white", edgecolor="none", pad=0.9, alpha=0.96)
 
 
@@ -393,7 +395,7 @@ grp_of = lambda s: "cell line" if s.startswith("cross-cell") else ("drug" if s.s
 CODE = {"cross-cell MCF-7->BT-474": r"M$\rightarrow$B", "cross-cell BT-474->MCF-7": r"B$\rightarrow$M",
         "leave-drug Lap": "Lap.", "leave-drug Ner": "Ner.", "leave-drug Stauro": "Stau.",
         "leave-conc 0.1uM": "0.1", "leave-conc 1.0uM": "1", "leave-conc 10.0uM": "10"}
-cols_g = {"cell line": OURS_D, "drug": OURS, "dose": CAL}
+cols_g = {"cell line": OURS_D, "drug": OURS, "dose": FIX}
 H = np.full((4, len(settings)), np.nan); auc = []
 for j, s in enumerate(settings):
     rr = [r for r in sm if r["setting"] == s]; auc.append(float(rr[0]["auc_24h"]))
@@ -415,13 +417,13 @@ for j in range(len(settings)):
             ax.text(j + 0.5, k + 0.5, f"{v:.1f}", ha="center", va="center", fontsize=F, color="white" if v > 15 else INK)
 ax.set_xlim(0, len(settings)); ax.set_ylim(4, 0)
 ax.set_yticks(np.arange(4) + 0.5); ax.set_yticklabels([f"{m_:.2f}" for m_ in np.linspace(0.10, 0.42, 4)])
-ax.set_ylabel("band margin $m$")
+ax.set_ylabel(r"band margin $\omega$")
 ax.set_xticks(np.arange(len(settings)) + 0.5); ax.set_xticklabels([CODE[s] for s in settings])
 for tl, s in zip(ax.get_xticklabels(), settings): tl.set_color(cols_g[grp_of(s)])
 ax.tick_params(length=0, pad=2)
 for sp in ax.spines.values(): sp.set_visible(False)
 for xs_ in (2, 5): ax.axvline(xs_, color="white", lw=2.4)
-for g_, x_ in (("cell line", 1.0), ("drug", 3.5), (r"dose ($\mu$M)", 6.5)):
+for g_, x_ in (("cell line", 1.0), ("drug", 3.5), ("dose (µM)", 6.5)):
     ax.text(x_, 4.86, "held-out " + g_, ha="center", va="top", fontsize=F, color=cols_g[g_.split(" (")[0]], fontweight="bold")
 cax = ax.inset_axes([1.022, 0.0, 0.022, 1.0])
 cb = fig.colorbar(mpl.cm.ScalarMappable(norm_s, CM_SAVED), cax=cax, ticks=[0, 10, 20, 30])
@@ -735,12 +737,12 @@ axh.set_yticks([]); axh.spines["left"].set_visible(False)
 axh.set_xlabel(r"predicted $\hat p_\tau$"); axh.set_xticks([0, 0.5, 1]); axh.set_xticklabels(["0", "0.5", "1"])
 plabel(ax, "a", dx=-0.30, dy=1.01)
 
-# ---- b: gamma path, excess vs ECE_stop with the 2L*ECE_stop bound (ring: gamma = 0.9)
+# ---- b: gamma path, excess vs ECE_stop with the 2L*ECE_stop term (an estimate, not a certified bound; ring: gamma = 0.9)
 ax = fig.add_subplot(gs[0, 1])
 xx = np.linspace(0, 0.26, 10)
 ax.fill_between(xx, 2 * xx, 0.5, color=RED, alpha=0.07, lw=0)
 ax.plot(xx, 2 * xx, "-", color=INK, lw=1.0)
-ax.text(0.047, 0.080, "bound", fontsize=F, va="center", ha="left")
+ax.text(0.047, 0.080, r"$2L\,\mathrm{ECE}_\mathrm{stop}$", fontsize=F, va="center", ha="left")
 for rule in ("margin_0.30", "dp_band"):
     rr = sorted([r for r in cr if r["rule"] == rule], key=lambda r: float(r["gamma"]))
     xs_ = np.array([float(r["ece_stop_strat"]) for r in rr]); ys_ = np.array([float(r["excess"]) for r in rr])
@@ -750,10 +752,10 @@ for rule in ("margin_0.30", "dp_band"):
         ax.scatter(xs_, ys_, c=gcol(gs_), s=17, edgecolor="white", lw=0.35, zorder=4)
         k9 = int(np.argmin(np.abs(gs_ - 0.9)))
         ax.scatter([xs_[k9]], [ys_[k9]], s=62, facecolor="none", edgecolor=INK, lw=0.9, zorder=5)
-        ax.text(xs_[-1] + 0.006, ys_[-1], r"$\gamma$=4", fontsize=F, va="center", ha="left", color=RED)
+        ax.text(xs_[-1] + 0.006, ys_[-1], r"$\gamma$=4", fontsize=F, va="center", ha="left", color=INK)
         k5 = int(np.argmin(np.abs(gs_ - 0.5)))
-        ax.annotate(r"$\gamma$=0.5", (xs_[k5], ys_[k5]), xytext=(0.062, 0.066), fontsize=F, color=CAL, ha="center", va="center",
-                    arrowprops=dict(arrowstyle="-", lw=0.5, color=CAL, shrinkA=1.0, shrinkB=3.0))
+        ax.annotate(r"$\gamma$=0.5", (xs_[k5], ys_[k5]), xytext=(0.062, 0.066), fontsize=F, color=INK, ha="center", va="center",
+                    arrowprops=dict(arrowstyle="-", lw=0.5, color=INK, shrinkA=1.0, shrinkB=3.0))
     else:
         ax.scatter(xs_, ys_, marker="s", s=11, facecolor="white", edgecolor=FIX, lw=0.6, zorder=3)
 ax.set_xlim(0, 0.26); ax.set_ylim(-0.003, 0.14); ax.set_xticks([0, 0.1, 0.2]); ax.set_yticks([0, 0.05, 0.10])
@@ -766,7 +768,8 @@ plabel(ax, "b", dx=-0.33, dy=1.01)
 
 # ---- c: Corollary 1 across four domains (filled: margin rules; open: fixed horizons)
 ax = fig.add_subplot(gs[0, 2])
-dstyle = {"organoids": (OURS, "o"), "sepsis": (RED, "D"), "FD004": (CAL, "^"), "FD001": (ECO, "s")}
+# domain hues carry no meaning elsewhere in the paper (purple/green/red = CALIMERA/EconomyGamma/violation); markers differ too
+dstyle = {"organoids": (OURS, "o"), "sepsis": ("#8C564B", "D"), "FD004": ("#CC79A7", "^"), "FD001": ("#2A8C8C", "s")}
 FLOOR = 3e-4
 lim = [FLOOR, 1.0]
 ax.fill_between(lim, lim, [1, 1], color=RED, alpha=0.07, lw=0)

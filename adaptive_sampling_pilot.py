@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """Phase 2 (adaptive-sampling PILOT, not the full controller): before building
-the reviewer-requested u_t in {STOP0, STOP1, Delta_1,...,Delta_M} controller
+the full u_t in {STOP0, STOP1, Delta_1,...,Delta_M} controller
 (a large undertaking), test the premise it depends on -- that the value of
 choosing WHEN to sample next (fine vs coarse spacing) is heterogeneous enough
 across organoid-states to be worth the added complexity, rather than a fixed
@@ -11,7 +11,7 @@ imaging finding, E12, suggests: cost is roughly flat from 0.5h to 12h cadence).
 Uses only the EXISTING 13-point GRID (already alternates ~3h / ~6h spacing) --
 no new data or dense re-parse needed. Introduces a genuine per-measurement cost
 lambda_m (distinct from the existing per-hour wait cost lambda_t), matching the
-reviewer's J_pi = E[... + lambda_t*tau + lambda_m*N_tau] formulation.
+J_pi = E[... + lambda_t*tau + lambda_m*N_tau] formulation.
 
 At each (grid index j, organoid) state, myopically compares three one-step
 actions: STOP now, fine-step to j+1, or coarse-step (skip j+1) to j+2 -- each

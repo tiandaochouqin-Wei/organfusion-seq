@@ -91,7 +91,7 @@ ENCODERS = {"GRU": GRUEnc, "TCN": TCNEnc, "Transformer": TransformerEnc}
 
 
 # --------------------------------------------------------------------------- #
-# Causal prefix pooling variants (the reviewer's Sec. 6 fusion ablation)
+# Causal prefix pooling variants (for the fusion ablation)
 # --------------------------------------------------------------------------- #
 def causal_pool(H, mode, score=None):
     """H:[B,T,D] -> G:[B,T,D] where G[:,t] aggregates ONLY H[:, :t+1].
@@ -119,7 +119,7 @@ def causal_pool(H, mode, score=None):
 
 class Producer(nn.Module):
     """encoder -> causal prefix pooling -> [g_t ; condition embedding] -> shared head.
-    One theta for every prefix length (the reviewer's h_t = f_theta(x_{1:t}, z))."""
+    One theta for every prefix length (h_t = f_theta(x_{1:t}, z))."""
     def __init__(self, enc="GRU", pool="last", d=32, d_cond=8):
         super().__init__()
         self.enc = ENCODERS[enc](d); self.pool = pool
@@ -191,7 +191,7 @@ CALIBRATORS = {"none": cal_none, "temperature": cal_temperature,
 
 
 # --------------------------------------------------------------------------- #
-# Metrics (the reviewer's Sec. 15 list)
+# Metrics
 # --------------------------------------------------------------------------- #
 def ece_mce(p, yv, nb=10):
     b = np.linspace(0, 1, nb + 1); e = 0.0; m = 0.0

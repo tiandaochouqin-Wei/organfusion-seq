@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Stage 3R: paired, condition-level bootstrap of the time differences behind Table 3.
+"""Stage 3R: paired, condition-level bootstrap of the time differences behind Table 4.
 
-Table 3 reports each rule's time to reach a target error; two separate intervals do not give the
+Table 4 reports each rule's time to reach a target error; two separate intervals do not give the
 interval of their difference. Here every rule is evaluated on the same organoids (the leave-condition-
-out posterior of Table 3), the 18 conditions are resampled with replacement (B = 2000), each rule's
+out posterior of Table 4), the 18 conditions are resampled with replacement (B = 2000), each rule's
 error-time frontier is recomputed on every replicate (lower envelope over its parameter, linear
-interpolation at the target error, as in Table 3) and the DIFFERENCES are recorded:
+interpolation at the target error, as in Table 4) and the DIFFERENCES are recorded:
     margin - CALIMERA,  margin - fixed horizon,  CALIMERA - fixed horizon,   at errors 0.12 ... 0.24.
 CALIMERA is fitted out-of-fold by condition exactly as in etsc_baseline_comparison.py.
 Output: posterior/table_paired_bootstrap.csv
@@ -37,7 +37,7 @@ fam["margin"] = mem
 fam["fixed"] = [(np.full(N, GRID[j]), ((P[:, j] >= 0.5).astype(int) != y).astype(float)) for j in range(T)]
 probas = np.stack([1 - P, P], axis=-1); folds = list(GroupKFold(5).split(P, y, groups))
 mem = []
-for lam in np.round(np.logspace(np.log10(0.0005), np.log10(0.05), 14), 6):        # Table 3's grid
+for lam in np.round(np.logspace(np.log10(0.0005), np.log10(0.05), 14), 6):        # Table 4's grid
     tau = np.zeros(N); call = np.zeros(N, int)
     for tr, te in folds:
         tau[te], call[te] = fit_predict(CALIMERA, {}, lam, GI, GI[-1], probas[tr], y[tr], probas[te])

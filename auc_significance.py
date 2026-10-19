@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """Phase 2 (AUC significance): pairwise DeLong test + paired bootstrap for every
-model pair in Table II (fixed-time baselines) at T=24h and T=48h. Answers the
-reviewer question directly: is RF (0.875 @24h) significantly different from the
+model pair in Table S11 (fixed-time baselines) at T=24h and T=48h. Answers the
+question directly: is RF (0.875 @24h) significantly different from the
 other clustered baselines, and from the trajectory encoder (0.772 @24h)? Reuses
 build_table2_baselines.py's exact model set, features, and CV folds so
 predictions are properly paired (same organoids, same fold membership).

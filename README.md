@@ -10,13 +10,16 @@ Code and derived data for the paper
 Early classification commits a decision on a growing prefix of a time series. We cast
 cost-sensitive early classification as constrained optimal stopping on the posterior
 process and propose CertStop, a controller that generates a finite family of stopping
-rules, selects one on calibration data and certifies the selection. We give (i) a regret bound that ties the realised cost of any deployed stopping
-rule to its calibration error *at the stopping time*, (ii) finite-sample certificates for a
-rule selected on data, and (iii) a condition-level conformal risk-control rule for new
-deployment conditions. The certificates apply to any family of stopping rules, including
-published triggers (CALIMERA, EconomyGamma, TEASER). Evidence: tumour-organoid drug
-screening (1,850 organoids, 18 conditions, leave-condition-out), all 40 two-class UCR
-datasets, PhysioNet/CinC 2019 sepsis, NASA C-MAPSS, and an independent pancreatic panel.
+rules, selects one on calibration data and certifies the selection. We give (i) a regret
+bound: the excess realized cost of any deployed stopping rule is at most 2L times the
+calibration error *at stopping times* plus a surrogate slack (and, against the
+full-information optimum, an information deficit that recalibration cannot change),
+(ii) finite-sample certificates for a rule selected on data, and (iii) a condition-level
+conformal risk-control rule for new deployment conditions. The certificates apply to any
+family of stopping rules, including published triggers (CALIMERA, EconomyGamma, TEASER).
+Evidence: tumor-organoid drug screening (1,850 organoids, 18 conditions,
+leave-condition-out), the 40 complete two-class UCR datasets, PhysioNet/CinC 2019
+sepsis, NASA C-MAPSS, and an independent pancreatic panel.
 
 The tag [`tcyb-2026-06`](../../tree/tcyb-2026-06) keeps the June 2026 version of this
 repository (an earlier manuscript, desk-rejected by IEEE TCYB on 2026-07-13 and not
@@ -27,9 +30,10 @@ submitted elsewhere); everything below refers to the current version.
 ```
 *.py                      every script behind the manuscript's tables and figures (see the map below)
 paths.py                  where the raw public data live: $ORGANFUSION_DATA, or ./datasets
+data_filter.py            integrity filter for the Tebon tracks (1,888 -> 1,850 organoids, Sec. 4.1); build_posterior.py and build_posterior_grouped.py apply the same rule inline
 posterior/                derived posteriors (*.npz) and every result table (*.csv) cited in the paper
 posterior/ucr40/          frozen MiniRocket posteriors of the 40 UCR datasets (raw and Platt-scaled)
-E*_results.json           results of the cost sweep, cadence and certificate-validity experiments
+E*_results.json           results of the cost sweep, cadence and certificate-validity experiments (E6_results.json, the GRU-fusion calibration scores read by build_ablation.py, is a frozen input)
 figures_tkde/             main-text figures (vector PDF, final size); fig_overview_tkde.tex is Fig. 1
 figures_supp/             supplementary figures
 datasets/                 raw data go here (not distributed, except the derived 4,066-organoid table)
@@ -58,7 +62,7 @@ start from raw data read them from `$ORGANFUSION_DATA` (default `./datasets`):
 | `Deben_NOGR_SupplementaryData1.xlsx` | Supplementary Data 1 of Deben *et al.*, *Commun. Biol.* 7, 1612 (2024) |
 | `physionet_challenge2019/training_setA`, `training_setB` | PhysioNet/CinC Challenge 2019 |
 | `cmapss/train_FD001.txt`, `train_FD004.txt` | NASA C-MAPSS turbofan degradation data |
-| `ucr/<Name>/<Name>_TRAIN.txt`, `_TEST.txt` | UCR archive: `python download_ucr_binary.py` fetches the 40 two-class sets |
+| `ucr/<Name>/<Name>_TRAIN.txt`, `_TEST.txt` | UCR archive: `python download_ucr_binary.py` fetches the 40 complete two-class sets |
 
 The two journal datasets come from open-access (CC BY) articles; please cite the original
 studies when using the derived tables.
@@ -67,13 +71,13 @@ studies when using the derived tables.
 
 | Item | Script(s) | Output |
 |---|---|---|
-| Posteriors (leave-condition-out, shared encoder) | `build_posterior_grouped.py`, `build_posterior_shared.py`, `rebuild_chain_shared.py`, `producers.py` | `posterior_data_*.npz` |
+| Posteriors (per-horizon base, leave-condition-out, shared encoder) | `build_posterior.py`, `build_posterior_grouped.py`, `build_posterior_shared.py`, `rebuild_chain_shared.py`, `producers.py` | `posterior_data.npz`, `posterior_data_*.npz`, `unified_posterior.csv`, `auc_by_horizon.csv` |
 | Table 3, operating points | `build_posterior_grouped.py` | `table_matched_ops_grouped.csv` |
 | Table 4, rules on one posterior | `seq_baselines.py`, `extra_baselines.py`, `stage3a_dp_bins.py`, `etsc_baseline_comparison.py` | `table_seq_baselines_*.csv`, `table_extra_baselines.csv`, `table_etsc_baselines_*.csv` |
 | Table 5, held-out selection | `protocol_3way.py` | `table_3way_protocol.csv` |
 | Table 6, constrained controller (Thm. 3c) | `constrained_control.py` | `table_constrained_control.csv` |
 | Table 7, drift certificates (Thm. 4) | `constrained_control_crc.py`, `crc_outer_split.py` | `table_constrained_control_crc.csv`, `table_crc_outer_split.csv` |
-| Table 10, cross-domain audit | `crossdomain_realized.py`, `physionet_protocol.py`, `cmapss_*.py`, `etsc_ucr_binary40.py` (40 sets; `python etsc_ucr_binary40.py 1 ECG5000` for ECG5000) | `table_crossdomain_realized.csv`, `table_etsc_ucr_*.csv` |
+| Table 10 and Table S3, cross-domain audit | `crossdomain_realized.py`, `physionet_protocol.py`, `cmapss_*.py`, `etsc_ucr_binary40.py` (40 sets; `python etsc_ucr_binary40.py 1 ECG5000` for ECG5000), `figs_tkde.py` (organoid row) | `table_crossdomain_realized.csv`, `table_organoid_realized_audit.csv`, `table_etsc_ucr_*.csv` |
 | Table 8 and Tables S17–S18, certifying published triggers | `certify_any_trigger.py` → `tables_anytrigger.py` | `table_certify_triggers_*.csv` |
 | Fig. 1 | `fig_overview_data.py` (mini-plots → `fig_overview_data.tex`), `fig_overview_images.py` (organoid phase-image tiles from BioImage Archive S-BIAD616, one 357 MB stack, see the script header), then `fig_overview_tkde.tex` (pdflatex) | `figures_tkde/fig_overview_tkde.pdf` |
 | Figs. 2–7 | `figs_tkde.py` (with `panel_labels.py`) | `figures_tkde/` |
@@ -86,12 +90,12 @@ studies when using the derived tables.
 | Table S8, 4,066-organoid source | `expand_cohort_4066.py`, `cohort4066_feature_ablation.py` | `table_4066_*.csv` |
 | Fig. 6, Tables S9–S10, calibration and regret | `stage3a_calib_regret.py`, `stage3a_dp_bins.py` | `table_stage3a_*.csv` |
 | Tables S11–S12, fixed-time baselines, protocols | `build_table2_baselines.py`, `build_posterior_grouped.py`, `seq_baselines.py` | `table2_fixed_time_baselines.csv`, `table_cv_auc_comparison.csv`, `table_estimator_swap.csv` |
-| Table S13, UCR with MiniRocket | `etsc_ucr_strong.py` | `table_etsc_ucr_strong.csv` |
+| Table S13, UCR with MiniRocket (oracle-reference columns, AUC ranges) | `etsc_ucr_binary40.py` (Wafer, Earthquakes, FordA; `python etsc_ucr_binary40.py 1 ECG5000` for ECG5000; the earlier four-set run `etsc_ucr_strong.py` is no longer the source of S13) | `table_etsc_ucr_binary40.csv`, `table_etsc_ucr_ecg5000.csv`, `table_ucr40_datasets.csv`, `table_ucr_ecg5000_dataset.csv` |
 | Table S16, many conditions (pancreatic panel) | `crc_many_conditions.py` | `table_crc_many_conditions.csv` |
 | Table S19, Thm. 4 with a frozen posterior | `crc_outer_split.py` → `tables_outer_split.py` | `table_crc_outer_split.csv` |
 | Table 9 and Tables S20–S22, exact check of Thm. 2, paired bootstrap, ECE binning | `semisynthetic_thm2.py`, `paired_bootstrap.py`, `ece_sensitivity.py` → `tables_3r.py` | `table_semisynthetic_thm2.csv`, `table_paired_bootstrap.csv`, `table_ece_sensitivity.csv` |
 | Cost sweep, cadence, certificate validity, adaptive sampling | `E8_cost_perdrug.py`, `E_F.py`, `E10_ABC.py`, `adaptive_sampling_pilot.py` | `E*_results.json`, `table_adaptive_sampling_pilot.csv` |
-| Reliability layer (pancreatic panel) | `E5_deben_generality.py` | printed |
+| Calibrated triage (pancreatic panel) | `E5_deben_generality.py` | printed |
 | Running time of CertStop and the published triggers (organoids) | `runtime_comparison.py` | `table_runtime.csv` |
 
 Figure checks used for submission: `check_text_line_overlap.py` (no lettering crossed by a
@@ -109,7 +113,7 @@ line), `check_label_overlap.py` (panel labels clear of other text), `export_figu
 * Seeds are fixed in every script; runtimes range from seconds to about 15 minutes per
   script on a desktop CPU.
 
-## Licence and citation
+## License and citation
 
 Code: MIT (see `LICENSE`). If you use this code or data, please cite the paper (see
 `CITATION.cff`) and the original data sources listed above.

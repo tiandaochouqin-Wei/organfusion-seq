@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""STEP 5: posterior-producer / calibration ablation (Fig.7 + Table IV).
+"""STEP 5: posterior-producer / calibration ablation (Table S5).
 Component ablation on a consistent logistic posterior + the SAME optimal-stopping
 controller (real cross-fit). Calibration (simplex vs unconstrained) + gamma stress
+from E6/E4. Diagnostic figure fig7_calibration: reliability, calibration metrics, AUC tie, regret-vs-ECE, gamma stress."""
 import os, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from paths import DATA_DIR  # $ORGANFUSION_DATA, or ./datasets (see README)
-from E6/E4. Fig.7: reliability, calibration metrics, AUC tie, regret-vs-ECE, gamma stress."""
 import os, sys, csv, json, numpy as np
 sys.stdout.reconfigure(encoding="utf-8",errors="replace")
 import openpyxl, matplotlib as mpl; mpl.use("Agg")
@@ -93,7 +93,7 @@ with open("posterior/table4_ablation.csv","w",newline="",encoding="utf-8") as f:
     w.writerow(["Simplex fusion (GRU)",round(S["auc"],4),round(S["ece"],4),round(S["mce"],4),round(S["brier"],4),"","","","",round(2*S["ece"],4)])
     w.writerow(["Unconstrained (GRU)",round(U["auc"],4),round(U["ece"],4),round(U["mce"],4),round(U["brier"],4),"","","","",round(2*U["ece"],4)])
 
-# ---- Fig 7 ----
+# ---- diagnostic figure fig7_calibration ----
 fig=plt.figure(figsize=(7.2,4.7)); gs=GridSpec(2,3,figure=fig,hspace=0.72,wspace=0.42)
 ax=fig.add_subplot(gs[0,0]); ax.plot([0,1],[0,1],"--",color=GRAY,lw=0.8)
 for D,c,l in [(S,PRI,"simplex"),(U,RED,"unconstrained")]:
@@ -124,5 +124,6 @@ ax=fig.add_subplot(gs[1,2]); names=[r[0].replace(" (traj+cond)","").replace("Tra
 ax.barh(range(len(rows)),[r[6] for r in rows],color=PRI,edgecolor="white",lw=0.5)
 ax.set_yticks(range(len(rows)),names,fontsize=6);ax.invert_yaxis();ax.set_xlabel("decision error")
 ax.text(0.5,-0.32,"(f) component ablation",transform=ax.transAxes,ha="center",va="top",fontsize=8,fontweight="bold")
+os.makedirs("figures_regen",exist_ok=True)
 for e in ("pdf","png","svg"): fig.savefig(f"figures_regen/fig7_calibration.{e}",dpi=600,bbox_inches="tight")
 print("wrote fig7_calibration + table4_ablation.csv")

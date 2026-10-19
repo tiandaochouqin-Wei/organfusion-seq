@@ -10,12 +10,12 @@ TEASER under ml_edm's cost criterion -- plus the endpoint assay, ordered by cons
 (large delay weight = early = least conservative first).
 
 Part A (organoids, condition drift). Same leave-condition-out posterior and the same 50 random
-9/9 condition splits as constrained_control_crc.py (Table 6). Each trigger is fitted out-of-fold
+9/9 condition splits as constrained_control_crc.py (Table 7). Each trigger is fitted out-of-fold
 by condition (5-fold GroupKFold over the 18 conditions, as in etsc_baseline_comparison.py), so
 every condition's losses come from a trigger that never saw that condition -- the same
 cross-fitting caveat that already applies to the posterior. Selections: none; Hoeffding over
 organoids (Theorem 3); Learn-then-Test over organoids; conformal risk control over conditions
-(Theorem 4). Our margin family is run through the same code and must reproduce Table 6. A control
+(Theorem 4). Our margin family is run through the same code and must reproduce Table 7. A control
 splits organoids at random (exchangeable units) to separate "the procedure fails" from "drift
 breaks it".
 

@@ -5,7 +5,8 @@ boxes, so that every mini-plot of the framework diagram shows the organoid cohor
   \panelA  normalized dry-mass trajectories x(t)/x(6) of six organoids (three sensitive, three resistant)
   \panelB  the leave-condition-out posterior paths p_t of the same six organoids (posterior_data_grouped.npz)
   \panelC  three members of the Lagrangian band family (backward induction on kernels from the cohort)
-  \panelD  all 156 candidates on D_sel: mean decision time against risk + Hoeffding slack, alpha, selected rule
+  \panelD  candidates on D_sel with risk + slack <= 0.31 (distinct rounded points): mean decision time against
+           risk + Hoeffding slack, alpha, selected rule
   \panelE  the selected band with the posterior path of a test organoid (new condition) up to its stopping time
 C-E follow Algorithm 1 on one 9/9 condition split (kernels from D_gen, selection on D_sel, as in Table 6).
 Same parsing, label and data-integrity filter as build_posterior_grouped.py; same kernels, band recursion and

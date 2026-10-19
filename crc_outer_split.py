@@ -2,11 +2,11 @@
 # -*- coding: utf-8 -*-
 """Stage 3Q: Theorem 4 exactly as stated -- a family frozen before the calibration conditions are seen.
 
-Tables 6 and 8 certify families evaluated on a posterior (and, for the triggers, rules) cross-fitted
+Tables 7 and 8 certify families evaluated on a posterior (and, for the triggers, rules) cross-fitted
 over all 18 conditions, so each condition's losses come from a model that never saw that condition
 but the fold structure couples conditions: exchangeability holds only up to the cross-fitting.
 Here nothing is cross-fitted. In each of R random splits of the 18 conditions into
-    6 TRAIN  : fit the shared prefix encoder (the posterior producer of Table 6), then freeze it
+    6 TRAIN  : fit the shared prefix encoder (the posterior producer of Table 7), then freeze it
     8 CAL    : compute per-condition losses of the fit-free margin family and select
     4 TEST   : new conditions, evaluated once
 the margin family is a fixed function of the TRAIN conditions only, and the CAL and TEST conditions

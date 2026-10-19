@@ -5,7 +5,7 @@ the 4,066-organoid export (only single-timepoint features available: t6h/t24h/t4
 no dense trajectory) a real population mismatch with the n=1,850 dense subset, or an
 artefact of the coarser feature representation?
 
-Isolates the two by re-running Table II's EXACT n=1,850 organoids, same labels, same
+Isolates the two by re-running Table S11's EXACT n=1,850 organoids, same labels, same
 leave-condition-out folds, but restricted to a single-timepoint feature (x(T) only,
 mirroring what the 4,066 file provides) instead of the full 5-dim trajectory-shape
 feature (value, mean velocity, last velocity, min, range). If RF also collapses here,
@@ -39,7 +39,7 @@ MODELS = {
     "RF": lambda: RandomForestClassifier(n_estimators=300, random_state=0, n_jobs=-1),
     "HGB": lambda: HistGradientBoostingClassifier(random_state=0),
 }
-# Table II's own leave-condition-out AUC at 24h/48h (5-dim trajectory-shape features),
+# Table S11's own leave-condition-out AUC at 24h/48h (5-dim trajectory-shape features),
 # for the side-by-side comparison
 REF_TABLE_II = {24: {"LR": 0.851, "RF": 0.856, "HGB": 0.845},
                  48: {"LR": 0.941, "RF": 0.939, "HGB": 0.935}}
@@ -55,7 +55,7 @@ for T in (24, 48):
         ref = REF_TABLE_II[T][name]
         rows_out.append((T, name, round(auc, 4), ref, round(auc - ref, 4)))
         print(f"  {name:5s} AUC(single-scalar, leave-cond-out)={auc:.4f}  "
-              f"| Table II (5-dim features)={ref:.4f}  delta={auc-ref:+.4f}")
+              f"| Table S11 (5-dim features)={ref:.4f}  delta={auc-ref:+.4f}")
 
 with open(os.path.join(OUT, "table_4066_feature_ablation.csv"), "w", newline="", encoding="utf-8") as f:
     w = csv.writer(f)

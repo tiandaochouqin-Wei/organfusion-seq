@@ -45,7 +45,9 @@ def _groups(fig, regs):
     for A, s in regs:
         pa = A.get_position(); g = [A]
         for B in fig.axes:
-            if B in lab or not B.get_visible(): continue
+            if B in lab or not B.get_visible() or any(           # also skip twins (same box) of labelled axes
+                    all(abs(u - v) < 1e-6 for u, v in zip(B.get_position().bounds, L.get_position().bounds))
+                    for L in lab): continue
             pb = B.get_position()
             below = _cover(pa, pb) > 0.5 and pb.y1 <= pa.y0 + 1e-6 and not any(
                 L is not A and _xov(L.get_position(), pb) > 0.5 and pb.y1 <= L.get_position().y0 + 1e-6

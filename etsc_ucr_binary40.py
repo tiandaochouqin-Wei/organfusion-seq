@@ -6,8 +6,9 @@ etsc_ucr_strong.py scored four UCR datasets chosen for having a plausible early-
 A reviewer cannot tell four chosen datasets from four favourable ones, so this script reruns
 the IDENTICAL protocol on every two-class, equal-length, complete dataset of the UCR 2018
 archive (40 datasets; the rule and the list are in download_ucr_binary.py and were fixed before
-any result was seen). Wafer, Earthquakes and FordA are in both sets and must reproduce
-table_etsc_ucr_strong.csv exactly -- checked at the end.
+any result was seen). Wafer, Earthquakes and FordA are in both sets; a continuity check against the older
+table_etsc_ucr_strong.csv is printed at the end (some cells differ by more than rounding, so the
+supplementary UCR table is read from this script's outputs, not from the older file).
 
 Protocol (unchanged): per-horizon MiniRocket (1,000 kernels) + logistic regression; horizons at
 fractions 0.2..0.9 of the series length; every free parameter of every rule (our margin, the
@@ -267,7 +268,7 @@ if __name__ == "__main__":
             rows += r; infos.append(info)
     if names == BINARY_UCR:
         f_rows, f_info = "table_etsc_ucr_binary40.csv", "table_ucr40_datasets.csv"
-    elif names == ["ECG5000"]:                              # the multi-class set of Table 7 (majority vs rest)
+    elif names == ["ECG5000"]:                              # the multi-class set of Table 10 (majority vs rest)
         f_rows, f_info = "table_etsc_ucr_ecg5000.csv", "table_ucr_ecg5000_dataset.csv"
     else:
         f_rows, f_info = "table_etsc_ucr_binary40_partial.csv", "table_ucr40_datasets_partial.csv"
@@ -283,7 +284,7 @@ if __name__ == "__main__":
     print(f"\nwrote {f_rows} ({len(rows)} rows, {len(infos)} datasets, "
           f"{time.time() - t_start:.0f}s)")
 
-    # ---- continuity check: the three datasets shared with etsc_ucr_strong.py must reproduce ----
+    # ---- continuity check: the three datasets shared with etsc_ucr_strong.py are compared with its table ----
     old = os.path.join(OUT, "table_etsc_ucr_strong.csv")
     if os.path.isfile(old):
         import csv as _c

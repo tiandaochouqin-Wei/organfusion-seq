@@ -2,11 +2,11 @@
 # -*- coding: utf-8 -*-
 """Phase 2 (sequential baselines): compares the DP-derived time-varying band
 (the realization of Theorem 1) and the deployed constant-margin controller
-(the headline "ours" in Table V) against three additional stopping baselines,
+(the headline "ours" in Table 3) against three additional stopping baselines,
 all evaluated on the SAME cross-fitted posterior process P[N,G]. Main protocol
 (2026-09-28): P is the leave-condition-out posterior (posterior_data_grouped.npz's
 P_group), not the organoid-level stratified-CV posterior -- the latter is an
-upper-bound reference only (Table VI/tab:leakrobust(a)), so differences here
+upper-bound reference only (Supplementary Table S12(a)), so differences here
 reflect the STOPPING RULE only, under the protocol the paper actually deploys:
 
   1. fixed-time            (no adaptivity; existing baseline)
@@ -60,7 +60,7 @@ def frontier_time_at_error(t, e, target_errs):
     Returns np.nan (NOT a silently clamped/extrapolated value) for any target
     error the policy's envelope never reaches -- np.interp would otherwise
     silently flatten to its boundary value outside [min(e2), max(e2)], which
-    is exactly the kind of overclaim this revision is trying to remove."""
+    is exactly the kind of overclaim to avoid."""
     t2, e2 = isotonic_lower_envelope(t, e)
     lo, hi = e2.min(), e2.max()
     out = []
@@ -259,14 +259,14 @@ for name, (t, e) in frontiers.items():
 with open(os.path.join(OUT, "table_seq_baselines_matched.csv"), "w", newline="", encoding="utf-8") as f:
     w = csv.writer(f)
     # Stage 3G fix: the grid is linspace(0.12, 0.24, 9) = 0.120, 0.135, ..., 0.225, 0.240; the old
-    # ".2f" header labelled 0.165 as "0.16" and 0.195 as "0.20", and Table 3 copied those columns next
+    # ".2f" header labelled 0.165 as "0.16" and 0.195 as "0.20", and Table 4 copied those columns next
     # to rows computed at the exact 0.16/0.20. Headers now carry three decimals, and the exact-target
-    # table below is the one Table 3 reads.
+    # table below is the one Table 4 reads.
     w.writerow(["policy", "min_achievable_err"] + [f"time_at_err_{e:.3f}" for e in target_errs])
     for name, times_at, min_err in rows:
         w.writerow([name, round(min_err, 4)] + [("" if np.isnan(x) else round(x, 2)) for x in times_at])
 print("wrote table_seq_baselines_matched.csv")
-TABLE3_TARGETS = [0.12, 0.16, 0.20, 0.24]   # the columns of Table 3 / Supplementary Table S10
+TABLE3_TARGETS = [0.12, 0.16, 0.20, 0.24]   # the columns of Table 4 / Supplementary Table S10
 with open(os.path.join(OUT, "table_seq_baselines_matched_exact.csv"), "w", newline="", encoding="utf-8") as f:
     w = csv.writer(f)
     w.writerow(["policy", "min_achievable_err"] + [f"time_at_err_{e:.2f}" for e in TABLE3_TARGETS])

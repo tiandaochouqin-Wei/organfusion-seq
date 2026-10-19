@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""STEP 2: fixed-time discrimination baselines (Table II + Fig.3a).
+"""STEP 2: fixed-time discrimination baselines (Table S11; data behind Fig. S6(a)).
 Cross-fit several models on [trajectory-prefix feats + condition] at T=24h and 48h;
 report AUC, balanced accuracy, ECE, Brier. Shows the models CLUSTER (saturation)."""
 import os, sys
@@ -85,7 +85,7 @@ with open("posterior/table2_fixed_time_baselines.csv","w",newline="",encoding="u
     w=csv.writer(f); w.writerow(["model","horizon_h","AUC","balanced_accuracy","ECE","Brier"])
     for r in rows_out: w.writerow([r[0],r[1]]+[round(x,4) for x in r[2:]])
 
-# Fig 3a: 24h model cluster (AUC bar, all near same level)
+# Fig. S6(a): 24h model cluster (AUC bar, all near same level)
 order=["LR","RF","HGB","SVM-RBF","kNN","trajectory encoder","near-Bayes (LDA)"]
 a24={r[0]:r[2] for r in rows_out if r[1]==24}
 fig,ax=plt.subplots(figsize=(3.6,2.5))
@@ -99,5 +99,6 @@ ax.set_ylabel("AUC @ 24 h"); ax.set_ylim(0.78,0.90)
 ax.spines["top"].set_visible(False); ax.spines["right"].set_visible(False)
 plt.rcParams["font.family"]="serif"; plt.rcParams["font.serif"]=["Times New Roman","DejaVu Serif"]
 fig.tight_layout();
+os.makedirs("figures_regen",exist_ok=True)
 for e in ("pdf","png","svg"): fig.savefig(f"figures_regen/fig3a_baselines.{e}",dpi=600,bbox_inches="tight")
 print("wrote table2_fixed_time_baselines.csv + fig3a_baselines  (AUC spread @24h = %.3f)"%(max(vals)-min(vals)))

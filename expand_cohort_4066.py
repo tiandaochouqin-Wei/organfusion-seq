@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """Dataset-expansion check (Stage 2, 2026-09-30): does the graded (not tiered)
-discrimination structure of E1/Table II -- fit on the n=1,850 dense subset,
+discrimination structure of E1/Table S11 -- fit on the n=1,850 dense subset,
 leave-condition-out GroupKFold, the paper's main protocol since Stage 1 -- replicate
 on the full n=4,066 development cohort that the paper's own Limitations flags as the
 source population ("the dense cohort is a public 'randomly selected' subset,
@@ -20,7 +20,7 @@ Scope limit (deliberate, not an oversight): this file only has 4 timepoints
 (6/24/48/72h). t72h IS the value the label thresholds (y=1[x(72)<0.9]), so it cannot
 be used as an INPUT feature at any horizon without leaking the label -- exactly the
 same same-modality concern flagged in Sec. "Label semantics" of the paper. We
-therefore only test T=24h and T=48h (mirroring Table II's own two columns), never T=72h.
+therefore only test T=24h and T=48h (mirroring Table S11's own two columns), never T=72h.
 This also means the dense multi-point sequential/stopping-controller experiments
 (E2, E13, etc.) CANNOT be extended to this file -- it lacks the 13-point grid they
 require. This script checks discrimination only.
@@ -75,7 +75,7 @@ MODELS = {
 folds_strat = StratifiedKFold(5, shuffle=True, random_state=SEED)
 folds_group = GroupKFold(5)
 
-# reference numbers already established on the n=1,850 dense subset (Table II,
+# reference numbers already established on the n=1,850 dense subset (Table S11,
 # leave-condition-out GroupKFold -- the paper's main protocol since Stage 1)
 REF_1850_GROUP = {
     24: {"LR": 0.851, "RF": 0.856, "HGB": 0.845},
@@ -129,7 +129,7 @@ def delong_test(p1, p2, yv):
     p = 2 * (1 - norm.cdf(abs(z)))
     return float(aucs[0] - aucs[1]), float(p)
 
-print("\n=== graded-structure check at N=4066, leave-condition-out (same DeLong test as E1/Table II) ===")
+print("\n=== graded-structure check at N=4066, leave-condition-out (same DeLong test as E1/Table S11) ===")
 PAIRS = [("RF", "LR"), ("RF", "HGB"), ("LR", "HGB")]
 for T in (24, 48):
     for a, b in PAIRS:

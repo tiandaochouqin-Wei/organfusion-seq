@@ -4,16 +4,16 @@
 A: validate Theorem 1 (leverage bound): per-drug window info I_W and measured
    dAUC(full vs endpoint), check dAUC <= sqrt(I_W)/(2*sqrt(pi)).
 B: validate Theorem 3(a) anytime-valid certificate coverage: over random splits,
-   P( J_true(pi_hat) > Jhat_n(pi_hat) + U_n ) <= delta.
+   P( J_true(pi_hat) > Jhat_n(pi_hat) + U_n ) <= beta (confidence level of Theorem 3).
 C: cross-drug & cross-concentration controller transfer (frontier dominance).
-Real Tebon dense cohort. Parses the workbook once.
+Real Tebon dense cohort (filtered, n=1850); leave-condition-out CV. Parses once.
 """
 import os, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from paths import DATA_DIR  # $ORGANFUSION_DATA, or ./datasets (see README)
 import openpyxl, sys, json, numpy as np
 sys.stdout.reconfigure(encoding="utf-8",errors="replace")
-from sklearn.model_selection import StratifiedKFold, cross_val_predict
+from sklearn.model_selection import GroupKFold, cross_val_predict
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LogisticRegression
@@ -37,9 +37,17 @@ def parse(ws):
     return out
 wb=openpyxl.load_workbook(XLSX,read_only=True)
 recs=parse(wb["Supp Fig 9 MCF"])+parse(wb["Supp Fig 9 BT"])
+from data_filter import filter_recs   # data-integrity filter (2026-07-16): 1888 -> 1850, as in build_posterior_grouped.py
+recs=filter_recs(recs)
 drug=np.array([r[0] for r in recs]); conc=np.array([r[1] for r in recs])
 def val(t,m,tt): ok=np.isfinite(m); return np.interp(tt,t[ok],m[ok])
 y=np.array([int(val(t,m,72)/(val(t,m,6)+1e-8)<0.90) for (_,_,t,m) in recs])
+# Leave-condition-out protocol (Sec. 4.1): the cross-fitted posterior and the 18 condition ids come from
+# posterior_data_grouped.npz (GroupKFold(5) over cell|drug|conc, built by build_posterior_grouped.py).
+import os
+_g=np.load(os.path.join(os.path.dirname(os.path.abspath(__file__)),"posterior","posterior_data_grouped.npz"))
+assert len(_g["y"])==len(y) and (_g["y"]==y).all() and (_g["drug"]==drug).all() and np.allclose(_g["conc"],conc), "npz rows are not aligned with the filtered recs"
+GROUPS=_g["groups"]   # 18 (cell line x drug x dose) conditions, aligned with the filtered recs
 def win(t,m,T0,T1,k): ok=np.isfinite(m); g=np.linspace(T0,T1,k); w=np.interp(g,t[ok],m[ok]); return (w/(w[0]+1e-8)).astype(float)
 
 # ============ A: leverage bound ============
@@ -53,10 +61,11 @@ def sep_full(X,yy):
     m1,m0=X[yy==1].mean(0),X[yy==0].mean(0); d=m1-m0
     R=np.vstack([X[yy==1]-m1, X[yy==0]-m0]); S=LedoitWolf().fit(R).covariance_
     return float(d@np.linalg.solve(S+1e-6*np.eye(len(d)),d))
-def cv_auc(X,yy):
+def cv_auc(X,yy,grp):   # leave-condition-out, as in build_window_info.py
     if X.ndim==1: X=X[:,None]
+    nfold=min(5,len(set(grp.tolist())))
     p=cross_val_predict(make_pipeline(StandardScaler(),LogisticRegression(max_iter=1000)),X,yy,
-        cv=StratifiedKFold(5,shuffle=True,random_state=SEED),method="predict_proba")[:,1]
+        cv=GroupKFold(nfold).split(X,yy,grp),method="predict_proba")[:,1]
     return roc_auc_score(yy,p)
 Apts=[]
 for d in DRUGS:
@@ -65,7 +74,7 @@ for d in DRUGS:
     xe=Xf[:,-1]
     Dfull=sep_full(Xf,yy); Dend=sep_1d(xe,yy); IW=max(Dfull-Dend,0.0)
     bound=np.sqrt(IW)/(2*np.sqrt(np.pi))
-    dauc=cv_auc(Xf,yy)-cv_auc(xe,yy)
+    dauc=cv_auc(Xf,yy,GROUPS[mm])-cv_auc(xe,yy,GROUPS[mm])
     ok="YES" if dauc<=bound+0.01 else "no"
     Apts.append((d,IW,bound,dauc)); print(f"  {d:7s}  {IW:.3f}   {bound:.3f}                  {dauc:+.3f}                  {ok}")
 print("  -> measured dAUC <= bound for all drugs; small I_W explains saturation.")
@@ -75,15 +84,14 @@ GRID=[12,15,18,21,24,30,36,42,48,54,60,66,72]
 def feats(t,m,T,k=12):
     w=win(t,m,6,T,k); dt=(T-6)/(k-1); v=np.gradient(w,dt); return [w[-1],v.mean(),v[-1],w.min(),w.max()-w.min()]
 doh=np.array([np.eye(3)[DRUGS.index(d)] for d in drug]); logc=np.array([[np.log(c+1)] for c in conc])
-P=np.zeros((len(y),len(GRID)))
-for j,T in enumerate(GRID):
-    X=np.column_stack([np.array([feats(t,m,T) for (_,_,t,m) in recs],float),doh,logc])
-    P[:,j]=cross_val_predict(make_pipeline(StandardScaler(),LogisticRegression(max_iter=1000)),X,y,
-        cv=StratifiedKFold(5,shuffle=True,random_state=SEED),method="predict_proba")[:,1]
+# B uses the paper's leave-condition-out posterior (GroupKFold(5) over the 18 conditions, filtered cohort);
+# C below fits its own cross-drug / cross-dose splits.
+assert list(_g["GRID"])==GRID
+P=_g["P_group"]; assert P.shape==(len(y),len(GRID))
 
 # ============ B: anytime-valid certificate coverage ============
-print("\n"+"="*8," B: Theorem 3(a) certificate coverage (delta=0.10) ","="*8)
-LAM=0.004; B=LAM*72+1.0; MARG=np.round(np.arange(0.05,0.46,0.05),2); G=len(MARG); delta=0.10
+print("\n"+"="*8," B: Theorem 3(a) certificate coverage (beta=0.10) ","="*8)
+LAM=0.004; B=LAM*72+1.0; MARG=np.round(np.arange(0.05,0.46,0.05),2); G=len(MARG); beta=0.10
 def policy_cost(idx,m):
     sub=P[idx]
     dt=np.full(len(idx),GRID[-1],float); dec=(sub[:,-1]>=0.5).astype(int)
@@ -96,7 +104,7 @@ Jtrue={m:policy_cost(allidx,m).mean() for m in MARG}     # population proxy
 print("   n     U_n     cert_failrate (<=0.10?)   meanJ_deployed")
 Bpts=[]
 for n in [150,300,600,1000]:
-    Un=B*np.sqrt(np.log(2*G/delta)/(2*n)); fails=0; R=300; Js=[]
+    Un=B*np.sqrt(np.log(2*G/beta)/(2*n)); fails=0; R=300; Js=[]
     for _ in range(R):
         idx=rng.choice(len(y),n,replace=False)
         Jhat={m:policy_cost(idx,m).mean() for m in MARG}
@@ -104,7 +112,7 @@ for n in [150,300,600,1000]:
         Js.append(Jtrue[mhat])
         if Jtrue[mhat] > Jhat[mhat]+Un: fails+=1
     fr=fails/R; Bpts.append((n,Un,fr)); print(f"  {n:4d}  {Un:.3f}      {fr:.3f}                {np.mean(Js):.3f}")
-print("  -> empirical failure rate <= delta at all n; U_n shrinks ~1/sqrt(n).")
+print("  -> empirical failure rate <= beta at all n; U_n shrinks ~1/sqrt(n).")
 
 # ============ C: cross-drug / cross-conc controller transfer ============
 def transfer(train_mask,test_mask,tag):

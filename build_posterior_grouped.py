@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 """Phase 2 (grouped CV): the public Tebon cohort has NO well/plate/field id below
 the (cell_line x drug x concentration) condition level (18 conditions total; each
-condition IS one experimental block of ~100 organoids). Reviewers asked for
-plate/well-grouped CV; the honest version achievable on this data is
+condition IS one experimental block of ~100 organoids). Plate/well-grouped
+CV is the natural check; the honest version achievable on this data is
 LEAVE-CONDITION-OUT (GroupKFold with group=condition), which is the strictest
 grouping the data supports (organoids within a condition share a plate/run).
 
